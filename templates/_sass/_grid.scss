@@ -1,0 +1,155 @@
+@use 'sass:meta';
+@use 'sass:math';
+@use 'variables' as *;
+@use 'mixins-media' as *;
+
+// Container for flex, grid
+@mixin container {
+  width: calc(100% - #{$container-margin-mobile} * 2);
+  max-width: $max-width;
+  margin-right: $container-margin-mobile;
+  margin-left: $container-margin-mobile;
+
+  @include media(desktop) {
+    width: calc(100% - #{$container-margin-desktop} * 2);
+    margin-right: $container-margin-desktop;
+    margin-left: $container-margin-desktop;
+  }
+
+  @include media(site) {
+    width: calc(100% - #{$container-margin-site} * 2);
+    margin-right: $container-margin-site;
+    margin-left: $container-margin-site;
+  }
+
+  @include media(large) {
+    width: 100%;
+    margin-right: $container-margin-large;
+    margin-left: $container-margin-large;
+  }
+}
+
+// Wrapper of flex items
+@mixin flex-container {
+  display: flex;
+  max-width: calc(#{$max-width} + #{$gap});
+  margin-right: -($gutter);
+  margin-left: -($gutter);
+}
+
+// SASS placeholder for flex columns
+@each $device, $columns in $grid-columns {
+  @for $i from 1 through $columns {
+    %flex-#{$i} {
+      margin-right: $gutter;
+      margin-left: $gutter;
+
+      @include media(#{$device}) {
+        $column-width: math.div(100%, math.div($columns, $i));
+        $flex-basis: calc(#{$column-width} - #{$gap});
+        flex: 0 1 $flex-basis;
+        width: $flex-basis;
+      }
+    }
+  }
+}
+
+// Set width of element based on column width
+// @include flex-cols($mobile: 4, $desktop: 5)
+@mixin flex-col($args...) {
+  // flex: 0 1 $flex-basis;
+  margin-right: $gutter;
+  margin-left: $gutter;
+
+  @each $device, $cols in meta.keywords($args) {
+    $columns: map-get($grid-columns, $device);
+    $col-width: 100% !default;
+    $flex-basis: auto !default;
+
+    @if (meta.type-of($cols) == 'number' and $cols > 0 and $cols <= $columns) {
+      $col-width: math.percentage(math.div($cols, $columns));
+      $flex-basis: calc(#{$col-width} - #{$gap});
+    }
+    @else if (meta.type-of($cols) == 'string' and $cols == 'auto') {
+      $flex-basis: auto;
+    }
+    @else {
+      @error '$cols should be less or equal to number of columns in grid for this device or "auto".';
+    }
+
+    @if ($device == 'mobile') {
+      @include media-max('tablet') {
+        width: $flex-basis;
+      }
+    }
+    @else {
+      @include media(#{$device}) {
+        width: $flex-basis;
+      }
+    }
+  }
+}
+
+/** Get width of number of columns
+ * Example:
+ * .item { width: col-width('desktop', 6); } = 50% = 632px
+ * .other { width: col-width('desktop', 3); } = 25% = 308px
+ * Result:
+ * .item { width: calc(50% - 0.5rem); }
+ * .other { width: calc(25% - 0.75rem); }
+ */
+@function col-width($device: 'desktop', $number-of-columns: 1) {
+  $columns: map-get($grid-columns, $device);
+  $columns-ratio: math.div($number-of-columns, $columns);
+  $gap-ratio: 1 - $columns-ratio;
+  $gap-width: $gap * $gap-ratio;
+  $percent-columns: math.percentage($columns-ratio);
+  $col-width: 100% !default;
+
+  @if ($number-of-columns <= $columns) {
+    $col-width: calc(#{$percent-columns} - #{$gap-width});
+  }
+  @else {
+    @error '$number-of-columns should be less or equal to number of columns defined in grid for this device.';
+  }
+
+  @return $col-width;
+}
+
+/** Adjust column width when nested inside another column
+ * Usage:
+ * .item { width: nested-col-width('desktop', 8, 1); }
+ * Result:
+ * .item { width: calc(12.5% - 0.9166666667rem); } = 92px
+ */
+@function nested-col-width($device: 'desktop', $parent-columns: 12, $nested-columns: 1) {
+  $columns: map-get($grid-columns, $device);
+  $columns-ratio: math.div($nested-columns, $columns);
+  $gap-ratio: 1 - $columns-ratio;
+  $gap-width: $gap * $gap-ratio;
+  $percent-width: $columns-ratio * math.percentage(math.div($columns, $parent-columns));
+  $col-width: 100% !default;
+
+  @if ($parent-columns <= $columns) {
+    $col-width: calc(#{$percent-width} - #{$gap-width});
+  }
+  @else {
+    @error '$parent-columns should be less or equal to number of columns defined in grid for this device.';
+  }
+
+  @return $col-width;
+}
+
+%flex {
+  display: flex;
+
+  &-center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+%flex-auto {
+  flex: 1 1 0;
+  width: auto;
+}

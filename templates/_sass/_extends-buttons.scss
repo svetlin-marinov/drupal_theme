@@ -1,0 +1,189 @@
+@use 'variables' as *;
+@use 'variables-colors' as *;
+@use 'variables-typography' as *;
+@use 'util/unit' as *;
+
+%button--link {
+  @include ts-content;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 0;
+  cursor: default;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  text-decoration: none;
+  color: $button-color;
+  transition: background-color $transition-time, opacity $transition-time;
+
+  &:link {
+    cursor: pointer;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+    background-color: $ocean-secondary;
+  }
+}
+
+%button {
+  @include ts-content;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: $spacing-1-5 $spacing-4;
+  border: 0;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  text-decoration: none;
+  color: $button-color;
+  background-color: $ocean;
+  transition: background-color $transition-time, opacity $transition-time;
+
+  &[type='submit'],
+  &[type='button'],
+  &[type='reset'],
+  &[type='file'] {
+    cursor: pointer;
+  }
+
+  &[disabled],
+  &.disabled {
+    cursor: default;
+    opacity: $disabled-opacity;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+    color: $white;
+    background-color: $ocean-secondary;
+  }
+}
+
+%button--small {
+  @extend %button;
+  padding: rem-calc(4px) $spacing-1;
+  font-weight: $font-weight-regular;
+}
+
+%button--large {
+  @extend %button;
+  padding: $spacing-2 $spacing-3;
+}
+
+// %button--icon {
+//   @extend %button;
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+/* Warning: You probably don't mean to use the color value (orange) in interpolation here (button names).
+It may end up represented as orange, which will likely produce invalid CSS.
+Always quote color names when using them as strings or map keys (for example, "orange").
+If you really want to use the color value here, use '"" + $button'. */
+
+$button-colors: (
+  button-ocean: (
+    primary: $ocean,
+    secondary: $ocean-secondary,
+  ),
+  button-ocean-secondary: (
+    primary: $ocean-secondary,
+    secondary: $ocean-secondary,
+  ),
+  button-blue: (
+    primary: $blue,
+    secondary: $blue-secondary,
+  ),
+  button-blue-secondary: (
+    primary: $blue-secondary,
+    secondary: $blue-secondary,
+  ),
+  button-purple: (
+    primary: $purple,
+    secondary: $purple-secondary,
+  ),
+  button-purple-secondary: (
+    primary: $purple-secondary,
+    secondary: $purple-secondary,
+  ),
+  button-orange: (
+    primary: $orange,
+    secondary: $orange-secondary,
+  ),
+  button-orange-secondary: (
+    primary: $orange-secondary,
+    secondary: $orange-secondary,
+  ),
+  button-green: (
+    primary: $green,
+    secondary: $green-secondary,
+  ),
+  button-green-secondary: (
+    primary: $green-secondary,
+    secondary: $green-secondary,
+  ),
+  // USA
+  button-green-usa: (
+    primary: $green-usa,
+    secondary: $green-usa-secondary,
+  ),
+  button-green-usa-secondary: (
+    primary: $green-usa-secondary,
+    secondary: $green-usa,
+  ),
+  button-black-usa: (
+    primary: $black-usa,
+    secondary: $black-usa-secondary,
+  ),
+  button-black-usa-secondary: (
+    primary: $black-usa-secondary,
+    secondary: $black-usa,
+  ),
+  button-brown-usa: (
+    primary: $brown-usa,
+    secondary: $brown-usa-secondary,
+  ),
+  button-brown-usa-secondary: (
+    primary: $brown-usa-secondary,
+    secondary: $brown-usa,
+  ),
+  button-orange-usa: (
+    primary: $orange-usa,
+    secondary: $orange-usa-secondary,
+  ),
+  button-orange-usa-secondary: (
+    primary: $orange-usa-secondary,
+    secondary: $orange-usa,
+  ),
+  button-purple-usa: (
+    primary: $purple-usa,
+    secondary: $purple-usa-secondary,
+  ),
+  button-purple-usa-secondary: (
+    primary: $purple-usa-secondary,
+    secondary: $purple-usa,
+  ),
+);
+
+@each $button, $states in $button-colors {
+  %#{$button} {
+    background-color: map-get($map: $states, $key: 'primary');
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: map-get($map: $states, $key: 'secondary');
+    }
+
+    &[disabled],
+    &.disabled {
+      background-color: map-get($map: $states, $key: 'primary');
+    }
+  }
+}

@@ -1,0 +1,75 @@
+/**
+ * @file
+ * Throbber.
+ */
+@use '../../templates/_sass/init' as *;
+@use '../../dist/icons/icons.scss' with (
+  $icons_path: '../../../dist/icons/'
+);
+
+.ajax-progress {
+  display: inline-block;
+}
+
+.ajax-progress-throbber {
+  position: absolute;
+
+  .throbber {
+    display: inline-block;
+
+    &::before {
+      @extend %icon-icon--throbber;
+      width: $spacing-2;
+      height: $spacing-2;
+      animation-name: throbber;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+.ajax-progress-throbber .message {
+  display: inline;
+  padding: 1px 5px 2px;
+}
+
+tr .ajax-progress-throbber .throbber {
+  margin: 0 2px;
+}
+
+.ajax-progress-bar {
+  width: 16em;
+}
+
+/* Full screen throbber */
+.ajax-progress-fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: $overlay-background;
+
+  &::before {
+    @extend %icon-icon--throbber;
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 50px;
+    animation-name: throbber;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes throbber {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

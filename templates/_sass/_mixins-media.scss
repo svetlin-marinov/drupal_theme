@@ -1,0 +1,40 @@
+@use 'variables' as *;
+
+// Media breakpoints
+// Media display size from certain size (mobile first)
+// $breakpoints: (
+//   'mobile-narrow': 321px,
+//   'mobile': 414px,
+//   'tablet': 768px,
+//   'desktop': 1025px,
+//   'site': 1280px,
+//   'large': 1440px
+// );
+
+@mixin media($breakpoint) {
+  // @if($breakpoint == 'mobile') {
+  //   @media (max-width: map-get($map: $breakpoints, $key: 'tablet') - 1) { // 767px
+  //     @content;
+  //   }
+  // }
+  // @else {
+  @media (min-width: map-get($map: $breakpoints, $key: $breakpoint)) {
+    @content;
+  }
+
+  // }
+}
+
+// Media display size up to certain size
+@mixin media-max($breakpoint) {
+  @media (max-width: map-get($map: $breakpoints, $key: $breakpoint) - 1px) {
+    @content;
+  }
+}
+
+// Media display size from - to
+@mixin media-between($breakpoint1, $breakpoint2) {
+  @media (min-width: map-get($map: $breakpoints, $key: $breakpoint1)) and (max-width: map-get($map: $breakpoints, $key: $breakpoint2) - 1px) {
+    @content;
+  }
+}

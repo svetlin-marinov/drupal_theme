@@ -1,0 +1,7 @@
+{% set text = content.body|render|striptags %}
+
+{% include "@ffw_theme/content/page/search-page/_node--search-index.twig" with {
+  'search_title': label|field_value,
+  'search_body': text|length > 500 ? text|slice(0, 500) ~ '...' : text
+  }
+%}

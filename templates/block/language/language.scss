@@ -1,0 +1,132 @@
+@use '../../_sass/init' as *;
+
+/* Language Switcher */
+.language-switcher-language-url {
+  position: relative;
+  display: none;
+
+  @include media(site) {
+    display: block;
+
+    .rtl & {
+      .dropdown-menu--wrapper {
+        right: inherit;
+        left: 0;
+      }
+    }
+  }
+
+  // @media (hover: hover) {
+  // .dropdown-menu--wrapper.open,
+  &:hover .dropdown-menu--wrapper {
+    position: absolute;
+    top: 100%;
+    left: $spacing-3;
+    display: block;
+
+    @include media(site) {
+      right: 0;
+      left: auto;
+      width: min-content;
+      padding-top: rem-calc(26px);
+    }
+
+    .rtl & {
+      right: $spacing-3;
+      left: 0;
+
+      @include media(site) {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    .dropdown-menu {
+      @include visually-hidden-off;
+      position: relative;
+      z-index: 1;
+      visibility: visible;
+      display: block;
+      width: min-content;
+      height: auto;
+      border: 1px solid $earth-10;
+      border-radius: $border-radius;
+      overflow: initial;
+      opacity: 1;
+      clip: auto;
+    }
+  }
+
+  .active-language {
+    @include ts-mini;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    line-height: $spacing-3;
+    text-transform: uppercase;
+    color: $earth-90;
+
+    &::before {
+      order: 2;
+      width: rem-calc(8px);
+      margin-left: $spacing-1;
+
+      .rtl & {
+        margin-right: $spacing-1;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .dropdown-menu--wrapper {
+    display: none;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: auto;
+    min-width: auto;
+
+    &::before {
+      right: $spacing-2;
+      left: auto;
+    }
+
+    .rtl & {
+      right: auto;
+      left: 0;
+
+      &::before {
+        right: auto;
+        left: $spacing-2;
+      }
+    }
+  }
+
+  .mobile-menu-open & {
+    display: block;
+    margin-top: $spacing-1;
+    padding: rem-calc(11px) $spacing-3;
+
+    .active-language::before {
+      margin-left: $spacing-1;
+    }
+
+    .dropdown-menu {
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  .rtl.mobile-menu-open & {
+    .active-language::before {
+      margin-right: $spacing-1;
+      margin-left: 0;
+    }
+  }
+}

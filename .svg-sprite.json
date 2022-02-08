@@ -1,0 +1,30 @@
+{
+  "dest": "dist/icons",
+  "shape": {
+    "dimension": {
+      "maxWidth": 20,
+      "maxHeight": 20
+    },
+    "spacing": {
+      "padding": 0
+    }
+  },
+  "mode": {
+    "view": {
+      "dest": "",
+      "layout": "diagonal",
+      "prefix": "%s",
+      "sprite": "icons.svg",
+      "render": {
+        "css": {
+          "template": "icons/_sprite.css.tmpl",
+          "dest": "icons_classes.css"
+        },
+        "scss": {
+          "template": "icons/_sprite.scss.tmpl",
+          "dest": "icons.scss"
+        }
+      }
+    }
+  }
+}

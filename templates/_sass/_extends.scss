@@ -1,0 +1,10 @@
+@use 'sass:math';
+@use 'variables' as v;
+@use 'variables-colors' as c;
+
+/* SASS extends */
+%link-hover {
+  text-decoration: none;
+  color: c.$link-hover-color;
+  transition: color math.div(v.$transition-time, 2);
+}

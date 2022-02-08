@@ -1,0 +1,74 @@
+{
+  "name": "ffw_theme",
+  "version": "2.0.0",
+  "scripts": {
+    "lint:js:components": "eslint components --ext .js,.es6 --fix --no-error-on-unmatched-pattern",
+    "lint:js:theme": "eslint templates --ext .js,.es6 --fix --no-error-on-unmatched-pattern",
+    "lint:js": "npm run lint:js:theme && npm run lint:js:components",
+    "lint:scss:components": "stylelint 'components/**/*.scss' --custom-syntax postcss-scss --fix --cache --cache-location '/tmp/stylelintcache/'",
+    "lint:scss:theme": "stylelint 'templates/**/*.scss' --custom-syntax postcss-scss --fix --cache --cache-location '/tmp/stylelintcache/'",
+    "lint:scss": "npm run lint:scss:theme && npm run lint:scss:components",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "build:styleguide:css": "npm run build:css && rm -f styleguide/styles/theme.css && cat templates/*/*.css components/*/*.css > dist/styleguide/theme.css",
+    "build:styleguide": "kss --config .kss.json && npm run build:styleguide:css",
+    "build:sprite": "svg-sprite --config .svg-sprite.json icons/*.svg",
+    "build:js:components": "npm run lint:js:components && babel components/ --out-dir dist/components/ --verbose",
+    "build:js:theme": "npm run lint:js:theme && babel templates/ --out-dir dist/theme/ --verbose",
+    "build:js": "npm run build:js:components && npm run build:js:theme",
+    "build:js:dev": "npm run lint:js && babel templates/ --out-dir dist/theme/ --source-maps true --verbose && babel components/ --out-dir dist/components/ --source-maps true --verbose",
+    "vendorprefixes": "postcss 'dist/**/*.css' -r --map --verbose --use autoprefixer",
+    "build:css:components": "npm run lint:scss:components && sass 'components':'dist/components/' --style=compressed --no-source-map",
+    "build:css:theme": "npm run lint:scss:theme && sass 'templates/':'dist/theme/' --style=compressed --no-source-map",
+    "build:css": "npm run build:sprite && npm run build:css:components && npm run build:css:theme && npm run vendorprefixes",
+    "build:css:dev": "npm run lint:scss && sass 'templates/':'dist/theme/' && sass 'components/':'dist/components/' && npm run vendorprefixes",
+    "build": "npm run build:css && npm run build:js",
+    "watch:js:components": "npm run lint:js:components && babel --watch components/ --out-dir dist/components/ --source-maps true --verbose",
+    "watch:js:theme": "npm run lint:js:theme && babel templates/ --out-dir dist/theme/ --source-maps true --watch --verbose",
+    "watch:js": "npm run watch:js:components & npm run watch:js:theme",
+    "watch:scss:components": "npm run lint:scss:components && sass --watch 'components/':'dist/components/' --update",
+    "watch:scss:theme": "npm run lint:scss:theme && sass --watch 'templates/':'dist/theme/' --update",
+    "watch:scss": "npm run watch:scss:components & npm run watch:scss:theme",
+    "watch": "npm run watch:js & npm run watch:scss",
+    "clean:components": "rm -rf dist/components/*",
+    "clean:theme": "rm -rf dist/theme/*",
+    "clean": "rm -rf dist/*",
+    "compress": "imagemin --plugin.pngquant.quality={0.1,0.2} foo.png > foo-optimized.png"
+  },
+  "browserslist": [
+    "> .5% and last 2 versions",
+    "not dead"
+  ],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "imagemin": {
+    "plugins": {
+      "mozjpeg": {},
+      "pnquant": {
+        "quality": [
+          0.6,
+          0.8
+        ]
+      }
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.2",
+    "core-js": "^3.21.0",
+    "eslint": "^8.8.0",
+    "normalize.css": "^8.0.1",
+    "postcss": "^8.4.6",
+    "postcss-cli": "^9.1.0",
+    "postcss-scss": "^4.0.3",
+    "sass": "^1.49.7",
+    "stylelint": "^14.3.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.1.0",
+    "svg-sprite": "^1.5.3"
+  }
+}

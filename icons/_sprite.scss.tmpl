@@ -1,0 +1,24 @@
+$icons_path: '../../../dist/icons/' !default;
+
+@mixin _icon {
+  content: '';
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+{{#shapes}}{{#selector.shape}}%icon-icon--{{expression}}{{^last}},
+{{/last}}{{/selector.shape}} {
+  {{^hasCommon}}{{^hasMixin}}@include _icon;
+  background-image: url("#{$icons_path}{{{sprite}}}#{{#selector.shape}}{{expression}}{{/selector.shape}}");{{/hasMixin}}{{/hasCommon}}
+}
+
+{{#selector.shape}}%icon-bg--{{expression}}{{^last}},
+{{/last}}{{/selector.shape}} {
+  {{^hasCommon}}{{^hasMixin}}background-image: url("#{$icons_path}{{{sprite}}}#{{#selector.shape}}{{expression}}{{/selector.shape}}");
+  background-repeat: no-repeat;{{/hasMixin}}{{/hasCommon}}
+}
+
+{{/shapes}}
+

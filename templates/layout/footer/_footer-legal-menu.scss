@@ -1,0 +1,30 @@
+.menu--legal {
+  text-align: center;
+
+  @include media(tablet) {
+    text-align: left;
+  }
+
+  .rtl & {
+    @include media(tablet) {
+      text-align: right;
+    }
+  }
+
+  .menu-item {
+    margin: 0 $spacing-1; // Argentina
+
+    .rtl & {
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-left: $spacing-3;
+      }
+    }
+
+    a {
+      @include ts-mini;
+      color: $white;
+      opacity: .7;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@use '../../_sass/init' as *;
+
+/* Admin tabs and some buttons */
+#block-tabs {
+  position: fixed;
+  top: 44%;
+  right: $spacing-1;
+  z-index: 1000;
+  max-height: 100vh;
+  overflow-y: auto;
+  transform: translateY(-50%);
+
+  .rtl & {
+    right: auto;
+    left: $spacing-1;
+  }
+}
+
+.tabs {
+  // @include container;
+  .local-tasks--toggle {
+    @extend %button-blue;
+    margin: 0 0 $gutter;
+  }
+
+  &.visible {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 0 $gutter;
+      list-style: none;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    a {
+      @extend %button;
+      display: block;
+    }
+  }
+}

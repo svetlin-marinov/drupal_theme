@@ -1,0 +1,7 @@
+@use '../../_sass/init' as *;
+
+.node--type-page {
+  .field--name-paragraphs .paragraph:nth-child(even) {
+    background-color: $earth-10;
+  }
+}

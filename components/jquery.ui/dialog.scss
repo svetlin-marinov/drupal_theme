@@ -1,0 +1,255 @@
+/*!
+ * jQuery UI Dialog 1.12.1
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/dialog/#theming
+ */
+@use '../../templates/_sass/init' as *;
+@use '../../dist/icons/icons.scss' with (
+  $icons_path: '../../../dist/icons/'
+);
+
+.ui-dialog {
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  max-width: 95% !important;
+  border: 0;
+  border-radius: $border-radius;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+
+  @include media(tablet) {
+    max-width: rem-calc(728px);
+  }
+
+  @include media(desktop) {
+    max-width: rem-calc(640px);
+  }
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  position: relative;
+  padding: $spacing-3 $spacing-3 $spacing-2;
+  border: 0;
+  text-align: center;
+  background: transparent;
+}
+
+.ui-dialog .ui-dialog-title {
+  @include ts-block--title;
+  display: block;
+  margin-top: $spacing-5;
+  margin-bottom: $spacing-3;
+  text-align: center;
+  color: $ocean;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  position: absolute;
+  top: $spacing-3;
+  left: $spacing-3;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent !important;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border: 0;
+    background: transparent;
+  }
+
+  [dir='rtl'] & {
+    right: $spacing-3;
+    left: auto;
+  }
+
+  .ui-button-icon.ui-icon.ui-icon-closethick {
+    @extend %icon-icon--close--grey-text;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+
+    [dir='rtl'] & {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+.ui-dialog .ui-dialog-content {
+  position: relative;
+  padding: 0 $spacing-3 $spacing-8;
+  overflow: auto;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+  position: absolute;
+  bottom: rem-calc(60px);
+  left: 50%;
+  z-index: 999;
+  padding: 0 $container-margin-mobile;
+  border: 0;
+  transform: translateX(-50%);
+
+  .ui-dialog-buttonset {
+    float: right;
+
+    [dir='rtl'] & {
+      float: left;
+    }
+  }
+
+  button {
+    min-width: rem-calc(240px);
+    margin: 0;
+    cursor: pointer;
+  }
+}
+
+.ui-dialog .ui-resizable-n {
+  top: 0;
+  height: 2px;
+}
+
+.ui-dialog .ui-resizable-e {
+  right: 0;
+  width: 2px;
+}
+
+.ui-dialog .ui-resizable-s {
+  bottom: 0;
+  height: 2px;
+}
+
+.ui-dialog .ui-resizable-w {
+  left: 0;
+  width: 2px;
+}
+
+.ui-dialog .ui-resizable-se,
+.ui-dialog .ui-resizable-sw,
+.ui-dialog .ui-resizable-ne,
+.ui-dialog .ui-resizable-nw {
+  width: 7px;
+  height: 7px;
+}
+
+.ui-dialog .ui-resizable-se {
+  right: 0;
+  bottom: 0;
+
+  [dir='rtl'] & {
+    right: auto;
+    left: 0;
+  }
+}
+
+.ui-dialog .ui-resizable-sw {
+  bottom: 0;
+  left: 0;
+
+  [dir='rtl'] & {
+    right: 0;
+    left: auto;
+  }
+}
+
+.ui-dialog .ui-resizable-ne {
+  top: 0;
+  right: 0;
+
+  [dir='rtl'] & {
+    right: auto;
+    left: 0;
+  }
+}
+
+.ui-dialog .ui-resizable-nw {
+  top: 0;
+  left: 0;
+
+  [dir='rtl'] & {
+    right: 0;
+    left: auto;
+  }
+}
+
+.ui-draggable .ui-dialog-titlebar {
+  cursor: move;
+}
+
+.ui-widget.ui-widget-content {
+  border: 0;
+}
+
+/* Newsletter Webform Confirmation Modal: https://app.zeplin.io/project/60080f4557055c9d4fe2c913/screen/609175c05ea6bd35f2d70282 */
+.webform-confirmation-modal {
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  min-height: rem-calc(350px);
+  margin: 0 auto;
+  border: 0;
+  border-radius: $border-radius;
+  transform: translate(-50%, -50%);
+
+  @include media(tablet) {
+    max-width: rem-calc(540px);
+  }
+
+  @include media(desktop) {
+    max-width: rem-calc(610px);
+    min-height: rem-calc(476px);
+  }
+
+  .ui-widget-content {
+    background-color: transparent;
+  }
+
+  .ui-dialog-titlebar {
+    border: 0;
+  }
+
+  .ui-dialog-title {
+    display: none;
+  }
+
+  &--content {
+    margin: auto 0;
+    background: transparent;
+
+    &-inner.icon-icon--email--grey-text {
+      text-align: center;
+
+      &::before { // envelope icon
+        width: rem-calc(54px);
+        height: rem-calc(38px);
+      }
+
+      h4 {
+        @include ts-section-title;
+        margin-bottom: $spacing-3;
+        color: $grey-text;
+      }
+
+      p {
+        @include ts-content;
+        @include flex-col($mobile: 4, $tablet: 8, $desktop: 9);
+        margin: 0 auto;
+        color: $grey-text;
+      }
+    }
+  }
+}

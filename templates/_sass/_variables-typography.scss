@@ -1,0 +1,136 @@
+/**
+ * Fonts
+ */
+@use 'util/_unit.scss' as u;
+@use 'mixins-media' as m;
+@use 'variables-colors' as c;
+
+// Font sizes
+$font-size-base: u.$global-font-size;
+$font-size-tiny: u.rem-calc(12px); // 12px
+$font-size-mini: u.rem-calc(13px); // 14px
+$font-size-small: u.rem-calc(14px); // 14px
+$font-size-normal: 1rem; // 16px
+
+// Font weight
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Text style catalog
+@mixin ts-hero--title {
+  font-size: u.rem-calc(36px);
+  line-height: u.unitless-calc(43px, 36px);
+
+  @include m.media(desktop) {
+    font-weight: $font-weight-bold;
+    font-size: u.rem-calc(41px);
+    line-height: u.unitless-calc(46px, 41px);
+  }
+}
+
+@mixin ts-block--title {
+  font-weight: $font-weight-bold;
+  font-size: u.rem-calc(28px);
+  line-height: u.unitless-calc(36px, 28px);
+
+  @include m.media(desktop) {
+    font-size: u.rem-calc(36px);
+    line-height: u.unitless-calc(48px, 36px);
+  }
+}
+
+@mixin ts-newsletter-block--title {
+  font-weight: $font-weight-bold;
+  font-size: u.rem-calc(32px);
+  line-height: u.unitless-calc(34px, 32px);
+}
+
+@mixin ts-section-title {
+  font-weight: $font-weight-bold;
+  font-size: u.rem-calc(28px);
+  line-height: u.unitless-calc(34px, 28px);
+}
+
+@mixin ts-content--title {
+  font-weight: $font-weight-bold;
+  font-size: u.rem-calc(24px);
+  line-height: u.unitless-calc(30px, 24px);
+}
+
+@mixin ts-tabs {
+  font-size: u.rem-calc(24px);
+}
+
+@mixin ts-contact-person {
+  font-weight: $font-weight-bold;
+  font-size: u.rem-calc(20px);
+  line-height: u.unitless-calc(24px, 20px);
+}
+
+@mixin ts-sidebar-block--title {
+  @include ts-sidebar-block--content;
+  font-weight: $font-weight-bold;
+}
+
+@mixin ts-sidebar-block--content {
+  font-size: u.rem-calc(18px);
+  line-height: u.unitless-calc(22px, 18px);
+}
+
+@mixin ts-article--content {
+  font-size: u.rem-calc(18px);
+  line-height: u.unitless-calc(24px, 18px);
+}
+
+@mixin ts-tag-small {
+  font-size: u.rem-calc(11px);
+  line-height: u.unitless-calc(23px, 11px);
+  text-transform: uppercase;
+  color: c.$white;
+}
+
+@mixin ts-tag {
+  font-size: u.rem-calc(16px);
+  line-height: 2;
+  text-transform: uppercase;
+  color: c.$white;
+}
+
+@mixin ts-content {
+  font-size: u.rem-calc(16px);
+  line-height: 1.5;
+}
+
+@mixin ts-main-menu {
+  font-size: u.rem-calc(15px);
+  line-height: u.unitless-calc(18px, 15px);
+}
+
+@mixin ts-footer-block--title {
+  font-weight: $font-weight-regular;
+  font-size: $font-size-small;
+  line-height: u.unitless-calc(17px, 14px);
+  text-transform: uppercase;
+  color: c.$earth;
+}
+
+@mixin ts-teaser--content {
+  font-size: $font-size-small; // 14px
+  line-height: u.unitless-calc(17px, 14px);
+}
+
+@mixin ts-mini {
+  font-size: $font-size-mini; // 13px
+  line-height: u.unitless-calc(16px, 13px);
+}
+
+@mixin ts-tiny {
+  font-size: $font-size-tiny; // 12px
+  line-height: u.unitless-calc(17px, 12px);
+}
+
+@mixin text-center {
+  text-align: center;
+}

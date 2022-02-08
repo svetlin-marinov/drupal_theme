@@ -1,0 +1,81 @@
+@use '../../templates/_sass/init' as *;
+
+.cards-container {
+  &--outer {
+    padding-bottom: $spacing-11;
+    background-color: $ocean;
+  }
+
+  // &--inner {}
+
+  &--text {
+    @include container;
+    margin-bottom: $spacing-5;
+    text-align: left;
+
+    @include media(desktop) {
+      text-align: center;
+    }
+  }
+
+  &--title {
+    // @include flex-col($mobile: 4, $tablet: 7, $desktop: 12);
+    @include ts-block--title;
+    color: $white;
+
+    @include media-between('tablet', 'desktop') {
+      width: col-width('tablet', 7);
+    }
+  }
+
+  &--subtitle {
+    // @include flex-col($mobile: 4, $tablet: 7, $desktop: 12);
+    @include ts-content;
+    margin-bottom: $spacing-3;
+    color: $white;
+
+    @include media-between('tablet', 'desktop') {
+      width: col-width('tablet', 7);
+    }
+  }
+
+  &--content {
+    // @include flex-container;
+    @include scroll-container;
+  }
+
+  // Style for a card item within a card (scroll) container
+  .card {
+    @include scroll-container-item--large;
+
+    // &.paragraph--view-mode--three,
+    // &.node--view-mode-teaser-four {
+
+    // }
+
+    // &.paragraph--view-mode--three,
+    // &.node--view-mode-teaser-four {
+
+    // }
+  }
+}
+
+/* RTL layout */
+body.rtl {
+  .cards-container {
+    transform: scaleX(-1);
+
+    &--text,
+    &--outer {
+      transform: scaleX(-1);
+    }
+
+    &--text {
+      text-align: right;
+
+      @include media(desktop) {
+        text-align: center;
+      }
+    }
+  }
+}

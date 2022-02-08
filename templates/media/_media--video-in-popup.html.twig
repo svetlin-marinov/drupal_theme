@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Theme override to present a media item.
+ *
+ * @see template_preprocess_media()
+ * @see https://www.frescojs.com/documentation
+ */
+#}
+{{ attach_library('ffw_theme/fresco') }}
+{{ attach_library('ffw_theme/media--video-in-popup') }}
+
+<a href="{{ video_embed_url }}" class="fresco video-popup--link" data-fresco-options="youtube: { autoplay: 1 }">
+  {{ content|without('field_media_oembed_video') }}
+</a>

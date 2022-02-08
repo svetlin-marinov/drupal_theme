@@ -1,0 +1,54 @@
+@use '../../_sass/init' as *;
+
+.social-embed {
+  padding: $spacing-7 0 $spacing-5;
+  background-color: $earth-10;
+
+  @include media(desktop) {
+    padding: $spacing-9 0;
+  }
+
+  .field--name-title {
+    margin-bottom: $spacing-4;
+
+    @include media(desktop) {
+      margin-bottom: $spacing-6;
+    }
+  }
+
+  &__grid {
+    @include flex-container;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    @include media(tablet) {
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__item {
+    @include flex-col($mobile: 4, $tablet: 8, $desktop: 6);
+    height: rem-calc(397px);
+    margin-bottom: $spacing-2;
+    border-radius: $border-radius;
+    overflow-y: auto;
+
+    @include media(tablet) {
+      height: rem-calc(356px);
+      margin-bottom: 0;
+    }
+
+    @include media(desktop) {
+      height: rem-calc(432px);
+    }
+
+    iframe {
+      width: 100%;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

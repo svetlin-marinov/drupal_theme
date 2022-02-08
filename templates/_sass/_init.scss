@@ -1,0 +1,39 @@
+/**
+ * Import Sass variables, mixins, functions, etc.
+ * There should be no CSS classes inside these files,
+ * otherwise they will be included in every CSS file where this file is @used.
+ *
+ * "When a file with @use rules is imported, all the CSS transitively loaded by
+ * those is included in the resulting stylesheet, even if it’s already been
+ * included by another import. If you’re not careful, this can result in
+ * bloated CSS output!"
+ * https://sass-lang.com/documentation/at-rules/import
+ */
+
+// Import variables
+@forward 'variables';
+@forward 'variables-colors';
+@forward 'variables-typography';
+
+// Import utility
+@forward 'util/_unit';
+
+// Import extends
+@forward 'extends';
+@forward 'extends-buttons';
+
+// Import functions
+// @forward 'functions';
+
+// Import media mixins
+@forward 'mixins-media';
+
+// Import mixins
+@forward 'mixins';
+
+// Import grid
+@forward 'grid';
+
+// Icon extends
+// @forward '../../dist/icons/icons.scss';
+// @import '../global/icons';

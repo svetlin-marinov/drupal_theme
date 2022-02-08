@@ -1,0 +1,84 @@
+// =======================================================
+// SASS Variables
+// =======================================================
+@use 'util/unit' as u;
+
+/* Breakpoints */
+$breakpoints: (
+  'mobile-narrow': 321px,
+  'mobile': 414px,
+  'tablet': 768px,
+  'desktop': 1025px,
+  'site': 1280px,
+  'large': 1440px,
+  'xxl': 1920px
+);
+
+// Spacing
+$base-size: u.rem-calc(8px);
+
+$spacing-1: $base-size;
+$spacing-1-5: $base-size * 1.5;
+$spacing-2: $base-size * 2; // 16px
+$spacing-3: $base-size * 3; // 24px
+$spacing-4: $base-size * 4; // 32px
+$spacing-5: $base-size * 5; // 40px
+$spacing-6: $base-size * 6; // 48px
+$spacing-7: $base-size * 7; // 56px
+$spacing-8: $base-size * 8; // 64px
+$spacing-9: $base-size * 9; // 72px
+$spacing-10: $base-size * 10; // 80px
+$spacing-11: $base-size * 11; // 88px
+$spacing-12: $base-size * 12; // 96px
+$spacing-13: $base-size * 13; // 104px
+$spacing-14: $base-size * 14; // 112px
+$spacing-15: $base-size * 15; // 120px
+$spacing-16: $base-size * 16; // 128px
+$spacing-17: $base-size * 17; // 136px
+$spacing-18: $base-size * 18; // 144px
+$spacing-19: $base-size * 19; // 152px
+$spacing-20: $base-size * 20; // 160px
+$spacing-21: $base-size * 21; // 168px
+$spacing-22: $base-size * 22; // 176px
+$spacing-23: $base-size * 23; // 184px
+$spacing-24: $base-size * 24; // 192px
+
+$form-space: $spacing-4;
+
+/* Inputs fields and buttons */
+$input-line-height: $spacing-3;
+$input-padding: $spacing-2;
+$input-height: $spacing-4;
+$search-input-height: u.rem-calc(42px);
+
+/* Sizes, grid */
+$max-width: 1280px;
+$gutter: $spacing-1; // 8px; 16px gap = $gutter * 2
+$gap: $gutter * 2;
+$column-width: min(8.3333%, 92px);
+
+// Make container margin available for other elements for alignment
+$container-margin-mobile: 20px;
+$container-margin-desktop: 60px;
+$container-margin-site: 80px;
+$container-margin-large: auto;
+
+$grid-columns: (
+  'mobile': 4,
+  'tablet': 8,
+  'desktop': 12
+);
+
+$box-padding: (
+  'mobile': $spacing-2,
+  'desktop': $spacing-3
+);
+
+$border-radius: 6px;
+
+/* Times */
+$transition-time: 400ms;
+$transition-time--fast: 200ms;
+
+/* More */
+$disabled-opacity: .6;

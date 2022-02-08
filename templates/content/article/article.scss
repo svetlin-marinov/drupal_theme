@@ -1,0 +1,57 @@
+@use '../../_sass/init' as *;
+
+.node-article--list-style {
+  &,
+  .articles-by-category--grid & {
+    .node--type-article,
+    .node--type-external-article {
+      @include node-article--list-style;
+
+      .article-block__image {
+        @include media(tablet) {
+          width: rem-calc(200px);
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.article--meta {
+  @include ts-mini;
+  margin-bottom: $spacing-1;
+  color: $earth;
+
+  .meta-date,
+  .field--name-time-to-read {
+    display: inline-block;
+    padding-left: rem-calc(6px);
+
+    &::before {
+      display: inline-block;
+      margin-right: rem-calc(6px);
+      content: '\00B7';
+      font-size: 1rem;
+      line-height: .8;
+    }
+
+    .rtl & {
+      padding-right: rem-calc(6px);
+      padding-left: 0;
+
+      &::before {
+        margin-right: 0;
+        margin-left: rem-calc(6px);
+      }
+    }
+  }
+
+  .field--name-article-category {
+    display: inline-block;
+    text-transform: uppercase;
+    color: $ocean;
+  }
+}

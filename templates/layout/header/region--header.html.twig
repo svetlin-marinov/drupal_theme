@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{%  extends "@ffw_theme/layout/region.html.twig"  %}
+
+{% block content %}
+{{ attach_library('ffw_theme/header') }}
+{{ attach_library('ffw_theme/dropdown-menu') }}
+{{ attach_library('ffw_theme/language') }}
+
+  <header{{ attributes.addClass(classes).setAttribute('id', region_id) }}>
+    <div class="region-header__container">
+      {{ content }}
+      <span class="hamburger-menu icon-icon--hamburger-menu"></span>
+      <span class="menu-close-icon icon-icon--close--grey-text"></span>
+    </div>
+  </header>
+{% endblock %}

@@ -1,0 +1,91 @@
+@use '../../templates/_sass/init' as *;
+
+// About cards, Cards editorial, Service page teaser (three)
+.card {
+  // @include flex-col($mobile: 3, $tablet: 5, $desktop: 6);
+  @include box-shadow('large');
+  width: 100%;
+  min-width: rem-calc(278px);
+  border-radius: $spacing-2;
+  overflow: hidden;
+  background-color: $white;
+
+  &--link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &--image {
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &--title {
+    @include ts-section-title;
+    @include ml-ellipsis(2);
+    height: rem-calc(94px);
+    margin-bottom: $spacing-1;
+    padding: $spacing-3 $spacing-3 0 $spacing-3;
+    overflow-wrap: break-word;
+    color: $ocean;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &--text {
+    @include ts-content;
+    @include ml-ellipsis(4);
+    margin-bottom: $spacing-7;
+    padding: $spacing-2 $spacing-3 0;
+    color: $grey-text;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &--button {
+    @extend %button !optional;
+    @extend %button--large !optional;
+    width: max-content;
+    max-width: 100%;
+    margin-top: auto;
+    border-radius: 0 $spacing-3 0 0;
+    cursor: pointer;
+    transform: skewX(17grad);
+    transform-origin: 0 100%;
+
+    span {
+      @include ts-article--content;
+      display: flex;
+      align-items: center;
+      transform: skewX(-17grad);
+
+      &::before {
+        order: 2;
+        margin-left: rem-calc(13px);
+      }
+    }
+
+    .rtl & {
+      border-radius: $spacing-3 0 0 0;
+      transform: skewX(-17grad);
+
+      span {
+        transform: skewX(17grad);
+
+        &::before {
+          order: 1;
+          margin-right: rem-calc(13px);
+          margin-left: 0;
+          transform: scaleX(-1);
+        }
+      }
+    }
+  }
+}

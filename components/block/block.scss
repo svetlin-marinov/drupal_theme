@@ -1,0 +1,28 @@
+@use '../../templates/_sass/init' as *;
+
+.component-block {
+  margin-bottom: $spacing-2;
+
+  &.with-background {
+    @include box-padding;
+    border-radius: $border-radius;
+    background-color: $earth-10;
+  }
+
+  &.with-icon {
+    background-repeat: no-repeat;
+  }
+
+  &--title {
+    @include ts-sidebar-block--title;
+    margin-bottom: $spacing-2;
+  }
+
+  &--content {
+    @include ts-sidebar-block--content;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

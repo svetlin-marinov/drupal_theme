@@ -1,0 +1,108 @@
+@use '../_sass/init' as *;
+
+.container {
+  @include container;
+}
+
+.flex-container {
+  @include flex-container;
+}
+
+.scroll-container {
+  @include scroll-container;
+}
+
+.scroll-container-item {
+  @include scroll-container-item;
+}
+
+.scroll-container-item--large {
+  @include scroll-container-item--large;
+}
+
+.dialog-off-canvas-main-canvas {
+  height: 100%;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.region-header {
+  background-color: $white;
+
+  &-container {
+    @include container;
+    display: flex;
+    align-items: center;
+    padding: 7px 0;
+  }
+}
+
+.menu--main {
+  margin-right: auto;
+
+  .rtl & {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+// @todo: (re)move menu account style
+.menu--account ul {
+  display: flex;
+  padding: 0;
+  list-style: none;
+}
+
+// Layout for one sidebar right in main content.
+.layout-sidebar--right {
+  @include flex-container;
+
+  @include media(desktop) {
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &--content {
+    @include flex-col($mobile: 4, $tablet: 8, $desktop: 8);
+  }
+
+  &--sidebar {
+    @include flex-col($mobile: 4, $tablet: 8, $desktop: 3);
+  }
+}
+
+// Layout for one sidebar left in main content.
+.layout-sidebar--left {
+  @include flex-container;
+
+  @include media(desktop) {
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &--content {
+    @include flex-col($mobile: 4, $tablet: 8, $desktop: 9);
+
+    @include media(desktop) {
+      padding-left: $spacing-7;
+    }
+  }
+
+  &--sidebar {
+    @include flex-col($mobile: 4, $tablet: 8, $desktop: 3);
+  }
+}

@@ -1,0 +1,77 @@
+@use '../../_sass/init' as *;
+@use '../../../dist/icons/icons.scss' with (
+  $icons_path: '../../../../dist/icons/'
+);
+
+.paragraph--type--feature-video-slider {
+  padding-top: $spacing-8;
+  padding-bottom: $spacing-9;
+
+  // Paragraph title
+  .field--name-title {
+    @include container;
+    @include ts-block--title;
+    margin-bottom: $spacing-3;
+    color: $grey-text;
+
+    @include media(tablet) {
+      margin-bottom: $spacing-5;
+    }
+
+    @include media(desktop) {
+      margin-bottom: $spacing-2;
+    }
+  }
+
+  .feature-video-slider-items {
+    @include media(desktop) {
+      @include container;
+    }
+  }
+
+  .splide__track {
+    @include media-max(desktop) {
+      overflow: visible;
+    }
+  }
+
+  .splide__list {
+    @include scroll-container;
+  }
+
+  .splide__slide {
+    @include scroll-container-item;
+    @include scroll-container-item--splide;
+  }
+
+  // Slider Item
+  /* Video cover image */
+  .fresco {
+    display: block;
+    border-radius: $border-radius;
+    overflow: hidden;
+  }
+
+  // Farmer name
+  .field--name-fvs-item-name {
+    margin-top: $spacing-1;
+    font-weight: $font-weight-bold;
+    font-size: rem-calc(20px);
+    color: $grey-text;
+
+    @include media(desktop) {
+      font-size: rem-calc(24px);
+    }
+  }
+
+  /* Farmer Location */
+  .field--name-fvs-description {
+    @include ts-content;
+    color: $grey-text;
+  }
+
+  /* Arrows */
+  .splide__arrows {
+    top: rem-calc(-55px);
+  }
+}

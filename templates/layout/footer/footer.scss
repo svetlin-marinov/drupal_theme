@@ -1,0 +1,9 @@
+@use '../../_sass/init' as *;
+@use '../../../dist/icons/icons.scss' with (
+  $icons_path: '../../../../dist/icons/'
+);
+
+@import 'footer-layout.scss';
+@import 'footer-newsletter.scss';
+@import 'footer-legal-menu.scss';
+@import 'footer-menu.scss';

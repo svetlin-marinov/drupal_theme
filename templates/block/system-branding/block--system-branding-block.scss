@@ -1,0 +1,35 @@
+@use '../../_sass/init' as *;
+
+.block-system-branding-block {
+  flex-shrink: 0;
+  margin-right: $spacing-4;
+
+  .rtl & {
+    margin-right: 0;
+    margin-left: $spacing-4;
+  }
+
+  .mobile-menu-open & {
+    padding: $spacing-1 $container-margin-mobile $spacing-3;
+  }
+
+  .path-user & {
+    margin-right: auto;
+  }
+
+  .path-user.rtl & {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+.site-logo {
+  img {
+    display: block;
+    height: 31px;
+
+    @include media(desktop) {
+      height: 42px;
+    }
+  }
+}

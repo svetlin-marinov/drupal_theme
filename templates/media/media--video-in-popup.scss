@@ -1,0 +1,11 @@
+@use '../_sass/init' as *;
+
+.video-popup--link .field--name-thumbnail,
+.video-popup--link .field--name-video-thumbnail {
+  @include video-play-button;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}

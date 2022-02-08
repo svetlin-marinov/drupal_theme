@@ -1,0 +1,55 @@
+# Breakpoints are used for responsive image configuration within Drupal.
+# https://www.drupal.org/docs/theming-drupal/working-with-breakpoints-in-drupal
+
+ffw_theme.mobile:
+  label: Mobile
+  mediaQuery: 'all and (max-width: 767px)'
+  weight: 0
+  multipliers:
+    - 2x
+ffw_theme.tablet:
+  label: Tablet
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 0
+  multipliers:
+    - 2x
+ffw_theme.desktop:
+  label: Desktop
+  mediaQuery: 'all and (min-width: 1025px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+ffw_theme.large:
+  label: Large
+  mediaQuery: 'all and (min-width: 1440px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+
+# NOTE: While normally used for defining breakpoints for use with the <picture>
+# element, it's a better idea to use <img> with srcset and sizes instead.
+# - https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/
+# - https://cloudfour.com/thinks/responsive-images-101-part-5-sizes/
+
+# Below is an example of how to create srcset placeholders in Drupal.
+# The sizes attribute still needs to be configured manually within
+# `admin/config/media/responsive-image-style`.
+# More information: https://chromatichq.com/blog/responsive-images-drupal-8-using-srcset
+
+# ffw_theme.srcset.16_9:
+#   label: 16:9
+#   mediaQuery: ''
+#   weight: 0
+#   multipliers:
+#     - 1x
+#   group: ffw_theme.srcset
+
+# ffw_theme.srcset.2_1:
+#   label: 2:1
+#   mediaQuery: ''
+#   weight: 1
+#   multipliers:
+#     - 1x
+#   group: ffw_theme.srcset

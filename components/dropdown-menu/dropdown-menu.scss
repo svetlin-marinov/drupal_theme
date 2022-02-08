@@ -1,0 +1,154 @@
+@use '../../templates/_sass/init' as *;
+@use '../../dist/icons/icons.scss' with (
+  $icons_path: '../../../dist/icons/'
+);
+
+/* Dropdown Menu (Reusable component) */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-controls {
+  &.select-dropdown {
+    position: relative;
+    display: inline-block;
+    min-width: rem-calc(180px);
+    height: $spacing-6;
+    padding: 0 $spacing-4 0 $container-margin-mobile;
+    border: 1px solid $input-border;
+    border-radius: $spacing-1;
+    cursor: pointer;
+    font-weight: $font-weight-bold;
+    line-height: $spacing-6;
+    background-color: $white;
+
+    @include media(tablet) {
+      min-width: rem-calc(236px);
+    }
+
+    &::before {
+      @extend %icon-icon--arrow-down--list;
+      position: absolute;
+      right: $spacing-1-5;
+      width: $spacing-1-5;
+      height: $spacing-6;
+      transition: transform $transition-time;
+    }
+
+    .rtl & {
+      padding: 0 $container-margin-mobile 0 $spacing-4;
+
+      &::before {
+        right: auto;
+        left: $spacing-1-5;
+      }
+    }
+  }
+
+  &-open.select-dropdown::before {
+    transform: rotate(-180deg);
+  }
+}
+
+.dropdown-menu,
+.form-item-sort-by .form-select {
+  @include visually-hidden;
+  @include dropdown;
+  transition: opacity $transition-time--fast ease-in;
+
+  .rtl & {
+    right: 0;
+    left: auto;
+
+    &::before {
+      right: $spacing-3;
+      left: auto;
+    }
+  }
+
+  &.dropdown-menu-open {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 4;
+    width: min-content;
+    min-width: rem-calc(180px);
+    height: auto;
+    border: 1px solid $earth-10;
+    border-radius: $border-radius;
+    overflow: initial;
+    opacity: 1;
+    clip: auto;
+
+    @include media(tablet) {
+      min-width: rem-calc(236px);
+    }
+  }
+
+  &__list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-radius: $border-radius;
+    overflow: hidden;
+    list-style-type: none;
+
+    .rtl & {
+      padding: 0;
+    }
+  }
+
+  li {
+    @include ts-content;
+    position: relative;
+    width: 100%;
+    padding: 0 rem-calc(20px);
+    background-color: $white;
+    transition: background-color .2s ease;
+
+    &.active {
+      background-color: $earth-10;
+    }
+
+    &:hover {
+      background-color: $earth-10;
+    }
+
+    li {
+      padding-right: 0;
+    }
+
+    a {
+      @include ts-content;
+      display: block;
+      width: calc(100% + 40px);
+      margin: 0 rem-calc(-20px);
+      padding: $spacing-1-5 rem-calc(20px);
+      text-decoration: none;
+      color: $grey-text;
+    }
+
+    .ajax-progress {
+      position: absolute;
+      top: 50%;
+      right: rem-calc(20px);
+      transform: translateY(-50%);
+
+      .rtl & {
+        right: auto;
+        left: rem-calc(20px);
+      }
+    }
+  }
+
+  .region-header &::before { // speech bubble arrow shape
+    @extend %icon-icon--dropdown-menu--arrow;
+    position: absolute;
+    top: rem-calc(-6px);
+    left: $spacing-3;
+    display: block;
+    width: rem-calc(10px);
+    height: rem-calc(6px);
+    background-size: 100% auto;
+  }
+}

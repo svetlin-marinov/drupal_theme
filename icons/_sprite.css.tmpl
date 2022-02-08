@@ -1,0 +1,11 @@
+{{#shapes}}
+{{#selector.shape}}.icon-icon--{{expression}}::before,
+.icon-bg--{{expression}}{{^last}},{{/last}}{{/selector.shape}} {
+  {{^hasCommon}}background-image: url("{{{sprite}}}#{{#selector.shape}}{{expression}}{{/selector.shape}}");{{/hasCommon}}
+  {{#dimensions.inline}}
+  width: {{width.outer}}px;
+  height: {{height.outer}}px;
+  {{/dimensions.inline}}
+}
+
+{{/shapes}}

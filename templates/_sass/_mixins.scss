@@ -1,0 +1,370 @@
+@use 'util/unit' as u;
+@use 'mixins-media' as m;
+@use 'variables' as v;
+@use 'variables-colors' as c;
+@use 'variables-typography' as t;
+@use 'grid' as g;
+@use 'sass:color';
+@use 'sass:string';
+
+// =======================================================
+// Mixins
+// =======================================================
+
+// Add box-shadow to element with option for size
+// Use 'small' variant by default
+@mixin box-shadow($size: 'small') {
+  $-box-shadow: 0 8px 12px -8px rgba(0, 0, 0, .05) !default;
+
+  @if $size == 'medium' {
+    $-box-shadow: 0 14px 14px -10px rgba(0, 0, 0, .15);
+  }
+  @else if $size == 'large' {
+    $-box-shadow: 0 28px 38px -30px rgba(0, 0, 0, .15);
+  }
+  box-shadow: $-box-shadow;
+}
+
+@mixin box-padding() {
+  padding: map-get(v.$box-padding, 'mobile');
+
+  @include m.media(desktop) {
+    padding: map-get(v.$box-padding, 'desktop');
+  }
+}
+
+/* Dropdown Menus, form custom dropdown */
+@mixin dropdown($shadow: 'large') {
+  @include box-shadow(#{$shadow});
+  padding: 0;
+  border-radius: v.$border-radius;
+  background: c.$white;
+}
+
+// Clearfix
+@mixin clearfix {
+  &::after {
+    clear: both;
+    display: table;
+    content: '';
+  }
+}
+
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  opacity: 0;
+}
+
+// Turns off the element-invisible effect.
+@mixin visually-hidden-off {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: initial;
+  clip: auto;
+  opacity: 1;
+}
+
+// Makes an element visually hidden by default, but visible when focused.
+@mixin element-focusable {
+  @include visually-hidden;
+
+  &:active,
+  &:focus {
+    @include visually-hidden-off;
+  }
+}
+
+// Change (background) color based on product category color
+// Usage: @include product-colors('background-color', 'colorSecondary');
+@mixin product-colors($property: 'background-color', $color: 'colorPrimary') {
+  @each $product-color in c.$product-colors {
+    .product-category-#{$product-color} & {
+      #{$property}: map-get(c.$category-colors, $product-color, #{$color});
+    }
+  }
+}
+
+// Change button background based on product category color
+// Optional icon
+//
+// @include button('ICON NAME', ICON BEFORE TEXT?);
+// 'ICON NAME' is a SVG file in icons folder
+//
+// Usage: @include button($icon: false);
+// Usage: @include button($icon: 'arrow-right--white', false);
+@mixin button-template($icon: false, $icon-before: false) {
+  @extend %button;
+  @extend %button-ocean;
+
+  @if($icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      @extend %icon-icon--#{$icon};
+      width: u.rem-calc(17px);
+      height: u.rem-calc(17px);
+
+      @if($icon-before) {
+        order: -1;
+        margin-right: v.$spacing-1;
+      }
+      @else {
+        order: 2;
+        margin-left: v.$spacing-1;
+      }
+    }
+  }
+}
+
+@mixin button($icon: false, $icon-before: false) {
+  @include button-template($icon, $icon-before);
+
+  @each $product-color in c.$product-colors {
+    .product-category-#{$product-color} & {
+      @extend %button-#{$product-color};
+
+      @if($icon) {
+        display: inline-flex;
+      }
+    }
+  }
+}
+
+/* Single line text truncate */
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Multiline text truncate
+ * https://css-tricks.com/almanac/properties/l/line-clamp/
+ *
+ */
+@mixin ml-ellipsis($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  padding-bottom: 1px; // AGR-759 - text cut in Chrome/Edge
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: $lines '...';
+}
+
+@mixin video-play-button {
+  position: relative; // Needed for video in hero, testimonials
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: u.rem-calc(57px);
+    height: u.rem-calc(57px);
+    content: '';
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='65' height='65' viewBox='0 0 65 65' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32.5.5C14.855.5.5 14.854.5 32.5s14.355 32 32 32 32-14.354 32-32-14.355-32-32-32zm11.543 33.76l-17.966 8.983a1.85 1.85 0 01-.89.228c-.344 0-.71-.091-1.03-.297a1.873 1.902 0 01-.937-1.669V23.517c0-.663.343-1.303.937-1.669a2.068 2.1 0 011.92-.091l17.966 8.982A1.926 1.956 0 0145.14 32.5c0 .755-.412 1.44-1.097 1.76z' fill='%23fff' stroke='%23000' stroke-opacity='.1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translate(-50%, -50%);
+
+    @include m.media(tablet) {
+      width: u.rem-calc(72px);
+      height: u.rem-calc(72px);
+    }
+
+    @include m.media(desktop) {
+      width: u.rem-calc(65px);
+      height: u.rem-calc(65px);
+    }
+  }
+}
+
+@mixin border-dotted($position: 'top') {
+  border-#{$position}: 2px dotted c.$earth-30;
+}
+
+// List style article.
+@mixin node-article--list-style {
+  @include border-dotted('bottom');
+  margin-bottom: v.$spacing-3;
+  padding-bottom: v.$spacing-3;
+
+  @include m.media(tablet) {
+    margin-bottom: v.$spacing-4;
+  }
+
+  .article-block {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .article-block__image {
+    flex-shrink: 0;
+    width: u.rem-calc(125px);
+    margin-right: v.$spacing-2;
+    margin-bottom: 0;
+
+    .rtl & {
+      margin-right: 0;
+      margin-left: v.$spacing-2;
+    }
+
+    img {
+      border-radius: v.$border-radius;
+    }
+  }
+}
+
+// Styles for text in both field body and text paragraph on node content.
+@mixin text-content {
+  .paragraph--type--text,
+  .field--name-body {
+    padding-bottom: v.$spacing-6;
+
+    p {
+      margin-bottom: v.$spacing-2;
+      font-size: u.rem-calc(18px);
+      line-height: 1.33;
+    }
+  }
+}
+
+// Scroll container on mobile devices
+@mixin scroll-container {
+  @include g.flex-container;
+
+  // display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  max-width: none;
+
+  @include m.media-max(desktop) {
+    // @include g.flex-container;
+
+    // override splide-core.min.css margin and padding values
+    margin-right: -#{v.$container-margin-mobile};
+    margin-left: -#{v.$container-margin-mobile};
+    padding-right: calc(#{v.$container-margin-mobile} - #{v.$gutter}) !important;
+    padding-left: calc(#{v.$container-margin-mobile} - #{v.$gutter}) !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-padding: 0 v.$container-margin-mobile;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+// Slider item
+// Mobile - all paragraphs -  (small item - 1.5 items visible)
+// Tablet
+/* Homepage
+    - Featured Products (small item - 2.5 items visible, splide)
+    - Events, Services and programs, About (big item - 1.5 items visible)
+ * Contact
+    - side contacts (big item - 1.5 items visible)
+    - Our team  (small item - 2.5 items visible, splide)
+ * Product page
+    - Image gallery (small item - 2.5 items visible, splide)
+    - Where to buy contacts, Related products (small item - 2.5 items visible)
+ * Service page - Cards editorial (big item - 1.5 items visible)
+ * About main - About cards (big item - 1.5 items visible)
+ * Crop solution
+    - Products (small item - 2.5 items visible)
+    - Related events (big item - 1.5 items visible)
+ * Mini sites - Feature Video Slider (small item - 2.5 items visible, splide)
+ */
+// Small item - 2.5 items visible
+@mixin scroll-container-item {
+  @include g.flex-col($mobile: 3, $tablet: 3, $desktop: 3);
+  min-width: u.rem-calc(278px);
+  scroll-snap-align: start;
+
+  @include m.media-max(desktop) {
+    &:last-child {
+      scroll-snap-align: end;
+    }
+  }
+
+  @include m.media(tablet) {
+    min-width: u.rem-calc(263px);
+  }
+
+  @include m.media(desktop) {
+    // flex-shrink: 1;
+    // width: auto;
+    // width: u.rem-calc(308px);
+    min-width: auto;
+    cursor: default;
+    scroll-snap-align: initial;
+  }
+}
+
+// Big item - 1.5 items visible
+@mixin scroll-container-item--large {
+  @include g.flex-col($mobile: 3, $tablet: 5, $desktop: 6);
+  min-width: u.rem-calc(278px);
+  scroll-snap-align: start;
+
+  @include m.media-max(desktop) {
+    &:last-child {
+      scroll-snap-align: end;
+    }
+  }
+
+  @include m.media(tablet) {
+    min-width: u.rem-calc(449px);
+  }
+
+  @include m.media(desktop) {
+    // width: auto;
+    // min-width: rem-calc(632px);
+    min-width: auto;
+    cursor: default;
+    scroll-snap-align: initial;
+  }
+}
+
+@mixin scroll-container-item--splide {
+  @include m.media(desktop) {
+    width: auto;
+    min-width: auto;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+@mixin menu-active-marker($background: c.$white) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    right: -3px;
+    bottom: 0;
+    left: -3px;
+    display: block;
+    height: 3px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    content: '';
+    background-color: $background;
+
+    // opacity: 0;
+    transition: opacity v.$transition-time;
+  }
+}

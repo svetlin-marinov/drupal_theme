@@ -1,0 +1,121 @@
+@use '../../_sass/init' as *;
+
+.block-facet-sidebar {
+  &.accordion-item {
+    width: auto;
+    margin: 0;
+    border-bottom: 1px solid $earth-30;
+    border-radius: 0;
+    box-shadow: 0;
+  }
+
+  .accordion-item--title {
+    @include ts-content;
+    padding: rem-calc(18px) 0;
+  }
+}
+
+.block-facets-summary {
+  &--inner {
+    padding-bottom: $spacing-3;
+    border-bottom: 1px solid $earth-30;
+
+    @include media(desktop) {
+      position: relative;
+      padding-bottom: $spacing-7;
+    }
+  }
+
+  ul {
+    padding: 0 0 $spacing-2;
+    list-style: none;
+  }
+
+  &--title {
+    margin-bottom: $spacing-2;
+    font-weight: $font-weight-bold;
+    font-size: rem-calc(36px);
+    line-height: unitless-calc(44px, 36px);
+
+    @include media(desktop) {
+      @include ts-content;
+    }
+  }
+
+  .facet-summary-item--facet {
+    display: inline-block;
+    margin-right: rem-calc(5px);
+    margin-bottom: $spacing-1-5;
+
+    a {
+      display: block;
+      padding: rem-calc(5px) $spacing-1-5;
+      border-radius: $border-radius;
+      color: $white;
+      background-color: $earth-70;
+
+      &:hover {
+        background-color: $earth;
+      }
+    }
+
+    .facet-item__status {
+      margin-right: $spacing-1;
+
+      &::before {
+        width: rem-calc(10px);
+        height: rem-calc(10px);
+      }
+    }
+  }
+
+  .facet-summary-item--clear {
+    position: absolute;
+    bottom: $spacing-3;
+    left: 0;
+    display: inline-block;
+    font-weight: $font-weight-bold;
+
+    @include media-max(desktop) {
+      left: rem-calc(20px);
+      z-index: 3;
+    }
+
+    a {
+      text-decoration: underline;
+      color: $grey-text;
+
+      &:hover {
+        color: $ocean;
+      }
+    }
+  }
+
+  .facets-apply-button-wrapper {
+    position: absolute;
+    right: rem-calc(20px);
+    bottom: $spacing-2;
+    z-index: 3;
+    display: inline-block;
+
+    @include media(desktop) {
+      display: none;
+    }
+
+    .facets-apply-button {
+      min-width: rem-calc(150px);
+    }
+  }
+}
+
+.block-facet-blockcrops-list {
+  .facets-widget-checkbox {
+    @include media-max(desktop) {
+      ul {
+        max-height: 200px;
+        padding: 0;
+        overflow-x: hidden;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@use '../_sass/util/unit' as u;
+@use '../_sass/variables-colors' as c;
+@use '../_sass/variables-typography' as t;
+
+// Content
+//
+// Markup:
+// <p>Regular paragraph</p>
+// <p style="font-style: italic;">italic</p>
+// <p style="font-weight: 700;">bold</p>
+// <p style="font-style: italic; font-weight: 700;">bold italic</p>
+// <label>Label</label>
+//
+// Style guide: Typography.content
+
+html {
+  font-family: 'BrownLLWebPan', 'HelveticaNeue', 'Arial', sans-serif;
+}
+
+body {
+  @include t.ts-content;
+  color: c.$body-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+// Headers
+//
+// Markup:
+//   <h1>H1 title</h1>
+//   <h2>H2 title</h2>
+//   <h3>H3 title</h3>
+//   <h4>H4 title</h4>
+//   <h5>H5 title</h5>
+//   <h6>H6 title</h6>
+//
+// Style guide: Typography.headers
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 .5em;
+  font-weight: t.$font-weight-bold;
+}
+
+h1 {
+  @include t.ts-hero--title; // 41/44
+}
+
+h2 {
+  @include t.ts-block--title; // mobile: 28/34, desktop: 36/44
+}
+
+h3 {
+  @include t.ts-section-title; // 28/34
+}
+
+h4 {
+  @include t.ts-content--title; // 24/29
+}
+
+h5 {
+  @include t.ts-contact-person; // 20/24
+}
+
+h6 {
+  @include t.ts-sidebar-block--title; // 18/21
+}
+
+a {
+  text-decoration: none;
+}

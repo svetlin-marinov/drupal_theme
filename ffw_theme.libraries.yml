@@ -1,0 +1,678 @@
+# These lines define the ffw_theme/global library.
+global:
+  css:
+    # The SMACSS category, "base", is loaded before other categories. Drupal 8
+    # loads stylesheets based on the SMACSS ordering of:
+    # base, layout, component, state, theme
+    base:
+      fonts/fonts.css: {}
+      https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Sarabun:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap: { type: external }
+      dist/theme/global/global.css: {}
+      dist/icons/icons_classes.css: {}
+      dist/theme/forms/forms.css: {}
+      dist/theme/layout/layout.css: {}
+      dist/theme/layout/footer/footer.css: {}
+      dist/theme/layout/header/header.css: {}
+  js:
+    dist/theme/forms/forms.js: {}
+
+# Example external library.
+# webfonts:
+#   version: 1.x
+#   js:
+#     https://fast.fonts.net/example.js: { type: external, attributes: { async: true }}
+
+# Attach each library by using attach_library() within the components twig template.
+# More info: https://www.drupal.org/node/2456753
+
+# Example component library.
+# site-logo:
+#   css:
+#     component:
+#       templates/site-logo/site-logo.css: {}
+#   # If this library had JavaScript you could specify it like this:
+#   js:
+#     templates/site-logo/site-logo.js: {}
+#   # If this library had dependencies on other libraries, you could specify it like this:
+#   dependencies:
+#     - ffw_theme/clearfix
+#     - ffw_theme/visually-hidden
+
+# @todo: Update libraries CSS weight - base, layout (grid), component (components), state, theme (visual styles)
+# layout:
+#   css:
+#     layout:
+#       dist/theme/layout/layout.css: {}
+
+navigation:
+  css:
+    component:
+      dist/theme/navigation/navigation.css: {}
+
+main-navigation:
+  css:
+    component:
+      dist/theme/navigation/main-navigation/menu--main.css: {}
+
+page-navigation:
+  css:
+    component:
+      dist/theme/navigation/page-navigation/region--page-navigation.css: {}
+      dist/components/page-navigation/page-navigation.css: {}
+  js:
+    dist/components/page-navigation/jquery.nav.js: {}
+    dist/components/page-navigation/page-navigation.js: {}
+  dependencies:
+    - core/jquery
+    - core/once
+    - core/drupal.debounce
+
+header:
+  js:
+    dist/theme/layout/header/header.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.debounce
+
+pager:
+  css:
+    component:
+      dist/theme/navigation/pager/pager.css: {}
+
+page-400:
+  css:
+    component:
+      dist/theme/content/page/page-400/page-400.css: {}
+  js:
+     dist/theme/content/page/page-400/page-400.js: {}
+  dependencies:
+    - ffw_theme/search-bar
+
+search-page:
+  css:
+    component:
+      dist/theme/content/page/search-page/search-page.css: {}
+  js:
+    dist/theme/content/page/search-page/search-page.js: {}
+  dependencies:
+    - ffw_theme/search-bar
+
+# =======
+# Content
+# =======
+article:
+  css:
+    component:
+      dist/theme/content/article/article.css: {}
+
+node-article-full:
+  css:
+    component:
+      dist/theme/content/article/node-article-full/node-article-full.css: {}
+
+node-article-teaser-list:
+  css:
+    component:
+      dist/theme/content/article/node-article-teaser-list/node-article-teaser-list.css: {}
+
+# Basic page
+node-page:
+  css:
+    component:
+      dist/theme/content/page/node-page.css: {}
+
+maintenance-page:
+  css:
+    component:
+      dist/theme/content/maintenance-page/maintenance-page.css: {}
+
+# =======
+# Blocks
+# =======
+component_block:
+  css:
+    component:
+      dist/components/block/block.css: {}
+
+system-branding:
+  css:
+    component:
+      dist/theme/block/system-branding/block--system-branding-block.css: {}
+
+language:
+  css:
+    theme:
+      dist/components/dropdown-menu/dropdown-menu.css: {}
+      dist/theme/block/language/language.css: {}
+  js:
+    dist/theme/block/language/language.js: {}
+  dependencies:
+    - core/jquery
+
+local-tasks:
+  css:
+    component:
+      dist/theme/block/local-tasks/block-local-tasks-block.css: {}
+  js:
+    dist/theme/block/local-tasks/block-local-tasks-block.js: {  }
+
+actions-block:
+  css:
+    component:
+      dist/theme/block/actions-block/actions-block.css: {}
+  js:
+    dist/theme/block/actions-block/actions-block.js: {}
+
+cta-sticky-bar:
+  css:
+    component:
+      dist/components/cta-sticky-bar/cta-sticky-bar.css: {}
+  js:
+    dist/components/cta-sticky-bar/cta-sticky-bar.js: {}
+
+related-product-item:
+  css:
+    component:
+      dist/components/related-product-item/related-product-item.css: {}
+
+article-block:
+  css:
+    component:
+      dist/components/article-block/article-block.css: {}
+
+my-crops:
+  css:
+    component:
+      dist/theme/my-ffw_theme/feed/my-crops.css: {}
+  js:
+    dist/theme/my-ffw_theme/feed/my-crops.js: {}
+  dependencies:
+    - core/once
+    - core/jquery
+    # - core/jquery.once
+
+block-page-title:
+  css:
+    component:
+      dist/theme/block/block-page-title/block-page-title.css: {}
+
+facet-blocks:
+  css:
+    component:
+      dist/theme/block/facet-blocks/facet-blocks.css: {}
+
+local-actions:
+  js:
+    dist/theme/block/block-local-actions/block--local-actions-block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+
+# =======
+# Paragraphs
+# =======
+accordion:
+  css:
+    component:
+      dist/theme/paragraph/accordion/accordion.css: {}
+
+accordion-item:
+  css:
+    component:
+      dist/components/accordion-item/accordion-item.css: {}
+  js:
+    dist/components/accordion-item/accordion-item.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+
+example:
+  css:
+
+resellers_map:
+  js:
+    js/reseller-gmap.js: {}
+  dependencies:
+    - core/jquery
+
+where-to-buy:
+  css:
+    component:
+      dist/theme/paragraph/where-to-buy/where-to-buy.css: {}
+  dependencies:
+    - ffw_theme/resellers_map
+
+text:
+  css:
+    component:
+      dist/theme/paragraph/text/text.css: {}
+
+text-image:
+  css:
+    component:
+      dist/theme/paragraph/text-image/text-image.css: {}
+  dependencies:
+    - ffw_theme/fresco
+
+text-contact:
+  css:
+    component:
+      dist/theme/paragraph/text-contact/text-contact.css: {}
+
+side-contact:
+  css:
+    component:
+      dist/theme/paragraph/side-contact/side-contact.css: {}
+
+single-video:
+  css:
+    component:
+      dist/theme/paragraph/single-video/single-video.css: {}
+  dependencies:
+    - ffw_theme/fresco
+
+wide-image-text-download:
+  css:
+    component:
+      dist/theme/paragraph/wide-image-text-download/wide-image-text-download.css: {}
+
+image-quote:
+  css:
+    component:
+      dist/theme/paragraph/image-quote/image-quote.css: {}
+
+cards-editorial:
+  css:
+    component:
+      dist/theme/paragraph/cards-editorial/cards-editorial.css: {}
+
+video_gallery:
+  version: VERSION
+  css:
+    component:
+      dist/theme/paragraph/video-gallery/video-gallery.css: {}
+  js:
+    dist/theme/paragraph/video-gallery/video-gallery.js: {}
+  dependencies:
+    - core/jquery
+    - ffw_theme/splide_video
+    - core/drupal.debounce
+
+example:
+  css:
+    component:
+      dist/theme/paragraph/example/example.css: {}
+
+feedback-form:
+  css:
+    component:
+      dist/theme/paragraph/feedback-form/feedback-form.css: {}
+
+user-form:
+  css:
+    component:
+      dist/theme/user/form--user-form.css: {}
+
+app-download:
+  css:
+    component:
+      dist/theme/paragraph/app-download/app-download.css: {}
+
+image-gallery:
+  css:
+    component:
+      dist/theme/paragraph/image-gallery/image-gallery.css: {}
+  js:
+    dist/theme/paragraph/image-gallery/image-gallery.js: {}
+  dependencies:
+    - ffw_theme/splide
+
+image-gallery-no-slider:
+  css:
+    component:
+      dist/theme/paragraph/image-gallery/image-gallery.css: {}
+
+image-gallery-popup:
+  css:
+    component:
+      dist/theme/paragraph/image-gallery/image-gallery-popup.css: {}
+  js:
+    dist/theme/paragraph/image-gallery/image-gallery-popup.js: {}
+  dependencies:
+    - ffw_theme/splide
+
+image-gallery-compare:
+  css:
+    component:
+      dist/theme/paragraph/image-gallery-compare-results/image-gallery-compare-results.css: {}
+
+simple-maps:
+  css:
+    component:
+      dist/theme/paragraph/simple-maps/simple-maps.css: {}
+  js:
+    dist/theme/paragraph/simple-maps/simple-maps.js: { weight: 0 }
+  dependencies:
+    - core/once
+    - core/jquery
+    # - core/jquery.once
+    - ffw_theme/splide
+    - ffw_theme/splide-arrows
+    - ffw_theme/splide-pagination
+
+regional-contact-tabs:
+  css:
+    component:
+      dist/theme/paragraph/regional-contact-tabs/regional-contact-tabs.css: {}
+  js:
+    dist/theme/paragraph/regional-contact-tabs/regional-contact-tabs.js: {}
+  dependencies:
+    - ffw_theme/splide
+
+regional-contact-cards:
+  css:
+    component:
+      dist/theme/paragraph/regional-contact-cards/regional-contact-cards.css: {}
+
+regional-contacts:
+  css:
+    component:
+      dist/theme/paragraph/regional-contacts/regional-contacts.css: {}
+  js:
+    dist/theme/paragraph/regional-contacts/regional-contacts.js: {}
+
+social-embed:
+  css:
+    component:
+      dist/theme/paragraph/social-embed/social-embed.css: {}
+
+services-programs-teasers:
+  css:
+    component:
+      dist/theme/paragraph/services-programs-teasers/services-programs-teasers.css: {}
+
+services:
+  css:
+    component:
+      dist/theme/paragraph/services/services.css: {}
+
+cta-link:
+  css:
+    component:
+      dist/theme/paragraph/cta-link/cta-link.css: {}
+
+single-link-section:
+  css:
+    component:
+      dist/theme/paragraph/single-link-section/single-link-section.css: {}
+
+acquia-search:
+  css:
+    component:
+      dist/theme/paragraph/acquia-search/acquia-search.css: {}
+  dependencies:
+    - ffw_theme/search-bar
+
+# Testimonials
+testimonials:
+  version: VERSION
+  css:
+    component:
+      dist/theme/paragraph/testimonials/testimonials.css: {}
+  js:
+    dist/theme/paragraph/testimonials/testimonials.js: {}
+  dependencies:
+    - ffw_theme/splide
+    - ffw_theme/fresco
+
+# Feature Video Slider
+feature_video_slider:
+  version: VERSION
+  css:
+    component:
+      dist/theme/paragraph/feature-video-slider/feature-video-slider.css: {}
+  js:
+    dist/theme/paragraph/feature-video-slider/feature-video-slider.js: {}
+  dependencies:
+    - ffw_theme/splide
+    - ffw_theme/fresco
+
+# 3D Model
+model3d:
+  version: VERSION
+  css:
+    component:
+      dist/theme/paragraph/3d-model/model3d.css: {}
+  js:
+    dist/theme/paragraph/3d-model/model3d.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - ffw_theme/babylonjs
+    - ffw_theme/splide
+    - ffw_theme/fresco
+
+# Video in popup
+media--video-in-popup:
+  version: VERSION
+  css:
+    component:
+      dist/theme/media/media--video-in-popup.css: {}
+
+product-interested:
+  version: VERSION
+  css:
+    component:
+      dist/theme/paragraph/product-interested/product-interested.css: {}
+
+product-feature:
+  css:
+    component:
+      dist/theme/paragraph/product-feature/product-feature.css: {}
+
+# =======
+# Webforms
+# =======
+webform-contact:
+  css:
+    theme:
+      dist/theme/webform/contact/webform--contact.css: {}
+
+user-questionnaire-flow:
+  css:
+    component:
+      dist/theme/my-ffw_theme/registration/user-questionnaire-flow.css: {}
+      dist/icons/crops/icons_classes.css: {}
+  js:
+    dist/theme/my-ffw_theme/registration/select-crops.js: {}
+
+account-settings:
+  css:
+    component:
+      dist/theme/my-ffw_theme/account-settings/account-settings.css: {}
+
+# =======
+# External libraries
+# =======
+# Popup
+fresco:
+  version: VERSION
+  css:
+    component:
+      /libraries/fresco/dist/css/fresco.css: { weight: -50 }
+  js:
+    /libraries/fresco/dist/js/fresco.min.js: { scope: footer }
+  dependencies:
+    - core/jquery
+
+# Jszip Library
+jszip:
+  version: VERSION
+  js:
+    /libraries/jszip/dist/jszip.min.js: { scope: footer }
+    /libraries/jszip/vendor/FileSaver.js: { scope: footer }
+
+jszip_ffw_theme:
+  version: VERSION
+  js:
+    js/jszip-ffw_theme.js: {}
+  dependencies:
+    - ffw_theme/jszip
+
+jszip-utils:
+  version: VERSION
+  js:
+    /libraries/jszip-utils/dist/jszip-utils.min.js: { scope: footer }
+
+# Slider Library
+splide:
+  version: VERSION
+  css:
+    component:
+      /libraries/splide/dist/css/splide-core.min.css: { weight: -50 }
+  js:
+    /libraries/splide/dist/js/splide.min.js: { scope: footer }
+
+splide_ffw_theme:
+  version: VERSION
+  js:
+    js/splide-ffw_theme.js: {}
+  dependencies:
+    - ffw_theme/splide
+
+# Slider Library with video
+splide_video:
+  version: VERSION
+  css:
+    component:
+      /libraries/splide-extension-video/dist/css/splide-extension-video.min.css: { weight: -50 }
+  js:
+    /libraries/splide-extension-video/dist/js/splide-extension-video.min.js: { scope: footer }
+  dependencies:
+    - ffw_theme/splide
+
+image_comparison:
+  version: VERSION
+  js:
+    /libraries/twentytwenty/js/jquery.event.move.js: {}
+    /libraries/twentytwenty/js/jquery.twentytwenty.js: {}
+  dependencies:
+    - ffw_theme/splide
+    - core/jquery
+
+weather_forecast:
+  version: VERSION
+  css:
+    theme:
+      dist/components/weather-forecast/weather-forecast.css: {}
+  js:
+    dist/components/weather-forecast/weather-forecast.js: {}
+  dependencies:
+    - core/once
+    - core/jquery
+    # - core/jquery.once
+
+# Babylonjs library
+babylonjs:
+  version: VERSION
+  js:
+    /libraries/babylonjs/babylon.js: {}
+  dependencies:
+    - core/jquery
+
+# =======
+# Components
+# =======
+base-styles:
+  css:
+    component:
+      dist/components/base-styles/link.css: {}
+
+chosen-library:
+  css:
+    component:
+      dist/components/chosen/chosen.css: {}
+
+sharing-block:
+  css:
+    component:
+      dist/components/sharing-block/sharing-block.css: {}
+
+cta-block:
+  css:
+    component:
+      dist/components/cta-block/cta-block.css: {}
+
+splide-arrows:
+  css:
+    component:
+      dist/components/splide-arrows/splide-arrows.css: {}
+
+splide-pagination:
+  css:
+    component:
+      dist/components/splide-pagination/splide-pagination.css: {}
+
+search-bar:
+  css:
+    component:
+      dist/components/search-bar/search-bar.css: {}
+  js:
+    dist/components/search-bar/search-bar.js: {}
+
+search-crop-filter:
+  css:
+    component:
+      dist/components/search-crop-filter/search-crop-filter.css: {}
+  js:
+    dist/components/search-crop-filter/search-crop-filter.js: {}
+
+side-filter:
+  css:
+    component:
+      dist/components/side-filter/side-filter.css: {}
+  js:
+    dist/components/side-filter/side-filter.js: {}
+
+third-navigation:
+  css:
+    component:
+      dist/components/third-navigation/third-navigation.css: {}
+
+dropdown-menu:
+  css:
+    component:
+      dist/components/dropdown-menu/dropdown-menu.css: {}
+  js:
+    dist/components/dropdown-menu/dropdown-menu.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/jquery
+
+hero-standard:
+  css:
+    component:
+      dist/components/hero-standard/hero-standard.css: {}
+
+cards-container:
+  css:
+    component:
+      dist/components/cards-container/cards-container.css: {}
+
+card:
+  css:
+    component:
+      dist/components/card/card.css: {}
+
+layout-product:
+  css:
+    component:
+      dist/components/layout-product/layout-product.css: {}
+
+field--crops:
+  css:
+    component:
+      dist/theme/field/crops/field--crops.css: {}

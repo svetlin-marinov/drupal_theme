@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * @see template_preprocess_field()
+ * @see https://splidejs.com/category/users-guide/
+ */
+#}
+
+
+{%
+  set classes = [
+    'field',
+    'feature-video-slider-items',
+    'splide',
+    'splide-arrows-style',
+    items|length <= 4 ? 'arrows-hidden'
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="splide__track">
+    <ul class="splide__list">
+      {% for item in items %}
+        <li class="splide__slide">{{ item.content }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

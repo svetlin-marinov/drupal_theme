@@ -1,0 +1,29 @@
+@use '../../_sass/init' as *;
+
+.paragraph--type--cards-editorial {
+  .field--name-paragraphs &:nth-child(even) {
+    background-color: $white;
+  }
+
+  .cards-container--title,
+  .cards-container--subtitle {
+    text-align: left;
+
+    .rtl & {
+      text-align: right;
+    }
+  }
+
+  // .cards-container--outer {
+  // }
+}
+
+.paragraph--type--cards-editorial-item {
+  .card--title {
+    color: $grey-text;
+  }
+
+  .card--text {
+    margin-bottom: $spacing-4;
+  }
+}

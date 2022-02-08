@@ -1,0 +1,440 @@
+@use '../_sass/init' as *;
+
+// Default values
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  // hyphens: auto; AGR-517
+  background-color: $body-background-color;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+figcaption,
+figure,
+main { /* 1 */
+  display: block;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace; /* 1 */
+  font-size: 1rem; /* 2 */
+}
+
+/* Text-level semantics
+========================================================================== */
+::selection {
+  color: $selection-color;
+  background: $selection-bg;
+}
+
+// Link
+//
+// Markup:
+//   <a href="#">Default link</a>
+//   <a href="https://google.com" class="link__external">External link</a>
+//
+// Style guide: Defaults.link
+a {
+  outline-color: $link-color;
+  color: $link-color;
+  background-color: transparent; /* Remove the gray background on active links in IE 10. */
+  transition: color $transition-time;
+  -webkit-text-decoration-skip: objects; /* Remove gaps in links underline in iOS 8+ and Safari 8+. */
+
+  &:hover,
+  &:active {
+    @extend %link-hover;
+  }
+}
+
+// Text
+//
+// Markup:
+//  <p>Paragraph content with <small>small</small>, <sub>Sub</sub> and <sup>Sup</sup>  HTML tags.</p>
+//
+// Style guide: Defaults.text
+p {
+  margin: 0 0 1rem;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+sup {
+  top: -.5em;
+}
+
+// Lists
+/**
+ * Unset default list margin and padding.
+ */
+ul,
+ol,
+dl {
+  margin: 0;
+  padding: 0 0 0 2rem;
+
+  .rtl & {
+    padding-right: 2rem;
+    padding-left: 0;
+  }
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0; /* Remove the border on images inside links in IE 10-. */
+}
+
+picture img {
+  min-height: 1px;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+details, /* 1 */
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Scripting
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10-.
+ */
+[hidden] {
+  display: none;
+}
+
+// Ellipsis
+//
+// Markup:
+// <div class="ellipsis" style="width:200px">Class <code>.ellipsis</code> to cut long text and would break the layout.</div>
+//
+// Style guide Helper classes.ellipsis
+.ellipsis {
+  @include ellipsis;
+}
+
+/* Drupal default classes */
+
+.submitted > span {
+  opacity: $disabled-opacity;
+}
+
+table.sticky-header {
+  background: $body-background-color;
+}
+
+/* Messages and errors (copy of original CSS) */
+
+// Messages
+.messages {
+  @include container;
+  margin-top: $spacing-3;
+  margin-bottom: $spacing-3;
+  padding: $form-space;
+  border-radius: $border-radius;
+
+  @include media(site) {
+    margin-top: $spacing-10;
+  }
+
+  ul {
+    margin: 0 0 0 $form-space;
+    padding: 0;
+
+    .rtl & {
+      margin: 0 $form-space 0 0;
+    }
+  }
+
+  p {
+    margin: 0;
+
+    + p {
+      margin-top: $form-space;
+    }
+  }
+
+  a {
+    &,
+    &:visited,
+    &:hover,
+    &:active {
+      text-decoration: underline;
+      color: $white;
+    }
+  }
+
+  & + & {
+    margin-top: $form-space;
+  }
+
+  &--status {
+    border-color: $messages-ok;
+    color: $messages-ok;
+    background-color: $messages-ok-background;
+  }
+
+  &--warning {
+    border-color: transparent;
+    color: $body-color;
+    background-color: $messages-warn-background;
+  }
+
+  &--error {
+    border-color: $messages-error;
+    color: $messages-error;
+    background-color: $messages-error-background;
+
+    p.messages--error {
+      color: $body-color;
+    }
+  }
+}
+
+// Visibility classes
+.visible {
+  display: block;
+}
+
+.visible-mobile {
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.visible-tablet {
+  @include media(desktop) {
+    display: none;
+  }
+}
+
+.visible-desktop {
+  @include media-max(desktop) {
+    display: none;
+  }
+}
+
+.visually-hidden {
+  margin: -1px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+// End visibility classes
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* WYSIWYG fields */
+/* field: general description */
+.field--type-text-long,
+.field--type-text-with-summary,
+.field--name-body {
+  p {
+    @include ts-content;
+    margin-bottom: $spacing-3;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    margin-bottom: $spacing-3;
+    padding: 0;
+
+    li {
+      padding-left: $spacing-3;
+      list-style: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='9' height='9' viewBox='0 0 9 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4.5' cy='4.5' r='4.5' fill='%23C4C4C4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 0 .5em;
+
+      .rtl & {
+        padding-right: $spacing-3;
+        padding-left: 0;
+        background-position: 100% .5em;
+      }
+    }
+  }
+
+  ol {
+    margin-bottom: $spacing-3;
+    padding-left: $spacing-3;
+
+    .rtl & {
+      padding-right: $spacing-3;
+      padding-left: 0;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+    color: $grey-text;
+  }
+
+  img {
+    display: block;
+    border-radius: $border-radius;
+  }
+
+  // Tables in WYSIWYG
+  table {
+    width: 100%;
+    margin-bottom: $spacing-6; /* for testing only: to visually separate the table from the other text */
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: $white;
+
+    .rtl & {
+      text-align: right;
+    }
+  }
+
+  caption {
+    @include ts-content--title;
+    margin-bottom: $spacing-4;
+    text-align: inherit;
+  }
+
+  th {
+    @include ts-content;
+    padding: $spacing-1 $spacing-2;
+    font-weight: $font-weight-bold;
+    background-color: $earth-10;
+  }
+
+  tr {
+    &:nth-child(even) {
+      background-color: $earth-10;
+    }
+  }
+
+  td {
+    @include ts-content;
+    padding: $spacing-1 $spacing-2;
+  }
+}
+
+.field__label {
+  font-weight: $font-weight-bold;
+
+  .field--label-above & {
+    display: block;
+  }
+
+  .field--label-inline & {
+    display: inline-block;
+  }
+}

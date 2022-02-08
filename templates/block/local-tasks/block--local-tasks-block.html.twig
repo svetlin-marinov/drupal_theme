@@ -1,0 +1,19 @@
+{% extends "@ffw_theme/block/block.html.twig" %}
+
+{#
+/**
+ * @file
+ * Theme override for tabs.
+ */
+#}
+
+{% block content %}
+  {{ attach_library('ffw_theme/local-tasks') }}
+
+  {% if content %}
+    <nav class="tabs" role="navigation" aria-label="{{ 'Tabs'|t }}">
+      <button class="local-tasks--toggle button-blue">{{ 'Admin links'|t }}</button>
+      {{ content }}
+    </nav>
+  {% endif %}
+{% endblock %}

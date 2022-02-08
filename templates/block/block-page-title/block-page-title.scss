@@ -1,0 +1,67 @@
+@use '../../_sass/init' as *;
+
+// @todo: working on shape later.
+.block-page-title-block {
+  margin-bottom: $spacing-4;
+  padding: $spacing-3 0 $spacing-5;
+  background-image: url("data:image/svg+xml,%3Csvg width='768' height='790.148' preserveAspectRatio='none' viewBox='0 0 768 790.148' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M212.707 400v375.84c183.15-47.652 369.505-72.258 555.293-74.041V400z' fill='%2300783f'/%3E%3Cpath d='M0 0v772.959c96.589 29.409 205.007 22.492 307.027-31.713C455.098 661.912 609.817 600.77 768 556.03V0z' fill='%23009845'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 768px auto;
+
+  @include media(tablet) {
+    padding-bottom: $spacing-8;
+    background-image: url("data:image/svg+xml,%3Csvg width='1024' height='800' preserveAspectRatio='none' viewBox='0 0 1024 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M262.975 241.303V786.09C513.533 739.308 770.664 722.49 1024 734.5V241.303z' fill='%2300783f'/%3E%3Cpath d='M0 0v753.129c102.798 52.734 229.475 64.712 353.414 16.61C569.842 684.921 795.927 632.514 1024 611.444V0z' fill='%23009845'/%3E%3C/svg%3E");
+    background-size: 1024px auto;
+  }
+
+  @include media(desktop) {
+    background-image: url("data:image/svg+xml,%3Csvg width='1440' height='800' preserveAspectRatio='none' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M348.811 775.213C707.303 669.016 1081.276 652.451 1440 722.525V200.62z' fill='%2300783f'/%3E%3Cpath d='M0 0v731.756c113.183 71.933 257.447 92.36 399.816 35.287C734.914 631.356 1089.373 572.187 1440 586.262V0z' fill='%23009845'/%3E%3C/svg%3E");
+    background-size: 1440px auto;
+  }
+
+  @include media(site) {
+    padding: $spacing-12 0 $spacing-9;
+    background-size: 100% auto;
+  }
+
+  @include media(xxl) {
+    background-image: url("data:image/svg+xml,%3Csvg width='1920' height='220' preserveAspectRatio='none' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M416.314-580l-7.128 764.574C897.656-3.958 1429.564-17.936 1920 135.348V-580H416.314z' fill='%2300783f'/%3E%3Cpath d='M0-580v717.28c115.303 80.17 265.901 105.84 414.816 46.144C899.496-12.831 1424.565-49.273 1920 65.834V-580H0z' fill='%23009845'/%3E%3C/svg%3E");
+  }
+
+  .page-title {
+    @include container;
+    @include ts-hero--title;
+    width: min(calc(100% - 40px), 270px);
+    margin-bottom: 0;
+    color: $white;
+
+    @include media(tablet) {
+      width: min(55%, 410px);
+    }
+
+    @include media(large) {
+      margin-left: 80px;
+    }
+
+    @include media(xxl) {
+      margin-left: 5%;
+    }
+
+    @include media-max(tablet) {
+      font-size: rem-calc(28px);
+    }
+  }
+}
+
+/* RTL Layout */
+body.rtl {
+  .block-page-title-block {
+    transform: scaleX(-1);
+
+    .page-title {
+      margin-right: auto;
+      transform: scaleX(-1); // revert back the text to the right position
+    }
+  }
+}

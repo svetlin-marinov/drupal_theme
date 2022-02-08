@@ -1,0 +1,23 @@
+@use 'variables' as *;
+@use 'mixins-media' as *;
+
+@each $device, $columns in $grid-columns {
+  @include media(#{$device}) {
+    @for $i from 1 through $columns {
+      // %flex-#{$i} {
+      //   $column-width: 100% / ($columns / $i);
+      //   $flex-basis: calc(#{$column-width} - #{$gap});
+      //   flex: 0 1 $flex-basis;
+      //   width: $flex-basis;
+      //   margin-right: $gutter;
+      //   margin-left: $gutter;
+      // }
+
+      .col-#{$i} {
+        width: calc(100% / (#{$columns} / #{$i}) - #{$gap});
+        margin-right: $gutter;
+        margin-left: $gutter;
+      }
+    }
+  }
+}

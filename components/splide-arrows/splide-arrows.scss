@@ -1,0 +1,92 @@
+@use '../../templates/_sass/init' as *;
+
+// @todo: check RTl styles
+.splide-arrows-style {
+  .splide__arrows {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+
+    .rtl & {
+      right: auto;
+      left: 0;
+    }
+  }
+
+  [type='button'].splide__arrow {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $spacing-4;
+    height: $spacing-4;
+    padding: 0;
+    border: rem-calc(2px) solid $grey-text;
+    border-radius: 100%;
+    text-align: center;
+    background: transparent;
+    opacity: 1;
+    transition: opacity $transition-time, border-color  $transition-time;
+
+    &:hover {
+      border-color: $ocean;
+      cursor: pointer;
+
+      svg {
+        fill: $ocean;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &[disabled] {
+      cursor: default;
+      opacity: .2;
+
+      &:hover {
+        border-color: $grey-text;
+
+        svg {
+          fill: $grey-text;
+        }
+      }
+    }
+
+    &--prev {
+      margin-right: $spacing-1;
+
+      svg {
+        margin-left: rem-calc(-2px);
+        transform: scaleX(-1);
+      }
+    }
+
+    .rtl & {
+      transform: rotate(180deg);
+
+      &--prev {
+        margin-right: 0;
+        margin-left: $spacing-1;
+      }
+    }
+
+    svg {
+      display: block;
+      width: rem-calc(15px);
+      height: rem-calc(25px);
+      fill: $grey-text;
+      transition: fill $transition-time;
+    }
+  }
+
+  // Hide arrows with less than 4 items (image-gallery, feature-video-slider paragraphs),
+  // less than 2 items on testimonials
+  &.arrows-hidden .splide__arrows {
+    display: none;
+  }
+}

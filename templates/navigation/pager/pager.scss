@@ -1,0 +1,81 @@
+@use '../../_sass/init' as *;
+@use '../../../dist/icons/icons.scss' with (
+  $icons_path: '../../../../dist/icons/'
+);
+
+.pager {
+  display: flex;
+  justify-content: center;
+  margin: $spacing-8 0;
+  list-style: none;
+
+  @include media(site) {
+    justify-content: flex-start;
+  }
+
+  .pager__items {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    .pager__item {
+      position: relative;
+      color: $grey-text;
+
+      &:not(:last-child) {
+        margin-right: $spacing-1;
+
+        .rtl & {
+          margin-right: 0;
+          margin-left: $spacing-1;
+        }
+      }
+
+      &.is-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+          min-width: $spacing-3;
+          border-radius: $spacing-1-5;
+          text-align: center;
+          color: $white;
+          background-color: $ocean;
+        }
+      }
+
+      a {
+        padding: 0 $spacing-1;
+        text-decoration: none;
+        color: $grey-text;
+      }
+
+      .prev-btn {
+        &::before {
+          width: rem-calc(10px);
+          height: rem-calc(10px);
+          transform: rotate(90deg);
+
+          .rtl & {
+            transform: rotate(-90deg);
+          }
+        }
+      }
+
+      .next-btn {
+        &::before {
+          width: rem-calc(10px);
+          height: rem-calc(10px);
+          transform: rotate(-90deg);
+
+          .rtl & {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+}
