@@ -1,6 +1,6 @@
-
 ## Intro
-**Theme is still WIP and not ready for production.**
+### **Theme is still WIP and not ready for production.**
+
 Starter Drupal theme with components structure.
 
 Two types of components - Drupal and static.
