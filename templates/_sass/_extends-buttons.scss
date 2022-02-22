@@ -128,47 +128,6 @@ $button-colors: (
     primary: $green-secondary,
     secondary: $green-secondary,
   ),
-  // USA
-  button-green-usa: (
-    primary: $green-usa,
-    secondary: $green-usa-secondary,
-  ),
-  button-green-usa-secondary: (
-    primary: $green-usa-secondary,
-    secondary: $green-usa,
-  ),
-  button-black-usa: (
-    primary: $black-usa,
-    secondary: $black-usa-secondary,
-  ),
-  button-black-usa-secondary: (
-    primary: $black-usa-secondary,
-    secondary: $black-usa,
-  ),
-  button-brown-usa: (
-    primary: $brown-usa,
-    secondary: $brown-usa-secondary,
-  ),
-  button-brown-usa-secondary: (
-    primary: $brown-usa-secondary,
-    secondary: $brown-usa,
-  ),
-  button-orange-usa: (
-    primary: $orange-usa,
-    secondary: $orange-usa-secondary,
-  ),
-  button-orange-usa-secondary: (
-    primary: $orange-usa-secondary,
-    secondary: $orange-usa,
-  ),
-  button-purple-usa: (
-    primary: $purple-usa,
-    secondary: $purple-usa-secondary,
-  ),
-  button-purple-usa-secondary: (
-    primary: $purple-usa-secondary,
-    secondary: $purple-usa,
-  ),
 );
 
 @each $button, $states in $button-colors {

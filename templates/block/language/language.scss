@@ -49,7 +49,7 @@
       display: block;
       width: min-content;
       height: auto;
-      border: 1px solid $earth-10;
+      border: 1px solid $grey-light;
       border-radius: $border-radius;
       overflow: initial;
       opacity: 1;
@@ -65,7 +65,7 @@
     cursor: pointer;
     line-height: $spacing-3;
     text-transform: uppercase;
-    color: $earth-90;
+    color: $grey-dark;
 
     &::before {
       order: 2;

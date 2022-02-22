@@ -1,244 +1,22 @@
 @use 'sass:string';
 
 /* Color variables */
-// $black: #000;
+$black: #000;
 $ocean: #176ddd;
 $ocean-secondary: #003b88;
-$earth: #978b87;
-$earth-90: fade-out($earth, .1);
-$earth-70: fade-out($earth, .3);
-$earth-50: fade-out($earth, .5);
-$earth-30: fade-out($earth, .7);
-$earth-20: #ece9e8; // transparent Earth 10 in design over Earth 10
-$earth-10: #f5f3f3; // not transparent, because of overlapping paragraphs (Application advice)
-$grey-text: #5f504d;
-$red: #eb5757;
+$red: #ff0909;
 $white: #fff;
-$light-grey: #faf9f9; // Dropdown Menu list items background on mobile screen
-
-// Product colors
-$blue: #00a0df;               // Fungicide
+$blue: #00a0df;
 $blue-secondary: #00698f;
-$purple: #9d1d96;             // Insecticide
+$purple: #9d1d96;
 $purple-secondary: #752157;
-
-// Swapped primary/secondary from design
-$green: #93cc23;              // Herbicide
+$green: #3b0;
 $green-secondary: #7db41e;
-$orange: #f5b317;             // Growth regulators/crop enhancers
+$orange: #f90;
 $orange-secondary: #eaa23d;
-
-// USA product colors
-$orange-usa: #f99f2b;          // Harvest aids
-$orange-usa-secondary: #dc6527;
-$purple-usa: #943292;          // Nematicide
-$purple-usa-secondary: #542362;
-$green-usa: #046b38;           // Fungicide
-$green-usa-secondary: #76c049;
-$brown-usa: #705d52;           // Herbicide
-$brown-usa-secondary: #ba9b8a;
-$black-usa: #000;              // Insecticide
-$black-usa-secondary: #5a595b;
-
-@function pattern-shape($shape: 'dots', $pattern-color: $white) {
-  $pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24.023' height='14.702' viewBox='0 0 6.356 3.89'%3E%3Cpath d='M4.327 2.73a1.15 1.15 0 00-1.149 1.15l.001.01h2.297l.001-.01a1.14 1.14 0 00-1.15-1.15zM1.15.787a1.15 1.15 0 000 2.298 1.15 1.15 0 001.15-1.15c0-.624-.525-1.148-1.15-1.148zM3.18 0a1.15 1.15 0 001.147 1.142A1.15 1.15 0 005.477 0z' fill='%23#{string.slice(#{$pattern-color}, 2, -1)}'/%3E%3C/svg%3E") !default;
-
-  @if $shape == dots {
-    $pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24.023' height='14.702' viewBox='0 0 6.356 3.89'%3E%3Cpath d='M4.327 2.73a1.15 1.15 0 00-1.149 1.15l.001.01h2.297l.001-.01a1.14 1.14 0 00-1.15-1.15zM1.15.787a1.15 1.15 0 000 2.298 1.15 1.15 0 001.15-1.15c0-.624-.525-1.148-1.15-1.148zM3.18 0a1.15 1.15 0 001.147 1.142A1.15 1.15 0 005.477 0z' fill='%23#{string.slice(#{$pattern-color}, 2, -1)}'/%3E%3C/svg%3E"),;
-  }
-  @else if $shape == waves {
-    $pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='87.994' height='11.775' fill='none'%3E%3Cpath d='M0 0v5.254c7.533 0 15.004-2.28 22.22-4.432.917-.278 1.852-.547 2.778-.822zm62.996 0c.927.276 1.86.544 2.777.822 7.217 2.153 14.688 4.432 22.221 4.432V0zM43.998 2.975c-7.47 0-15.004 2.279-22.348 4.431C14.497 9.56 7.09 11.776 0 11.776h24.998c6.239-1.856 12.661-3.546 19-3.546s12.76 1.69 18.998 3.545h24.998c-7.09 0-14.497-2.216-21.65-4.369C59 5.254 51.468 2.975 43.998 2.975z' fill='%23#{string.slice(#{$pattern-color}, 2, -1)}'/%3E%3C/svg%3E");
-  }
-  @else if $shape == lines {
-    $pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16.518' height='16.518' fill='none'%3E%3Cpath d='M0 0l16.518 16.518V9.135L7.383 0zm0 9.135v7.32l.063.063h7.32z' fill='%23#{string.slice(#{$pattern-color}, 2, -1)}' /%3E%3C/svg%3E");
-  }
-  @else if $shape == drops {
-    $pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48.001' height='25.386' fill='none'%3E%3Cpath d='M4.542.003A4.271 4.271 0 002.044.69 4.445 4.445 0 00.001 4.341a4.6 4.6 0 00.71 2.547c1.332 2.134 8.065 4.467 8.065 4.467s.734-7.134-.6-9.201C7.345.82 5.966.06 4.543.004zM41.31.021s-6.533 2.868-7.733 5.135c-1.133 2.2-.332 4.933 1.801 6.066 2.133 1.134 4.867.267 6-1.933S41.31.02 41.31.02zM22.243 1.29c-2.466.066-7.933 4.732-7.933 4.732s5.8 4.2 8.267 4.133c2.467-.067 4.468-2.133 4.334-4.6-.066-2.466-2.201-4.332-4.668-4.265zM17.31 13.687s-6.533 2.868-7.733 5.135c-1.133 2.2-.332 4.933 1.801 6.066 2.133 1.134 4.867.267 6-1.933s-.068-9.268-.068-9.268zm11.232.05a4.27 4.27 0 00-2.498.684c-2.067 1.334-2.667 4.066-1.334 6.2 1.333 2.066 8.066 4.466 8.066 4.466s.734-7.132-.6-9.199c-.832-1.333-2.211-2.093-3.634-2.15zm17.701 1.284c-2.466.067-7.933 4.734-7.933 4.734s5.8 4.2 8.267 4.133a4.452 4.452 0 001.424-.293v-8.283a4.682 4.682 0 00-1.758-.29zm-46.242.291v8.283c1.76-.648 3.017-2.341 2.91-4.306-.05-1.852-1.264-3.365-2.91-3.977z' fill='%23#{string.slice(#{$pattern-color}, 2, -1)}'/%3E%3C/svg%3E");
-  }
-  @else {
-    @error 'Unknown pattern shape!';
-  }
-
-  @return $pattern;
-}
-
-// Categories
-$category-colors: (
-  'ocean': (
-    'colorPrimary': $ocean,
-    'colorSecondary': $ocean-secondary,
-    'colorTertiary': 'ocean',
-    'bg': string.slice(#{$ocean}, 2, -1),
-    'pattern': pattern-shape('dots', $ocean-secondary),
-  ),
-  'ocean-secondary': (
-    'colorPrimary': $ocean-secondary,
-    'colorSecondary': $ocean,
-    'colorTertiary': 'ocean-secondary',
-    'bg': string.slice(#{$ocean-secondary}, 2, -1),
-    'pattern': pattern-shape('dots', $ocean),
-  ),
-  'blue': (
-    'colorPrimary': $blue,
-    'colorSecondary': $blue-secondary,
-    'colorTertiary': 'green',
-    'bg': string.slice(#{$blue}, 2, -1),
-    'pattern-color': string.slice(#{$blue-secondary}, 2, -1),
-    'pattern': pattern-shape('dots', $blue-secondary),
-    'icon': 'disease-control'
-  ),
-  'blue-secondary': (
-    'colorPrimary': $blue-secondary,
-    'bg': string.slice(#{$blue-secondary}, 2, -1),
-    'pattern': pattern-shape('dots', $blue),
-  ),
-  'purple': (
-    'colorPrimary': $purple,
-    'colorSecondary': $purple-secondary,
-    'colorTertiary': 'orange',
-    'bg': string.slice(#{$purple}, 2, -1),
-    'pattern': pattern-shape('drops', $purple-secondary),
-    'icon': 'pest-control',
-  ),
-  'purple-secondary': (
-    'colorPrimary': $purple-secondary,
-    'bg': string.slice(#{$purple-secondary}, 2, -1),
-    'pattern': pattern-shape('drops', $purple),
-  ),
-  'green': (
-    'colorPrimary': $green,
-    'colorSecondary': $green-secondary,
-    'colorTertiary': 'blue-secondary',
-    'bg': string.slice(#{$green}, 2, -1),
-    'pattern': pattern-shape('lines', $white),
-    'icon': 'weed-control'
-  ),
-  'green-secondary': (
-    'colorPrimary': $green-secondary,
-    'colorSecondary': $green,
-    'colorTertiary': $blue,
-    'bg': string.slice(#{$green-secondary}, 2, -1),
-    'pattern': pattern-shape('lines', $white),
-    'icon': 'weed-control'
-  ),
-  'orange': (
-    'colorPrimary': $orange,
-    'colorSecondary': $orange-secondary,
-    'colorTertiary': 'purple-secondary',
-    'bg': string.slice(#{$orange}, 2, -1),
-    'pattern': pattern-shape('waves', $white),
-    'icon': 'crop-enhance'
-  ),
-  'orange-secondary': (
-    'colorPrimary': $orange-secondary,
-    'colorSecondary': $orange,
-    'colorTertiary': 'purple',
-    'bg': string.slice(#{$orange-secondary}, 2, -1),
-    'pattern': pattern-shape('waves', $white),
-    'icon': 'crop-enhance'
-  ),
-  'white': (
-    'colorPrimary': $white,
-    'bg': string.slice(#{$white}, 2, -1),
-    'pattern': pattern-shape('dots', $white),
-  ),
-  'green-usa': (
-    'colorPrimary': $green-usa,
-    'colorSecondary': $green-usa-secondary,
-    'colorTertiary': 'black-usa-secondary',
-    'bg': string.slice(#{$green-usa}, 2, -1),
-    'pattern-color': string.slice(#{$green-usa-secondary}, 2, -1),
-    'pattern': pattern-shape('dots', $green-usa-secondary),
-    'icon': 'disease-control'
-  ),
-  'green-usa-secondary': (
-    'colorPrimary': $green-usa-secondary,
-    'colorSecondary': $green-usa,
-    'colorTertiary': 'black-usa',
-    'bg': string.slice(#{$green-usa-secondary}, 2, -1),
-    'pattern-color': string.slice(#{$green-usa}, 2, -1),
-    'pattern': pattern-shape('dots', $green-usa),
-    'icon': 'disease-control'
-  ),
-  'black-usa': (
-    'colorPrimary': $black-usa,
-    'colorSecondary': $black-usa-secondary,
-    'colorTertiary': 'purple-usa',
-    'bg': string.slice(#{$black-usa}, 2, -1),
-    'pattern-color': string.slice(#{$black-usa-secondary}, 2, -1),
-    'pattern': pattern-shape('drops', $black-usa-secondary),
-    'icon': 'pest-control'
-  ),
-  'black-usa-secondary': (
-    'colorPrimary': $black-usa-secondary,
-    'colorSecondary': $black-usa,
-    'colorTertiary': 'purple-usa-secondary',
-    'bg': string.slice(#{$black-usa-secondary}, 2, -1),
-    'pattern-color': string.slice(#{$black-usa}, 2, -1),
-    'pattern': pattern-shape('drops', $black-usa),
-    'icon': 'pest-control'
-  ),
-  'brown-usa': (
-    'colorPrimary': $brown-usa,
-    'colorSecondary': $brown-usa-secondary,
-    'colorTertiary': 'green-usa',
-    'bg': string.slice(#{$brown-usa}, 2, -1),
-    'pattern-color': string.slice(#{$brown-usa-secondary}, 2, -1),
-    'pattern': pattern-shape('lines', $brown-usa-secondary),
-    'icon': 'weed-control'
-  ),
-  'brown-usa-secondary': (
-    'colorPrimary': $brown-usa-secondary,
-    'colorSecondary': $brown-usa,
-    'colorTertiary': 'green-usa-secondary',
-    'bg': string.slice(#{$brown-usa-secondary}, 2, -1),
-    'pattern-color': string.slice(#{$brown-usa}, 2, -1),
-    'pattern': pattern-shape('lines', $brown-usa),
-    'icon': 'weed-control'
-  ),
-  'orange-usa': (
-    'colorPrimary': $orange-usa,
-    'colorSecondary': $orange-usa-secondary,
-    'colorTertiary': 'purple-usa-secondary',
-    'bg': string.slice(#{$orange-usa}, 2, -1),
-    'pattern-color': string.slice(#{$orange-usa-secondary}, 2, -1),
-    'pattern': pattern-shape('waves', $orange-usa-secondary),
-    'icon': 'crop-enhance'
-  ),
-  'orange-usa-secondary': (
-    'colorPrimary': $orange-usa-secondary,
-    'colorSecondary': $orange-usa,
-    'colorTertiary': 'purple-usa',
-    'bg': string.slice(#{$orange-usa-secondary}, 2, -1),
-    'pattern-color': string.slice(#{$orange-usa}, 2, -1),
-    'pattern': pattern-shape('waves', $orange-usa),
-    'icon': 'crop-enhance'
-  ),
-  'purple-usa': (
-    'colorPrimary': $purple-usa,
-    'colorSecondary': $purple-usa-secondary,
-    'colorTertiary': 'orange-usa',
-    'bg': string.slice(#{$purple-usa}, 2, -1),
-    'pattern-color': string.slice(#{$purple-usa-secondary}, 2, -1),
-    'pattern': pattern-shape('drops', $purple-usa-secondary),
-    'icon': 'nematicide'
-  ),
-  'purple-usa-secondary': (
-    'colorPrimary': $purple-usa-secondary,
-    'colorSecondary': $purple-usa,
-    'colorTertiary': 'orange-usa-secondary',
-    'bg': string.slice(#{$purple-usa-secondary}, 2, -1),
-    'pattern-color': string.slice(#{$purple-usa}, 2, -1),
-    'pattern': pattern-shape('drops', $purple-usa),
-    'icon': 'nematicide'
-  ),
-);
-
-$product-colors: ('ocean', 'blue', 'green', 'orange', 'purple', 'green-usa', 'black-usa', 'brown-usa', 'orange-usa', 'purple-usa');
-
-/* About Cards CTA Link Background Colors */
-$about-cards-colors: ($blue, $orange, $green-secondary, $purple);
-$about-cards-colors-usa: ($purple-usa, $orange-usa, $brown-usa, $black-usa, $green-usa);
+$grey: #878787;
+$grey-light: #f9f9f9;
+$grey-dark: #5f5f5f;
 
 /* Colors */
 $body-color: $grey-text;
@@ -248,18 +26,19 @@ $link-color: $blue;
 $link-hover-color: $blue;
 $selection-color: $body-background-color;
 $selection-bg: $body-color;
-$messages-ok: $white;
+$messages-ok-text: $white;
 $messages-ok-background: $ocean;
-$messages-warn: $white;
+$messages-warn-text: $white;
 $messages-warn-background: $orange;
-$messages-error: $red;
-$messages-error-background: $white;
+$messages-error-text: $white;
+$messages-error-background: $red;
 
 // Form elements colors
 $button-color: $white;
+$label-color: $grey;
 $input-color: $grey-text;
 $input-bg: $white;
-$input-border: $earth-30;
+$input-border: $grey-light;
 $input-color-active: $grey-text;
 $input-border-hover: $grey-text;
 $input-border-active: $grey-text;

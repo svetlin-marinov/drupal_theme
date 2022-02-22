@@ -113,7 +113,7 @@ $font-weight-bold: 700;
   font-size: $font-size-small;
   line-height: u.unitless-calc(17px, 14px);
   text-transform: uppercase;
-  color: c.$earth;
+  color: c.$grey;
 }
 
 @mixin ts-teaser--content {

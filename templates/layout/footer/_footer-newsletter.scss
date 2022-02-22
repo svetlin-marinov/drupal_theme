@@ -2,7 +2,7 @@
   // Layout
   margin-bottom: $spacing-7;
   padding-bottom: $spacing-3;
-  border-bottom: 1px solid $earth-30;
+  border-bottom: 1px solid $grey-light;
 
   .newsletter-subscription {
     @include flex-container;
@@ -60,11 +60,11 @@
 
   .form-item-agreement {
     @include ts-tiny;
-    color: $earth;
+    color: $grey;
 
     a {
       text-decoration: underline;
-      color: $earth;
+      color: $grey;
     }
   }
 

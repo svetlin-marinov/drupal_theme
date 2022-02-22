@@ -74,7 +74,7 @@
     width: min-content;
     min-width: rem-calc(180px);
     height: auto;
-    border: 1px solid $earth-10;
+    border: 1px solid $grey-light;
     border-radius: $border-radius;
     overflow: initial;
     opacity: 1;
@@ -107,11 +107,11 @@
     transition: background-color .2s ease;
 
     &.active {
-      background-color: $earth-10;
+      background-color: $grey-light;
     }
 
     &:hover {
-      background-color: $earth-10;
+      background-color: $grey-light;
     }
 
     li {

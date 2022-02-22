@@ -27,7 +27,7 @@
 
 .paragraph--type--product-information {
   padding-top: $spacing-6;
-  background-color: $earth-10;
+  background-color: $grey-light;
 
   @include media(desktop) {
     padding-top: $spacing-11;
@@ -46,7 +46,7 @@
   }
 
   .paragraph-background {
-    @include product-colors('background-color', 'colorPrimary');
+    background-color: $grey-light;
   }
 
   .field--name-title {
@@ -58,7 +58,7 @@
 }
 
 .paragraph--type--product-information + .paragraph--type--application-advice {
-  background-color: $earth-10;
+  background-color: $grey-light;
 }
 
 /* Application Guidelines - Minisites Accordion Paragraph */
@@ -68,7 +68,6 @@
   }
 
   .field--name-title {
-    @include product-colors('color', 'colorPrimary');
     margin: 0 auto $spacing-2;
   }
 
@@ -86,6 +85,6 @@
   }
 
   .field--name-accordion-item {
-    background-color: $earth-10;
+    background-color: $grey-light;
   }
 }

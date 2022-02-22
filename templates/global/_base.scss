@@ -409,12 +409,12 @@ table.sticky-header {
     @include ts-content;
     padding: $spacing-1 $spacing-2;
     font-weight: $font-weight-bold;
-    background-color: $earth-10;
+    background-color: $grey-light;
   }
 
   tr {
     &:nth-child(even) {
-      background-color: $earth-10;
+      background-color: $grey-light;
     }
   }
 

@@ -29,7 +29,7 @@
     @include ts-content;
     @include flex-col($mobile: 4, $tablet: 5, $desktop: 5);
     margin-bottom: $spacing-5;
-    color: $earth;
+    color: $grey;
   }
 
   &--form {
@@ -40,9 +40,9 @@
         @include ts-content;
         width: 100%;
         padding: rem-calc(12px) $spacing-2;
-        border: 1px solid $earth-30;
+        border: 1px solid $grey-light;
         border-radius: $border-radius;
-        color: $earth;
+        color: $grey;
         background-color: $white;
 
         @include media(tablet) {
