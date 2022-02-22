@@ -237,7 +237,7 @@ table.sticky-header {
   @include container;
   margin-top: $spacing-3;
   margin-bottom: $spacing-3;
-  padding: $form-space;
+  padding: $spacing-2 $spacing-3;
   border-radius: $border-radius;
 
   @include media(site) {
@@ -276,24 +276,21 @@ table.sticky-header {
   }
 
   &--status {
-    border-color: $messages-ok;
-    color: $messages-ok;
+    color: $messages-ok-text;
     background-color: $messages-ok-background;
   }
 
   &--warning {
-    border-color: transparent;
-    color: $body-color;
+    color: $messages-warn-text;
     background-color: $messages-warn-background;
   }
 
   &--error {
-    border-color: $messages-error;
-    color: $messages-error;
+    color: $messages-error-text;
     background-color: $messages-error-background;
 
     p.messages--error {
-      color: $body-color;
+      color: inherit;
     }
   }
 }

@@ -65,9 +65,6 @@
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
-  {% if description_display in ['after', 'invisible'] and description.content %}
-    <div class="label-input--wrapper">
-  {% endif %}
   {% if label_display in ['before', 'invisible'] %}
     {{ label }}
   {% endif %}
@@ -92,7 +89,6 @@
     </div>
   {% endif %}
   {% if description_display in ['after', 'invisible'] and description.content %}
-    </div> {# label-input--wrapper #}
     <div{{ description.attributes.addClass(description_classes) }}>
       {{ description.content }}
     </div>

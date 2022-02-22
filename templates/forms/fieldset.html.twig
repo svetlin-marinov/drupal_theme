@@ -28,6 +28,7 @@
     'form-wrapper',
   ]
 %}
+{#  Replace fieldset markup with div and span for legend for CSS styling. #}
 <div{{ attributes.addClass(classes) }}>
   {%
     set legend_span_classes = [
@@ -36,10 +37,7 @@
       required ? 'form-required',
     ]
   %}
-  {#  Always wrap fieldset legends in a <span> for CSS positioning. #}
-  {# <span{{ legend.attributes }}> #}
   <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
-  {# </span> #}
   <div class="fieldset-wrapper">
     {% if errors %}
       <div class="form-item--error-message">
