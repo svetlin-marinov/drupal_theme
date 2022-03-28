@@ -14,7 +14,7 @@
   span:not(.responsive-dropdown-trigger) {
     display: block;
     white-space: nowrap;
-    color: $grey-text;
+    color: $grey-dark;
 
     &:hover {
       color: $ocean;
@@ -62,7 +62,7 @@
           cursor: pointer;
           font-weight: $font-weight-regular;
           font-size: $font-size-normal;
-          color: $grey-text;
+          color: $grey-dark;
 
           &:hover {
             color: $ocean;
@@ -181,7 +181,7 @@
           display: block;
           padding: 0;
           font-weight: $font-weight-regular;
-          color: $grey-text;
+          color: $grey-dark;
           transition: color .2s;
         }
       }
@@ -265,10 +265,6 @@
           &:hover {
             color: $ocean;
           }
-        }
-
-        &:not(:last-child) a {
-          @include border-dotted('bottom');
         }
       }
 

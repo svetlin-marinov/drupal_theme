@@ -3,127 +3,15 @@
   $icons_path: '../../../../dist/icons/'
 );
 
-// Size of generated background
-$-side: 31px;
-$-header-width: 1249px; // 1280px site width - 31px header::after element shape
-
-// Default style, no scroll, without page navigation
 #header {
-  position: relative;
-  top: 0;
-  z-index: 6; // page-navigation has z-index: 5
-  width: 100%;
   padding: $spacing-1 0;
   background-color: $white;
-
-  @include media(site) {
-    width: auto;
-    margin-right: calc((100% - #{$max-width}) / 2 + #{$-side});
-    margin-bottom: -60px;
-
-    // Right side shape __/
-    &::after {
-      position: absolute;
-      top: 0;
-      right: -$-side;
-      display: block;
-      width: $-side;
-      height: 100%;
-      border-radius: 0 0 10px;
-      content: '';
-      background-color: inherit;
-      transform: skewX(-23grad);
-      transform-origin: 100% 0;
-    }
-
-    .rtl & {
-      margin-right: 0;
-      margin-left: calc((100% - #{$max-width}) / 2 + #{$-side});
-
-      &::after {
-        right: auto;
-        left: -$-side;
-        display: block;
-        border-radius: 0 0 0 10px;
-        transform: skewX(23grad);
-        transform-origin: 100% 0;
-      }
-    }
-  }
-
-  .path-my-adama &,
-  .path-user &,
-  .path-editor &,
-  .page-type--article &,
-  .page-type--event &,
-  .page-type--iframe &,
-  .page-type--manager &,
-  .page-type--simple-page & {
-    @include media(site) {
-      margin-bottom: 0;
-    }
-  }
-
-  // With page navigation, expand to 100%
-  &.fixed,
-  &.with-page-navigation,
-  .path-user & {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 0;
-
-    &::after {
-      content: none;
-    }
-
-    .region-header__container {
-      @include media(site) {
-        width: auto;
-        max-width: $max-width;
-        margin-right: $container-margin-site;
-        margin-left: $container-margin-site;
-      }
-
-      @include media(large) {
-        margin-right: auto;
-        margin-left: auto;
-      }
-    }
-  }
-
-  .rtl &.fixed,
-  .rtl &.with-page-navigation,
-  .rtl.path-user & {
-    margin-left: 0;
-
-    .region-header__container {
-      @include media(site) {
-        width: auto;
-        max-width: $max-width;
-        margin-right: $container-margin-site;
-        margin-left: $container-margin-site;
-      }
-
-      @include media(large) {
-        margin-right: auto;
-        margin-left: auto;
-      }
-    }
-  }
-
-  // On scroll up
-  &.fixed {
-    position: fixed;
-    top: 0;
-    z-index: 6;
-  }
 
   .region-header__container {
     position: relative;
     z-index: 1;
     display: flex;
     align-items: center;
-    max-width: $-header-width;
     margin-right: $container-margin-mobile;
     margin-left: $container-margin-mobile;
 
@@ -214,17 +102,6 @@ $-header-width: 1249px; // 1280px site width - 31px header::after element shape
     .rtl & {
       margin-right: $spacing-3;
       margin-left: 0;
-    }
-  }
-
-  // After clock on search icon in header
-  &.search-visible {
-    .menu--main,
-    .block-adama-country-selector,
-    .language-switcher-language-url,
-    .block-adama-user,
-    .hamburger-menu {
-      display: none;
     }
   }
 }

@@ -1,0 +1,8 @@
+@use '../../_sass/init' as *;
+@use '../../../dist/icons/icons.scss' with (
+  $icons_path: '../../../../dist/icons/'
+);
+
+.paragraph--type--example {
+  color: $red;
+}

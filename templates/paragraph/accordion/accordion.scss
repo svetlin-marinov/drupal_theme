@@ -75,7 +75,7 @@
     @include ts-content;
     width: calc(100% - 40px);
     margin: 0 auto $spacing-6;
-    color: $grey-text;
+    color: $grey-dark;
     overflow-wrap: break-word;
 
     @include media(tablet) {

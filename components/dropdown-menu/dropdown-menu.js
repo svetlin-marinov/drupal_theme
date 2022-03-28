@@ -22,7 +22,7 @@
 
       // Click outside dropdown controls will close dropdown menu.
       $('body').on('click',function(event) {
-        if(!$(event.target).closest('.dropdown-controls, .dropdown-navigation--controls--text, .flatpicker-range, .flatpickr-calendar, .crop-filter--search').length) {
+        if(!$(event.target).closest('.dropdown-controls').length) {
           dropdownControls.removeClass(classOpenDropdownControls);
           dropwdownMenu.removeClass(classOpenDropDown);
         }

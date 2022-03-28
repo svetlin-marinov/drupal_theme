@@ -71,7 +71,6 @@
  */
 #}
 
-{{ attach_library('ffw_theme/sharing-block') }}
 {{ attach_library('ffw_theme/article') }}
 {{ attach_library('ffw_theme/node-article-full') }}
 
@@ -86,33 +85,34 @@
   ]
 %}
 
-{% set articleDate = node.getCreatedTime|format_date({'pattern', 'd M Y'}) %}
-
-
 <article{{ attributes.addClass(classes) }}>
-  <div class="container">
-    <div class="layout-sidebar--right">
-      <div{{ content_attributes.addClass('node-content layout-sidebar--right--content') }}>
-        <h1 class="node-content--heading">{{ label }}</h1>
 
-        {% if display_submitted %}
-          <div class="node-content--meta article--meta">
-          {{ content.field_tags }}
-            <div class="meta-date">{{ articleDate }}</div>
-          </div>
-        {% endif %}
-        <div class="visible-desktop">{{ content.field_image }}</div>
-        {{ content.body }}
-        {{ content.article_paragraphs }}
-        {{ content.related_articles_main }}
+  {{ title_prefix }}
+  {% if label and not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if display_submitted %}
+    <footer class="node__meta">
+      {{ author_picture }}
+      <div{{ author_attributes.addClass('node-submitted') }}>
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ metadata }}
       </div>
-      {% if content.join_myadama_sidebar or content.related_articles_sidebar %}
-        <div class="layout-sidebar--right--sidebar">
-          {{ content.join_myadama_sidebar }}
-          {{ content.newsletter_sidebar }}
-          {{ content.related_articles_sidebar }}
-        </div>
-      {% endif %}
-    </div>
+    </footer>
+  {% endif %}
+
+  <div{{ content_attributes.addClass('node-content') }}>
+    {{ content|without('comment') }}
   </div>
+
+  {% if content.comment %}
+    <div class="node-comments">
+      {{ content.comment }}
+    </div>
+  {% endif %}
 </article>
+

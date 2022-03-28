@@ -22,6 +22,7 @@
     "build:css": "npm run build:sprite && npm run build:css:components && npm run build:css:theme && npm run vendorprefixes",
     "build:css:dev": "npm run lint:scss && sass 'templates/':'dist/theme/' && sass 'components/':'dist/components/' && npm run vendorprefixes",
     "build": "npm run build:css && npm run build:js",
+    "build:dev": "npm run build:css:dev && npm run build:js:dev",
     "watch:js:components": "npm run lint:js:components && babel --watch components/ --out-dir dist/components/ --source-maps true --verbose",
     "watch:js:theme": "npm run lint:js:theme && babel templates/ --out-dir dist/theme/ --source-maps true --watch --verbose",
     "watch:js": "npm run watch:js:components & npm run watch:js:theme",

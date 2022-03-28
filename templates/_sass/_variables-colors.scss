@@ -15,15 +15,15 @@ $green-secondary: #7db41e;
 $orange: #f90;
 $orange-secondary: #eaa23d;
 $grey: #878787;
-$grey-light: #f9f9f9;
+$grey-light: #ccc;
 $grey-dark: #5f5f5f;
 
 /* Colors */
-$body-color: $grey-text;
+$body-color: $grey-dark;
 $body-background-color: $white;
 $overlay-background: rgba(0, 0, 0, .5);
 $link-color: $blue;
-$link-hover-color: $blue;
+$link-hover-color: $blue-secondary;
 $selection-color: $body-background-color;
 $selection-bg: $body-color;
 $messages-ok-text: $white;
@@ -36,9 +36,9 @@ $messages-error-background: $red;
 // Form elements colors
 $button-color: $white;
 $label-color: $grey;
-$input-color: $grey-text;
+$input-color: $grey-dark;
 $input-bg: $white;
 $input-border: $grey-light;
-$input-color-active: $grey-text;
-$input-border-hover: $grey-text;
-$input-border-active: $grey-text;
+$input-border-hover: $grey-dark;
+$input-border-active: $grey-dark;
+$input-color-active: $grey-dark;

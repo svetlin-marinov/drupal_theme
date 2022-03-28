@@ -22,7 +22,7 @@
 
     .pager__item {
       position: relative;
-      color: $grey-text;
+      color: $grey-dark;
 
       &:not(:last-child) {
         margin-right: $spacing-1;
@@ -50,7 +50,7 @@
       a {
         padding: 0 $spacing-1;
         text-decoration: none;
-        color: $grey-text;
+        color: $grey-dark;
       }
 
       .prev-btn {

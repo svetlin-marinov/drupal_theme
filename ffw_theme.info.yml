@@ -112,7 +112,6 @@ regions:
   header: Header
   primary_menu: Primary menu
   secondary_menu: Secondary menu
-  page_navigation: Page navigation
   breadcrumb: Breadcrumb
   highlighted: Highlighted content region
   help: Dynamic help text - mostly for admin pages
@@ -121,4 +120,3 @@ regions:
   sidebar_second: Second sidebar
   below_content: Below main content
   footer: Footer
-  below_footer: Below footer

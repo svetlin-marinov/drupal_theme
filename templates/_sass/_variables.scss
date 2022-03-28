@@ -43,13 +43,13 @@ $spacing-22: $base-size * 22; // 176px
 $spacing-23: $base-size * 23; // 184px
 $spacing-24: $base-size * 24; // 192px
 
+/* Forms */
 $form-space: $spacing-4;
 
-/* Inputs fields and buttons */
-$input-line-height: $spacing-3;
-$input-padding: $spacing-2;
-$input-height: $spacing-4;
-$search-input-height: u.rem-calc(42px);
+// Inputs fields and buttons
+$input-line-height: $spacing-2;
+$input-padding: $spacing-1;
+$input-height: $spacing-3;
 
 /* Sizes, grid */
 $max-width: 1280px;

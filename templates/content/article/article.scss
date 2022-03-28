@@ -3,10 +3,7 @@
 .node-article--list-style {
   &,
   .articles-by-category--grid & {
-    .node--type-article,
-    .node--type-external-article {
-      @include node-article--list-style;
-
+    .node--type-article {
       .article-block__image {
         @include media(tablet) {
           width: rem-calc(200px);

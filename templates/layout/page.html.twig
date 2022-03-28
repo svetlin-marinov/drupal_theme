@@ -42,28 +42,29 @@
  * @see html.html.twig
  */
 #}
+{% set main_attributes = create_attribute() %}
+{%
+  set classes_main = [
+    page.sidebar_first ? 'layout-sidebar--first',
+    page.sidebar_second ? 'layout-sidebar--second',
+  ]
+%}
+
 <div class="layout-container">
   {{ page.header }}
-  {{ page.page_navigation }}
   {{ page.breadcrumb }}
   {{ page.highlighted }}
   {{ page.help }}
 
   <a id="main-content" tabindex="-1"></a>
-  <main role="main">
+  <main{{ main_attributes.addClass(classes_main) }} role="main">
     {{ page.sidebar_first }}
     {{ page.content }}
     {{ page.sidebar_second }}
   </main>
 
   {{ page.below_content }}
-  {% if show_legal_french_banner %}
-    <div class="french-lega-area" style="text-align: center">
-      <img src="/{{ directory }}/img/french_legal_banner.jpg" alt="Classement SGH07(exclam); SGH09(pollut)" />
-    </div>
-  {% endif %}
   <div class="footer-container">
     {{ page.footer }}
-    {{ page.below_footer }}
   </div>
 </div>{# /.layout-container #}

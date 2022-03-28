@@ -13,8 +13,7 @@ global:
       dist/theme/layout/layout.css: {}
       dist/theme/layout/footer/footer.css: {}
       dist/theme/layout/header/header.css: {}
-  js:
-    dist/theme/forms/forms.js: {}
+  # js:
 
 # Example external library.
 # webfonts:
@@ -64,7 +63,7 @@ page-navigation:
     dist/components/page-navigation/page-navigation.js: {}
   dependencies:
     - core/jquery
-    - core/once
+    - core/jquery.once
     - core/drupal.debounce
 
 header:
@@ -153,8 +152,6 @@ local-tasks:
   css:
     component:
       dist/theme/block/local-tasks/block-local-tasks-block.css: {}
-  js:
-    dist/theme/block/local-tasks/block-local-tasks-block.js: {  }
 
 actions-block:
   css:
@@ -187,9 +184,8 @@ my-crops:
   js:
     dist/theme/my-ffw_theme/feed/my-crops.js: {}
   dependencies:
-    - core/once
     - core/jquery
-    # - core/jquery.once
+    - core/jquery.once
 
 block-page-title:
   css:
@@ -207,7 +203,7 @@ local-actions:
   dependencies:
     - core/jquery
     - core/drupal
-    - core/once
+    - core/jquery.once
 
 # =======
 # Paragraphs
@@ -228,8 +224,10 @@ accordion-item:
     - core/drupal
     - core/once
 
-example:
+paragraph--example:
   css:
+    component:
+      dist/theme/paragraph/example/paragraph--example.css: {}
 
 resellers_map:
   js:
@@ -480,19 +478,6 @@ webform-contact:
     theme:
       dist/theme/webform/contact/webform--contact.css: {}
 
-user-questionnaire-flow:
-  css:
-    component:
-      dist/theme/my-ffw_theme/registration/user-questionnaire-flow.css: {}
-      dist/icons/crops/icons_classes.css: {}
-  js:
-    dist/theme/my-ffw_theme/registration/select-crops.js: {}
-
-account-settings:
-  css:
-    component:
-      dist/theme/my-ffw_theme/account-settings/account-settings.css: {}
-
 # =======
 # External libraries
 # =======
@@ -506,25 +491,6 @@ fresco:
     /libraries/fresco/dist/js/fresco.min.js: { scope: footer }
   dependencies:
     - core/jquery
-
-# Jszip Library
-jszip:
-  version: VERSION
-  js:
-    /libraries/jszip/dist/jszip.min.js: { scope: footer }
-    /libraries/jszip/vendor/FileSaver.js: { scope: footer }
-
-jszip_ffw_theme:
-  version: VERSION
-  js:
-    js/jszip-ffw_theme.js: {}
-  dependencies:
-    - ffw_theme/jszip
-
-jszip-utils:
-  version: VERSION
-  js:
-    /libraries/jszip-utils/dist/jszip-utils.min.js: { scope: footer }
 
 # Slider Library
 splide:
@@ -648,9 +614,9 @@ dropdown-menu:
   js:
     dist/components/dropdown-menu/dropdown-menu.js: {}
   dependencies:
-    - core/drupal
-    - core/once
     - core/jquery
+    - core/jquery.once
+    - core/drupal
 
 hero-standard:
   css:

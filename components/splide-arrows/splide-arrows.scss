@@ -24,7 +24,7 @@
     width: $spacing-4;
     height: $spacing-4;
     padding: 0;
-    border: rem-calc(2px) solid $grey-text;
+    border: rem-calc(2px) solid $grey-dark;
     border-radius: 100%;
     text-align: center;
     background: transparent;
@@ -49,10 +49,10 @@
       opacity: .2;
 
       &:hover {
-        border-color: $grey-text;
+        border-color: $grey-dark;
 
         svg {
-          fill: $grey-text;
+          fill: $grey-dark;
         }
       }
     }
@@ -79,7 +79,7 @@
       display: block;
       width: rem-calc(15px);
       height: rem-calc(25px);
-      fill: $grey-text;
+      fill: $grey-dark;
       transition: fill $transition-time;
     }
   }

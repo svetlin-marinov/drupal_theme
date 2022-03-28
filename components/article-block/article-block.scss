@@ -7,12 +7,12 @@
   &__title {
     @include ts-article--content;
     margin-bottom: 0;
-    color: $grey-text;
+    color: $grey-dark;
   }
 
   &__subtitle {
     @include ts-content;
-    color: $grey-text;
+    color: $grey-dark;
   }
 
   &__image {

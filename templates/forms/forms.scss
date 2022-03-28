@@ -33,7 +33,6 @@ textarea {
 [type='submit'],
 [type='button'],
 [type='reset'],
-[type='file'],
 button,
 .button {
   @include button;
@@ -49,8 +48,8 @@ input[type='email'],
 input[type='tel'],
 input[type='password'],
 input[type='number'],
-input[type='search'] {
-  @include box-shadow('small');
+input[type='search'],
+input[type='file'] {
   box-sizing: border-box;
   padding: $input-padding;
   border: 1px solid $input-border;
@@ -90,9 +89,9 @@ input[type='number'] {
 
 select {
   @extend %icon-bg--arrow-down--menu;
-  padding-right: $spacing-4;
+  padding-right: $spacing-3;
   background-repeat: no-repeat;
-  background-position: calc(100% - 20px) 50%;
+  background-position: calc(100% - 12px) 50%;
   background-size: 12px auto;
   -webkit-appearance: none;
   appearance: none;
@@ -136,7 +135,7 @@ textarea {
   &--description {
     @include ts-tiny;
     padding: $spacing-2 0 0;
-    color: $earth;
+    color: $grey;
   }
 }
 
@@ -175,8 +174,12 @@ textarea {
     display: inline-block;
     padding-left: $spacing-4;
     cursor: pointer;
-    color: $grey-text;
+    color: $grey-dark;
     background-size: rem-calc(22px) auto;
+
+    &:hover {
+      @extend %icon-bg--checkbox--hover;
+    }
 
     .rtl & {
       padding-right: $spacing-4;
@@ -186,7 +189,7 @@ textarea {
   }
 
   a {
-    color: $grey-text;
+    color: $grey-dark;
   }
 
   input {
@@ -206,7 +209,7 @@ textarea {
     display: inline-block;
     padding-left: $spacing-4;
     cursor: pointer;
-    color: $grey-text;
+    color: $grey-dark;
     background-size: rem-calc(22px) auto;
 
     &::before {
@@ -215,7 +218,7 @@ textarea {
       left: 0;
       width: rem-calc(20px);
       height: rem-calc(20px);
-      border: 1px solid $earth;
+      border: 1px solid $input-border;
       border-radius: 100%;
       content: '';
       background-color: $white;
@@ -235,6 +238,10 @@ textarea {
       transform: scale(0);
     }
 
+    &:hover::before {
+      border-color: $input-border-hover;
+    }
+
     .rtl & {
       padding-right: $spacing-4;
       padding-left: 0;
@@ -252,7 +259,7 @@ textarea {
   }
 
   a {
-    color: $grey-text;
+    color: $grey-dark;
   }
 
   input {
@@ -397,7 +404,6 @@ input[type='file'] {
 
 // Horizontal Rule
 hr.webform-horizontal-rule {
-  @include border-dotted('bottom');
   margin: $spacing-1 0 $spacing-5;
   border-top: 0;
 }

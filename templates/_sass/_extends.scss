@@ -4,7 +4,7 @@
 
 /* SASS extends */
 %link-hover {
-  text-decoration: none;
+  text-decoration: underline;
   color: c.$link-hover-color;
   transition: color math.div(v.$transition-time, 2);
 }

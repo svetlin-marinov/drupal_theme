@@ -1,4 +1,4 @@
-(function ($, Drupal, once) {
+(function ($, Drupal) {
   Drupal.behaviors.header = {
     attach: function (context) {
 
@@ -7,21 +7,8 @@
       const closeMenu = $('.menu-close-icon', context);
       const hamburgerToggle = $('.hamburger-menu', context);
       const menuDropdown = $('.menu--main--dropdown', menuMain);
-      const subMenu = $('.sub-menu', menuMain);
       const responsiveDropdownTrigger = $('.responsive-dropdown-trigger', menuMain);
       const pageBody = $(document.body);
-
-      /* Calculate number of list items in dropdown, and add a class to determine the number of columns (on large screens only) */
-      subMenu.each(function () {
-        var numChildren = Math.ceil($(this).children('li').length);
-        if (numChildren <= 6) {
-          $(this).addClass('one-col');
-        } else if (numChildren > 6 && numChildren <= 12) {
-          $(this).addClass('two-cols');
-        } else {
-          $(this).addClass('three-cols');
-        }
-      });
 
       /* Toggle hamburger menu */
       hamburgerToggle.on('click', function () {
@@ -46,8 +33,7 @@
       /* Trigger dropdown menu from mobile (on click) */
       responsiveDropdownTrigger.each(function () {
         var triggerLink = $(this);
-        // triggerLink.once().on('click', function () {
-        $(once('triggerLink', triggerLink)).on('click', function () {
+        triggerLink.once().on('click', function () {
           triggerLink.toggleClass('dropdown-arrow-down');
           var subMenuDropdown = triggerLink.next('.menu--main--dropdown');
           subMenuDropdown.toggleClass('visible');
@@ -63,4 +49,4 @@
         });
     },
   };
-})(jQuery, Drupal, once);
+})(jQuery, Drupal);

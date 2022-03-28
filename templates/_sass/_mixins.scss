@@ -118,6 +118,7 @@
 
 @mixin button($icon: false, $icon-before: false) {
   @include button-template($icon, $icon-before);
+
   @extend %button-ocean;
 
   @if($icon) {
@@ -170,44 +171,6 @@
     @include m.media(desktop) {
       width: u.rem-calc(65px);
       height: u.rem-calc(65px);
-    }
-  }
-}
-
-@mixin border-dotted($position: 'top') {
-  border-#{$position}: 2px dotted c.$grey-light;
-}
-
-// List style article.
-@mixin node-article--list-style {
-  @include border-dotted('bottom');
-  margin-bottom: v.$spacing-3;
-  padding-bottom: v.$spacing-3;
-
-  @include m.media(tablet) {
-    margin-bottom: v.$spacing-4;
-  }
-
-  .article-block {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .article-block__image {
-    flex-shrink: 0;
-    width: u.rem-calc(125px);
-    margin-right: v.$spacing-2;
-    margin-bottom: 0;
-
-    .rtl & {
-      margin-right: 0;
-      margin-left: v.$spacing-2;
-    }
-
-    img {
-      border-radius: v.$border-radius;
     }
   }
 }
