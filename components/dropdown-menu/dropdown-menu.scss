@@ -50,8 +50,7 @@
   }
 }
 
-.dropdown-menu,
-.form-item-sort-by .form-select {
+.dropdown-menu {
   @include visually-hidden;
   @include dropdown;
   transition: opacity $transition-time--fast ease-in;
@@ -127,28 +126,5 @@
       text-decoration: none;
       color: $grey-dark;
     }
-
-    .ajax-progress {
-      position: absolute;
-      top: 50%;
-      right: rem-calc(20px);
-      transform: translateY(-50%);
-
-      .rtl & {
-        right: auto;
-        left: rem-calc(20px);
-      }
-    }
-  }
-
-  .region-header &::before { // speech bubble arrow shape
-    @extend %icon-icon--dropdown-menu--arrow;
-    position: absolute;
-    top: rem-calc(-6px);
-    left: $spacing-3;
-    display: block;
-    width: rem-calc(10px);
-    height: rem-calc(6px);
-    background-size: 100% auto;
   }
 }

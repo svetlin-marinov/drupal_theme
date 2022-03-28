@@ -143,10 +143,6 @@ language:
     theme:
       dist/components/dropdown-menu/dropdown-menu.css: {}
       dist/theme/block/language/language.css: {}
-  js:
-    dist/theme/block/language/language.js: {}
-  dependencies:
-    - core/jquery
 
 local-tasks:
   css:

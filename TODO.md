@@ -2,7 +2,8 @@
 2. Separate CSS files for RTL layout
 3. Compress multiple images or folders with `imagemin`.
 4. Styleguide
-5. Update /README.md
+5. Dropdown menu component - default style, markup, template
+6. Update /README.md
    1. Breakpoints
    2. Grid
    3. Icons sprite
