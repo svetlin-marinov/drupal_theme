@@ -32,9 +32,15 @@
 // Wrapper of flex items
 @mixin flex-container {
   display: flex;
-  max-width: calc(#{$max-width} + #{$gap});
-  margin-right: -($gutter);
-  margin-left: -($gutter);
+
+  @if $flex-gap {
+    gap: $gap;
+  }
+  @else {
+    max-width: calc(#{$max-width} + #{$gap});
+    margin-right: -($gutter);
+    margin-left: -($gutter);
+  }
 }
 
 // SASS placeholder for flex columns
@@ -57,9 +63,10 @@
 // Set width of element based on column width
 // @include flex-cols($mobile: 4, $desktop: 5)
 @mixin flex-col($args...) {
-  // flex: 0 1 $flex-basis;
-  margin-right: $gutter;
-  margin-left: $gutter;
+  @if not $flex-gap {
+    margin-right: $gutter;
+    margin-left: $gutter;
+  }
 
   @each $device, $cols in meta.keywords($args) {
     $columns: map-get($grid-columns, $device);
@@ -68,7 +75,13 @@
 
     @if (meta.type-of($cols) == 'number' and $cols > 0 and $cols <= $columns) {
       $col-width: math.percentage(math.div($cols, $columns));
-      $flex-basis: calc(#{$col-width} - #{$gap});
+
+      @if $flex-gap {
+        $flex-basis: $col-width;
+      }
+      @else {
+        $flex-basis: calc(#{$col-width} - #{$gap});
+      }
     }
     @else if (meta.type-of($cols) == 'string' and $cols == 'auto') {
       $flex-basis: auto;

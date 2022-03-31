@@ -3,7 +3,7 @@
 3. Compress multiple images or folders with `imagemin`.
 4. Styleguide
 5. Dropdown menu component - default style, markup, template
-6. Update /README.md
+6. Update README.md with information about:
    1. Breakpoints
    2. Grid
    3. Icons sprite

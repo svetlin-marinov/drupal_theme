@@ -63,6 +63,11 @@ $container-margin-desktop: 60px;
 $container-margin-site: 80px;
 $container-margin-large: auto;
 
+// Spec: https://www.w3.org/TR/css-align-3/#gaps
+// Currently supported only in latest browser versions.
+// https://caniuse.com/flexbox-gap
+$flex-gap: true;
+
 $grid-columns: (
   'mobile': 4,
   'tablet': 8,

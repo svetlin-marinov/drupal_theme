@@ -45,8 +45,10 @@
 {% set main_attributes = create_attribute() %}
 {%
   set classes_main = [
-    page.sidebar_first ? 'layout-sidebar--first',
-    page.sidebar_second ? 'layout-sidebar--second',
+    page.sidebar_first and not page.sidebar_second ? 'layout--sidebar-first',
+    page.sidebar_second and not page.sidebar_first ? 'layout--sidebar-second',
+    not page.sidebar_first and not page.sidebar_second ? 'layout--no-sidebar',
+    page.sidebar_first and page.sidebar_second ? 'layout--sidebar-both',
   ]
 %}
 
@@ -55,13 +57,15 @@
   {{ page.breadcrumb }}
   {{ page.highlighted }}
   {{ page.help }}
-
   <a id="main-content" tabindex="-1"></a>
-  <main{{ main_attributes.addClass(classes_main) }} role="main">
-    {{ page.sidebar_first }}
-    {{ page.content }}
-    {{ page.sidebar_second }}
-  </main>
+
+  <div class="container">
+    <main{{ main_attributes.addClass(classes_main) }} role="main">
+      {{ page.sidebar_first }}
+      {{ page.content }}
+      {{ page.sidebar_second }}
+    </main>
+  </div>
 
   {{ page.below_content }}
   <div class="footer-container">

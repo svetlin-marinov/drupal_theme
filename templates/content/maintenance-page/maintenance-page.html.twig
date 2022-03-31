@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Bartik's theme implementation to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ *
+ * @see template_preprocess_maintenance_page()
+ */
+ #}
+{{ attach_library('adama/maintenance-page') }}
+
+<header class="maintenance-page--header" id="header" role="banner">
+  <img src="{{ logo }}" alt="{{ 'Adama' }}" class="maintenance-page--logo" />
+</header>
+<main class="maintenance-page--content" role="main">
+  {{ page.highlighted }}
+  <div class="maintenance-page--content--icon icon-bg--service-unavailable"></div>
+  {% if title %}
+    <h1 class="maintenance-page--content--title" id="page-title">{{ title }}</h1>
+  {% endif %}
+  <p class="maintenance-page--content--text">{{ page.content }}</p>
+</main>
