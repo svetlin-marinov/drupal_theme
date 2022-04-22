@@ -3,7 +3,29 @@
   $icons_path: '../../../../dist/icons/'
 );
 
-@import 'footer-layout.scss';
-@import 'footer-newsletter.scss';
-@import 'footer-legal-menu.scss';
-@import 'footer-menu.scss';
+.region-footer {
+  background-color: $ocean;
+
+  .footer--content { // .flex-container
+    flex-direction: column;
+    align-items: center;
+
+    @include media(desktop) {
+      align-items: flex-start;
+    }
+
+    @include media(site) {
+      flex-flow: row wrap;
+    }
+  }
+
+  // Footer Menu
+  // .menu--footer {
+  //   @include flex-col($desktop: 12);
+  //   margin-bottom: $spacing-5;
+
+  //   @include media(site) {
+  //     @include flex-col($desktop: 8);
+  //   }
+  // }
+}

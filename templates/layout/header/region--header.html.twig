@@ -12,18 +12,16 @@
  * @see template_preprocess_region()
  */
 #}
-{%  extends "@ffw_theme/layout/region.html.twig"  %}
+{% extends "@ffw_theme/layout/region.html.twig"  %}
 
 {% block content %}
-{{ attach_library('ffw_theme/header') }}
+{# {{ attach_library('ffw_theme/header') }} #}
 {{ attach_library('ffw_theme/dropdown-menu') }}
 {{ attach_library('ffw_theme/language') }}
 
   <header{{ attributes.addClass(classes).setAttribute('id', region_id) }}>
     <div class="region-header__container">
       {{ content }}
-      <span class="hamburger-menu icon-icon--hamburger-menu"></span>
-      <span class="menu-close-icon icon-icon--close"></span>
     </div>
   </header>
 {% endblock %}

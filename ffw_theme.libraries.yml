@@ -52,6 +52,8 @@ main-navigation:
   css:
     component:
       dist/theme/navigation/main-navigation/menu--main.css: {}
+  js:
+    dist/theme/navigation/main-navigation/menu--main.js: {}
 
 page-navigation:
   css:
@@ -66,12 +68,7 @@ page-navigation:
     - core/jquery.once
     - core/drupal.debounce
 
-header:
-  js:
-    dist/theme/layout/header/header.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal.debounce
+#header:
 
 pager:
   css:
