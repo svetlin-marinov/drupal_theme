@@ -22,27 +22,13 @@
   margin-bottom: $spacing-1;
   color: $grey;
 
-  .meta-date,
-  .field--name-time-to-read {
+  .meta-date {
     display: inline-block;
     padding-left: rem-calc(6px);
-
-    &::before {
-      display: inline-block;
-      margin-right: rem-calc(6px);
-      content: '\00B7';
-      font-size: 1rem;
-      line-height: .8;
-    }
 
     .rtl & {
       padding-right: rem-calc(6px);
       padding-left: 0;
-
-      &::before {
-        margin-right: 0;
-        margin-left: rem-calc(6px);
-      }
     }
   }
 
