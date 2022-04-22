@@ -41,15 +41,6 @@
   }
 }
 
-.menu--main {
-  margin-right: auto;
-
-  .rtl & {
-    margin-right: 0;
-    margin-left: auto;
-  }
-}
-
 body.mobile-menu-open {
   overflow: hidden;
 }

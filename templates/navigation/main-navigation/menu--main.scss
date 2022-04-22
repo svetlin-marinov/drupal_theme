@@ -5,23 +5,30 @@
 
 // Common styles for desktop and mobile
 .menu--main {
+  margin-right: auto;
+
+  .rtl & {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
   .menu-item {
     position: relative;
     display: block;
-  }
 
-  a,
-  span:not(.responsive-dropdown-trigger) {
-    display: block;
-    white-space: nowrap;
-    color: $grey-dark;
+    > a,
+    > span:not(.responsive-dropdown-trigger) { // Menu items without links are spans.
+      display: block;
+      white-space: nowrap;
+      color: $grey-dark;
 
-    &:hover {
-      color: $ocean;
-    }
+      &:hover {
+        color: $ocean;
+      }
 
-    &.is-active {
-      font-weight: $font-weight-bold;
+      &.is-active {
+        font-weight: $font-weight-bold;
+      }
     }
   }
 }
@@ -30,62 +37,18 @@
   @extend %icon-icon--arrow-down--menu;
 }
 
-
-.mobile-menu-toggle {
-  display: flex;
-  margin-left: $spacing-3;
-  cursor: pointer;
-
-  @include media(site) {
-    display: none;
-  }
-
-  .rtl & {
-    margin-right: $spacing-3;
-    margin-left: 0;
-  }
-
-  &::before {
-    @extend %icon-icon--hamburger-menu;
-    width: rem-calc(13px);
-    height: rem-calc(13px);
-
-  }
-
-  /* Responsive menu toggle on/off */
-  &.mobile-menu-open {
-    position: absolute;
-    top: $spacing-1-5;
-    right: $container-margin-mobile;
-    align-items: center;
-    justify-content: center;
-    width: $spacing-3;
-    height: $spacing-3;
-
-    .rtl & {
-      right: auto;
-      left: $container-margin-mobile;
-    }
-
-    &::before {
-      @extend %icon-icon--close;
-    }
-  }
-}
-
-
 // Desktop styles
-@include media(site) {
+@include media(desktop) {
   .menu--main {
     position: relative;
     display: flex;
 
-    > .menu {
+    .menu.level-0 {
       display: flex;
       flex-direction: row;
       align-items: center;
 
-      .menu-item {
+      > .menu-item {
         display: block;
 
         &:not(:last-child) {
@@ -102,7 +65,6 @@
         > span:not(.responsive-dropdown-trigger) {
           display: block;
           margin-bottom: 0;
-          padding: rem-calc(9px) 0;
           cursor: pointer;
           font-weight: $font-weight-regular;
           font-size: $font-size-normal;
@@ -130,7 +92,7 @@
               visibility: visible;
               display: block;
               min-width: rem-calc(370px);
-              padding-top: rem-calc(18px);
+              padding-top: rem-calc(6px);
               border-radius: $border-radius;
               opacity: 1;
             }
@@ -166,7 +128,7 @@
 
       &::before {
         position: absolute;
-        top: 12px;
+        top: 0;
         right: auto;
         left: $spacing-3;
         display: block;
@@ -192,7 +154,7 @@
     .sub-menu {
       display: block;
       margin: 0;
-      padding: $spacing-2 $spacing-13 $spacing-5 $spacing-3;
+      padding: $spacing-2;
       border-radius: $border-radius;
       overflow: hidden;
       background-color: $grey-light;
@@ -236,7 +198,7 @@
 }
 
 @include media(large) {
-  .menu--main > .menu .menu-item {
+  .menu--main .menu.level-0 > .menu-item {
     &:not(:last-child) {
       margin-right: $spacing-4;
 
@@ -248,9 +210,52 @@
 }
 
 // Mobile styles
+/* Mobile menu toggle on/off */
+.mobile-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $spacing-3;
+  height: $spacing-3;
+  margin-left: $spacing-3;
+  cursor: pointer;
+
+  @include media(desktop) {
+    display: none;
+  }
+
+  .rtl & {
+    margin-right: $spacing-3;
+    margin-left: 0;
+  }
+
+  &::before {
+    @extend %icon-icon--hamburger-menu;
+    width: rem-calc(13px);
+    height: rem-calc(13px);
+  }
+
+  // Close button
+  &.mobile-menu-open {
+    position: absolute;
+    top: 0;
+    right: $container-margin-mobile;
+
+    .rtl & {
+      right: auto;
+      left: $container-margin-mobile;
+    }
+
+    &::before {
+      @extend %icon-icon--close;
+    }
+  }
+}
+
 @include media-max(desktop) {
   .menu--main {
     display: block;
+    padding-top: $spacing-3;
 
     .mobile-menu-open & {
       width: 100%;
@@ -258,7 +263,7 @@
     }
 
     // First level menu
-    .menu {
+    .menu.level-0 {
       display: none;
 
       .mobile-menu-open & {
@@ -348,8 +353,8 @@
       }
 
       &::before {
-        width: rem-calc(14px);
-        height: rem-calc(14px);
+        width: rem-calc(13px);
+        height: rem-calc(13px);
       }
 
       .rtl & {

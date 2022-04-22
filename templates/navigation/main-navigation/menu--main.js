@@ -15,7 +15,6 @@
           removeResponsiveMenuStyles();
         }
         else {
-          console.log(mobileMenuToggle);
           addResponsiveMenuStyles();
         }
       });
