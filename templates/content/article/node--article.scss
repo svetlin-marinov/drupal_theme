@@ -1,0 +1,10 @@
+@use '../../_sass/init' as *;
+
+// Common styles for articles
+.node--type-article {
+  .node-meta {
+    @include ts-mini;
+    margin-bottom: $spacing-1;
+    color: $grey;
+  }
+}

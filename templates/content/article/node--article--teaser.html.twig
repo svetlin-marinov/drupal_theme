@@ -70,6 +70,10 @@
  *   in different view modes.
  */
 #}
+
+{{ attach_library('ffw_theme/node--article') }}
+{{ attach_library('ffw_theme/node--article--teaser') }}
+
 {%
   set classes = [
     'node',
@@ -81,16 +85,11 @@
   ]
 %}
 
-{{ attach_library('ffw_theme/article') }}
-
 <article{{ attributes.addClass(classes) }}>
   <a{{ content_attributes.addClass('node-content') }} href="{{ url }}" rel="bookmark">
-    {% include '@components/article-block/article-block.twig' with {
-      'article_image': content.hero_image,
-      'article_category': content.article_category,
-      'article_time_to_read': content.time_to_read,
-      'article_date': node.getCreatedTime()|format_date('article_date'),
-      'article_title': label,
-    } %}
+    {{ content.field_image }}
+    <div class="node-meta">{{ date }}</div>
+    <h3 class="article-title">{{ label }}</h3>
+    {{ content.body }}
   </a>
 </article>

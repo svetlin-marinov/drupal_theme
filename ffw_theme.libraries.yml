@@ -96,15 +96,20 @@ search-page:
 # =======
 # Content
 # =======
-article:
+node--article:
   css:
     component:
-      dist/theme/content/article/article.css: {}
+      dist/theme/content/article/node--article.css: {}
 
-node-article-full:
+node--article--full:
   css:
     component:
-      dist/theme/content/article/node-article-full.css: {}
+      dist/theme/content/article/node--article--full.css: {}
+
+node--article--teaser:
+  css:
+    component:
+      dist/theme/content/article/node--article--teaser.css: {}
 
 # Basic page
 node-page:
@@ -145,11 +150,6 @@ related-product-item:
   css:
     component:
       dist/components/related-product-item/related-product-item.css: {}
-
-article-block:
-  css:
-    component:
-      dist/components/article-block/article-block.css: {}
 
 facet-blocks:
   css:

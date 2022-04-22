@@ -71,8 +71,8 @@
  */
 #}
 
-{{ attach_library('ffw_theme/article') }}
-{{ attach_library('ffw_theme/node-article-full') }}
+{{ attach_library('ffw_theme/node--article') }}
+{{ attach_library('ffw_theme/node--article--full') }}
 
 {%
   set classes = [
@@ -89,14 +89,14 @@
 
   {{ title_prefix }}
   {% if label and not page %}
-    <h2{{ title_attributes }}>
+    <h1{{ title_attributes }}>
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
+    </h1>
   {% endif %}
   {{ title_suffix }}
 
   {% if display_submitted %}
-    <footer class="node__meta">
+    <footer class="node-meta">
       {{ author_picture }}
       <div{{ author_attributes.addClass('node-submitted') }}>
         {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}

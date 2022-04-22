@@ -35,16 +35,6 @@
       color: $ocean;
     }
 
-    // Same as article-block__time-category
-    &--meta {
-      margin-bottom: $spacing-3;
-      font-size: $font-size-normal;
-
-      @include media(desktop) {
-        margin-bottom: $spacing-6;
-      }
-    }
-
     .field--name-hero-image {
       margin-bottom: $spacing-3;
 
