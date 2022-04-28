@@ -1,0 +1,23 @@
+@use '../../_sass/init' as *;
+@use '../../../dist/icons/icons.scss' with (
+  $icons_path: '../../../../dist/icons/'
+);
+
+.page-search {
+  // Search results list.
+  .search-index {
+    margin-bottom: $spacing-6;
+    padding-bottom: $spacing-3;
+    border-bottom: 1px solid $grey-light;
+
+    &--title {
+      margin-bottom: $spacing-1;
+    }
+
+    &--content {
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
