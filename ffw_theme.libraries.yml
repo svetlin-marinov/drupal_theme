@@ -78,20 +78,14 @@ pager:
 page-400:
   css:
     component:
-      dist/theme/content/page/page-400/page-400.css: {}
-  js:
-     dist/theme/content/page/page-400/page-400.js: {}
-  dependencies:
-    - ffw_theme/search-bar
+      dist/theme/content/page-400/page-400.css: {}
 
-search-page:
+page-search:
   css:
     component:
-      dist/theme/content/page/search-page/search-page.css: {}
-  js:
-    dist/theme/content/page/search-page/search-page.js: {}
-  dependencies:
-    - ffw_theme/search-bar
+      dist/theme/content/page-search/page-search.css: {}
+# js:
+#   dist/theme/content/page-search/page-search.js: {}
 
 # =======
 # Content

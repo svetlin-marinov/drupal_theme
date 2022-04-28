@@ -30,7 +30,6 @@
     margin-bottom: $spacing-1;
     padding: $spacing-3 $spacing-3 0 $spacing-3;
     overflow-wrap: break-word;
-    color: $ocean;
 
     p {
       margin: 0;
@@ -42,7 +41,6 @@
     @include ml-ellipsis(4);
     margin-bottom: $spacing-7;
     padding: $spacing-2 $spacing-3 0;
-    color: $grey-dark;
 
     p {
       margin-bottom: 0;

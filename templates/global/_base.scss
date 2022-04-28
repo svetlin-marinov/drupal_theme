@@ -332,6 +332,15 @@ table.sticky-header {
   overflow: hidden;
 }
 
+/**
+ * Shared CSS classes
+ */
+.node-meta {
+  @include ts-mini;
+  margin-bottom: $spacing-1;
+  color: $grey;
+}
+
 /* WYSIWYG fields */
 /* field: general description */
 .field--type-text-long,

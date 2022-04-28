@@ -1,13 +1,7 @@
 @use '../../templates/_sass/init' as *;
 
 .cards-container {
-  &--outer {
-    padding-bottom: $spacing-11;
-    background-color: $ocean;
-  }
-
-  // &--inner {}
-
+  // Title and subtitle container
   &--text {
     @include container;
     margin-bottom: $spacing-5;
@@ -19,9 +13,7 @@
   }
 
   &--title {
-    // @include flex-col($mobile: 4, $tablet: 7, $desktop: 12);
     @include ts-block--title;
-    color: $white;
 
     @include media-between('tablet', 'desktop') {
       width: col-width('tablet', 7);
@@ -29,34 +21,28 @@
   }
 
   &--subtitle {
-    // @include flex-col($mobile: 4, $tablet: 7, $desktop: 12);
     @include ts-content;
     margin-bottom: $spacing-3;
-    color: $white;
 
     @include media-between('tablet', 'desktop') {
       width: col-width('tablet', 7);
     }
   }
 
+  // Full width background container
+  // &--outer {}
+
+  // Content .container with $max-width
+  // &--inner {}
+
+  // .flex-container for flex grid items
   &--content {
-    // @include flex-container;
     @include scroll-container;
   }
 
   // Style for a card item within a card (scroll) container
   .card {
     @include scroll-container-item--large;
-
-    // &.paragraph--view-mode--three,
-    // &.node--view-mode-teaser-four {
-
-    // }
-
-    // &.paragraph--view-mode--three,
-    // &.node--view-mode-teaser-four {
-
-    // }
   }
 }
 

@@ -7,3 +7,5 @@
    1. Breakpoints
    2. Grid
    3. Icons sprite
+7. User forms
+9. Static demo page(s)

@@ -20,10 +20,10 @@
   &.is-active {
     span {
       border-radius: $spacing-1-5;
-      text-align: center;
       cursor: default;
+      text-align: center;
       color: $white;
-      background-color: $ocean;
+      background-color: $active-color;
     }
   }
 

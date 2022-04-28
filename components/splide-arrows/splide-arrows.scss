@@ -32,11 +32,11 @@
     transition: opacity $transition-time, border-color  $transition-time;
 
     &:hover {
-      border-color: $ocean;
+      border-color: $active-color;
       cursor: pointer;
 
       svg {
-        fill: $ocean;
+        fill: $active-color;
       }
     }
 
