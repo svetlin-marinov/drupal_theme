@@ -1,0 +1,17 @@
+@use '../../_sass/init' as *;
+
+.page-error {
+  padding: $spacing-5 0;
+
+  &--title {
+    text-transform: capitalize;
+  }
+
+  &--subtitle {
+    @include ts-content;
+    margin-bottom: $spacing-5;
+  }
+
+  // Search form
+  // &--form {}
+}
