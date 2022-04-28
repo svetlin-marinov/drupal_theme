@@ -4,78 +4,55 @@
 );
 
 .pager {
-  display: flex;
-  justify-content: center;
-  margin: $spacing-8 0;
+  margin: $spacing-3 0;
   list-style: none;
+}
 
-  @include media(site) {
-    justify-content: flex-start;
+.pager__items {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.pager__item {
+  display: inline-block;
+
+  &.is-active {
+    span {
+      border-radius: $spacing-1-5;
+      text-align: center;
+      cursor: default;
+      color: $white;
+      background-color: $ocean;
+    }
   }
 
-  .pager__items {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  &--number {
+    display: inline-block;
+    padding: 0 $spacing-1;
+  }
 
-    .pager__item {
-      position: relative;
-      color: $grey-dark;
+  .pager-first {
+    &::before {
+      content: '\00ab';
+    }
+  }
 
-      &:not(:last-child) {
-        margin-right: $spacing-1;
+  .pager-previous {
+    &::before {
+      content: '\2039';
+    }
+  }
 
-        .rtl & {
-          margin-right: 0;
-          margin-left: $spacing-1;
-        }
-      }
+  .pager-next {
+    &::after {
+      content: '\203A';
+    }
+  }
 
-      &.is-active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        a {
-          min-width: $spacing-3;
-          border-radius: $spacing-1-5;
-          text-align: center;
-          color: $white;
-          background-color: $ocean;
-        }
-      }
-
-      a {
-        padding: 0 $spacing-1;
-        text-decoration: none;
-        color: $grey-dark;
-      }
-
-      .prev-btn {
-        &::before {
-          width: rem-calc(10px);
-          height: rem-calc(10px);
-          transform: rotate(90deg);
-
-          .rtl & {
-            transform: rotate(-90deg);
-          }
-        }
-      }
-
-      .next-btn {
-        &::before {
-          width: rem-calc(10px);
-          height: rem-calc(10px);
-          transform: rotate(-90deg);
-
-          .rtl & {
-            transform: rotate(90deg);
-          }
-        }
-      }
+  .pager-last {
+    &::after {
+      content: '\00bb';
     }
   }
 }
