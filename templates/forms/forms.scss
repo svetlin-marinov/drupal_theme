@@ -232,7 +232,7 @@ textarea {
       height: rem-calc(14px);
       border-radius: 100%;
       content: '';
-      background-color: $ocean;
+      background-color: $active-color;
       opacity: 0;
       transition: all $transition-time--fast ease;
       transform: scale(0);
@@ -267,7 +267,7 @@ textarea {
 
     &:checked + label {
       &::before {
-        border-color: $ocean;
+        border-color: $active-color;
       }
 
       &::after {
@@ -291,7 +291,12 @@ input[type='file'] {
 .form-item--error-message {
   @include ts-mini;
   padding-top: $spacing-1;
-  color: $red;
+  color: $error-color;
+}
+
+// fieldset
+.fieldset-legend {
+  font-weight: $font-weight-bold;
 }
 
 /* Password in forms */

@@ -23,7 +23,7 @@
       color: $grey-dark;
 
       &:hover {
-        color: $ocean;
+        color: $active-color;
       }
 
       &.is-active {
@@ -71,7 +71,7 @@
           color: $grey-dark;
 
           &:hover {
-            color: $ocean;
+            color: $active-color;
           }
         }
 
@@ -312,7 +312,7 @@
           font-weight: 400;
 
           &:hover {
-            color: $ocean;
+            color: $active-color;
           }
         }
       }

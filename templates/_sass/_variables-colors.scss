@@ -1,6 +1,6 @@
 @use 'sass:string';
 
-/* Color variables */
+// Color variables
 $black: #000;
 $ocean: #176ddd;
 $ocean-secondary: #003b88;
@@ -18,7 +18,13 @@ $grey: #878787;
 $grey-light: #efefef;
 $grey-dark: #5f5f5f;
 
-/* Colors */
+$active-color: $ocean;
+$active-color-secondary: $ocean-secondary;
+$error-color: $red;
+$warn-color: $orange;
+$ok-color: $green;
+
+// Color usage
 $body-color: $grey-dark;
 $body-background-color: $white;
 $overlay-background: rgba(0, 0, 0, .5);
@@ -27,11 +33,11 @@ $link-hover-color: $blue-secondary;
 $selection-color: $body-background-color;
 $selection-bg: $body-color;
 $messages-ok-text: $white;
-$messages-ok-background: $ocean;
+$messages-ok-background: $ok-color;
 $messages-warn-text: $white;
-$messages-warn-background: $orange;
+$messages-warn-background: $warn-color;
 $messages-error-text: $white;
-$messages-error-background: $red;
+$messages-error-background: $error-color;
 
 // Form elements colors
 $button-color: $white;

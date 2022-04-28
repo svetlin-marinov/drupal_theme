@@ -25,7 +25,7 @@
       margin: 0 auto $spacing-2;
 
       &.button--danger {
-        background: $red;
+        background: $error-color;
       }
     }
   }
@@ -35,11 +35,11 @@
     padding-top: $spacing-1;
 
     .error {
-      color: $red;
+      color: $error-color;
     }
 
     .ok {
-      color: $ocean;
+      color: $active-color;
     }
   }
 

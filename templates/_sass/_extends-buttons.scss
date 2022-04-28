@@ -23,7 +23,7 @@
   &:active,
   &:focus {
     text-decoration: none;
-    background-color: $ocean-secondary;
+    background-color: $active-color-secondary;
   }
 }
 
@@ -39,7 +39,7 @@
   text-align: center;
   text-decoration: none;
   color: $button-color;
-  background-color: $ocean;
+  background-color: $active-color;
   transition: background-color $transition-time, opacity $transition-time;
 
   &[type='submit'],
@@ -60,7 +60,7 @@
   &:focus {
     text-decoration: none;
     color: $white;
-    background-color: $ocean-secondary;
+    background-color: $active-color-secondary;
   }
 }
 
