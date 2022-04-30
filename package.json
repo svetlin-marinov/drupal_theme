@@ -1,6 +1,6 @@
 {
   "name": "ffw_theme",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "scripts": {
     "lint:js:components": "eslint components --ext .js,.es6 --fix --no-error-on-unmatched-pattern",
     "lint:js:theme": "eslint templates --ext .js,.es6 --fix --no-error-on-unmatched-pattern",
@@ -56,20 +56,19 @@
     }
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.0",
-    "@babel/core": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
-    "autoprefixer": "^10.4.2",
-    "core-js": "^3.21.0",
-    "eslint": "^8.8.0",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "autoprefixer": "^10.4.5",
+    "eslint": "^8.14.0",
     "normalize.css": "^8.0.1",
-    "postcss": "^8.4.6",
+    "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",
-    "postcss-scss": "^4.0.3",
-    "sass": "^1.49.7",
-    "stylelint": "^14.3.0",
+    "postcss-scss": "^4.0.4",
+    "sass": "^1.51.0",
+    "stylelint": "^14.8.1",
     "stylelint-order": "^5.0.0",
-    "stylelint-scss": "^4.1.0",
-    "svg-sprite": "^1.5.3"
+    "stylelint-scss": "^4.2.0",
+    "svg-sprite": "^1.5.4"
   }
 }
