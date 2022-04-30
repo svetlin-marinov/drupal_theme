@@ -1,7 +1,8 @@
 @use '../../_sass/init' as *;
 
-/* Admin tabs and some buttons */
-.block-local-tasks-block {
+/* Admin links */
+.block-local-tasks-block,
+.block-local-tasks-block.contextual-region {
   position: fixed;
   top: 44%;
   right: $spacing-1;
@@ -17,24 +18,19 @@
 }
 
 .tabs {
-  // @include container;
   .local-tasks--toggle {
     @extend %button-blue;
+    width: 100%;
     margin: 0 0 $gutter;
   }
 
   ul.tabs {
     display: none;
-    padding: 0 0 $spacing-2;
+    margin: 0;
+    padding: 0;
   }
 
   &:hover {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    margin: 0;
-    padding: $spacing-2 0;
-
     ul.tabs {
       display: block;
     }
