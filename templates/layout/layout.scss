@@ -30,7 +30,7 @@
 // main {
 // }
 
-.region-header {
+#header {
   background-color: $white;
 
   &-container {
@@ -45,14 +45,7 @@ body.mobile-menu-open {
   overflow: hidden;
 }
 
-// @todo: (re)move menu account style
-.menu--account ul {
-  display: flex;
-  padding: 0;
-  list-style: none;
-}
-
-// Layout for one sidebar left in main content.
+// Layout with sidebar.
 [class*='layout--sidebar'] {
   @include flex-container;
 
@@ -63,19 +56,17 @@ body.mobile-menu-open {
   }
 }
 
-.region-sidebar-first,
-.region-sidebar-second {
+#sidebar-first,
+#sidebar-second {
   @include flex-col($mobile: 4, $tablet: 8, $desktop: 3);
+}
 
-  .region-content {
+.layout--sidebar-first,
+.layout--sidebar-second {
+  #content {
     @include flex-col($mobile: 4, $tablet: 8, $desktop: 9);
   }
 }
-
-// .layout--sidebar-first {
-//   .region-content {}
-//   .region-sidebar-first {}
-// }
 
 // .layout--sidebar-second {
 //   .region-content {}
@@ -83,7 +74,7 @@ body.mobile-menu-open {
 // }
 
 .layout--sidebar-both {
-  .region-content {
+  #content {
     @include flex-col($mobile: 4, $tablet: 8, $desktop: 6);
   }
 }
