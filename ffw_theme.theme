@@ -136,10 +136,10 @@ function ffw_theme_theme_suggestions_field_alter(array &$suggestions, array $var
 /**
  * Provide active language code for the language switcher.
  */
-// function ffw_theme_preprocess_links__language_block(&$variables) {
-//   $language_interface = \Drupal::languageManager()->getCurrentLanguage();
-//   $variables['active_language'] = $language_interface->getId();
-// }
+function ffw_theme_preprocess_links__language_block(&$variables) {
+  $language_interface = \Drupal::languageManager()->getCurrentLanguage();
+  $variables['active_language'] = $language_interface->getId();
+}
 
 /**
  * Open file link in a new tab.

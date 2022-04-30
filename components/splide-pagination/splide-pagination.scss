@@ -36,8 +36,7 @@
     }
   }
 
-  // Hide pagination with less than 4 items (image-gallery, feature-video-slider paragraphs),
-  // less than 2 items on testimonials
+  // Hide pagination with less than 4 items
   .arrows-hidden & {
     display: none;
   }
