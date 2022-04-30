@@ -55,35 +55,10 @@
     margin-top: auto;
     border-radius: 0 $spacing-3 0 0;
     cursor: pointer;
-    transform: skewX(17grad);
     transform-origin: 0 100%;
-
-    span {
-      @include ts-article--content;
-      display: flex;
-      align-items: center;
-      transform: skewX(-17grad);
-
-      &::before {
-        order: 2;
-        margin-left: rem-calc(13px);
-      }
-    }
 
     .rtl & {
       border-radius: $spacing-3 0 0 0;
-      transform: skewX(-17grad);
-
-      span {
-        transform: skewX(17grad);
-
-        &::before {
-          order: 1;
-          margin-right: rem-calc(13px);
-          margin-left: 0;
-          transform: scaleX(-1);
-        }
-      }
     }
   }
 }
