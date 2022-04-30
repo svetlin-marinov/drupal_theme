@@ -5,7 +5,7 @@ global:
     # loads stylesheets based on the SMACSS ordering of:
     # base, layout, component, state, theme
     base:
-      fonts/fonts.css: {}
+      # fonts/fonts.css: {}
       https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Sarabun:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap: { type: external }
       dist/theme/global/global.css: {}
       dist/icons/icons_classes.css: {}
@@ -43,6 +43,7 @@ global:
 #     layout:
 #       dist/theme/layout/layout.css: {}
 
+# Navigation
 navigation:
   css:
     component:
@@ -75,15 +76,22 @@ pager:
     component:
       dist/theme/navigation/pager/pager.css: {}
 
+
+# Pages
+maintenance-page:
+  css:
+    component:
+      dist/theme/pages/maintenance-page/maintenance-page.css: {}
+
 page-400:
   css:
     component:
-      dist/theme/content/page-400/page-400.css: {}
+      dist/theme/pages/page-400/page-400.css: {}
 
 page-search:
   css:
     component:
-      dist/theme/content/page-search/page-search.css: {}
+      dist/theme/pages/page-search/page-search.css: {}
 # js:
 #   dist/theme/content/page-search/page-search.js: {}
 
@@ -111,19 +119,9 @@ node-page:
     component:
       dist/theme/content/page/node-page.css: {}
 
-maintenance-page:
-  css:
-    component:
-      dist/theme/content/maintenance-page/maintenance-page.css: {}
-
 # =======
 # Blocks
 # =======
-component_block:
-  css:
-    component:
-      dist/components/block/block.css: {}
-
 system-branding:
   css:
     component:
@@ -135,28 +133,16 @@ language:
       dist/components/dropdown-menu/dropdown-menu.css: {}
       dist/theme/block/language/language.css: {}
 
+# Admin links - node edit, delete, etc.
 local-tasks:
   css:
     component:
       dist/theme/block/local-tasks/block-local-tasks-block.css: {}
 
-related-product-item:
-  css:
-    component:
-      dist/components/related-product-item/related-product-item.css: {}
-
 facet-blocks:
   css:
     component:
       dist/theme/block/facet-blocks/facet-blocks.css: {}
-
-local-actions:
-  js:
-    dist/theme/block/block-local-actions/block--local-actions-block.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
-    - core/jquery.once
 
 # =======
 # Paragraphs
@@ -175,13 +161,6 @@ user-form:
   css:
     component:
       dist/theme/user/form--user-form.css: {}
-
-# Video in popup
-media--video-in-popup:
-  version: VERSION
-  css:
-    component:
-      dist/theme/media/media--video-in-popup.css: {}
 
 # =======
 # External libraries
@@ -206,91 +185,23 @@ splide:
   js:
     /libraries/splide/dist/js/splide.min.js: { scope: footer }
 
-splide_ffw_theme:
-  version: VERSION
-  js:
-    js/splide-ffw_theme.js: {}
-  dependencies:
-    - ffw_theme/splide
-
-# Slider Library with video
-splide_video:
-  version: VERSION
-  css:
-    component:
-      /libraries/splide-extension-video/dist/css/splide-extension-video.min.css: { weight: -50 }
-  js:
-    /libraries/splide-extension-video/dist/js/splide-extension-video.min.js: { scope: footer }
-  dependencies:
-    - ffw_theme/splide
-
-image_comparison:
-  version: VERSION
-  js:
-    /libraries/twentytwenty/js/jquery.event.move.js: {}
-    /libraries/twentytwenty/js/jquery.twentytwenty.js: {}
-  dependencies:
-    - ffw_theme/splide
-    - core/jquery
-
 # =======
 # Components
 # =======
-base-styles:
+component_block:
   css:
     component:
-      dist/components/base-styles/link.css: {}
+      dist/components/block/block.css: {}
 
-chosen-library:
+card:
   css:
     component:
-      dist/components/chosen/chosen.css: {}
+      dist/components/card/card.css: {}
 
-sharing-block:
+cards-container:
   css:
     component:
-      dist/components/sharing-block/sharing-block.css: {}
-
-cta-block:
-  css:
-    component:
-      dist/components/cta-block/cta-block.css: {}
-
-splide-arrows:
-  css:
-    component:
-      dist/components/splide-arrows/splide-arrows.css: {}
-
-splide-pagination:
-  css:
-    component:
-      dist/components/splide-pagination/splide-pagination.css: {}
-
-search-bar:
-  css:
-    component:
-      dist/components/search-bar/search-bar.css: {}
-  js:
-    dist/components/search-bar/search-bar.js: {}
-
-search-crop-filter:
-  css:
-    component:
-      dist/components/search-crop-filter/search-crop-filter.css: {}
-  js:
-    dist/components/search-crop-filter/search-crop-filter.js: {}
-
-side-filter:
-  css:
-    component:
-      dist/components/side-filter/side-filter.css: {}
-  js:
-    dist/components/side-filter/side-filter.js: {}
-
-third-navigation:
-  css:
-    component:
-      dist/components/third-navigation/third-navigation.css: {}
+      dist/components/cards-container/cards-container.css: {}
 
 dropdown-menu:
   css:
@@ -303,27 +214,12 @@ dropdown-menu:
     - core/jquery.once
     - core/drupal
 
-hero-standard:
+splide-arrows:
   css:
     component:
-      dist/components/hero-standard/hero-standard.css: {}
+      dist/components/splide-arrows/splide-arrows.css: {}
 
-cards-container:
+splide-pagination:
   css:
     component:
-      dist/components/cards-container/cards-container.css: {}
-
-card:
-  css:
-    component:
-      dist/components/card/card.css: {}
-
-layout-product:
-  css:
-    component:
-      dist/components/layout-product/layout-product.css: {}
-
-field--crops:
-  css:
-    component:
-      dist/theme/field/crops/field--crops.css: {}
+      dist/components/splide-pagination/splide-pagination.css: {}

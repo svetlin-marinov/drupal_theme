@@ -2,11 +2,9 @@
 
 /**
  * @file
- * Functions to support theming in the ffw_theme theme.
+ * Functions to support theming in ffw_theme theme.
  */
 
-use Drupal\config_pages\Entity\ConfigPages;
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\views\Views;
@@ -15,7 +13,7 @@ use Drupal\Core\Form\FormState;
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for page templates.
  */
-function ffw_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+function ffw_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
   if (!in_array('page__front', $suggestions, TRUE)) {
     /** @var \Drupal\node\Entity\Node $node */
     if ($node = \Drupal::routeMatch()->getParameter('node')) {
@@ -37,22 +35,13 @@ function ffw_theme_suggestions_page_alter(array &$suggestions, array $variables)
     case 'system.404':
       $suggestions[] = 'page__404';
       break;
-
-    case 'user.register':
-    case 'adama_user.join':
-    case 'adama_user.registration_success':
-    case 'adama_user.welcome':
-    case 'adama_user.questionnaire':
-      // Stripped down page layout on these pages.
-      $suggestions[] = 'page__registration';
-      break;
   }
 }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for taxonomy templates.
  */
-function ffw_theme_suggestions_taxonomy_term_alter(array &$suggestions, array $variables, $hook) {
+function ffw_theme_theme_suggestions_taxonomy_term_alter(array &$suggestions, array $variables, $hook) {
   if ($hook === 'taxonomy_term') {
     /** @var \Drupal\taxonomy\Entity\Term $term */
     $term = $variables['elements']['#taxonomy_term'];
@@ -63,241 +52,194 @@ function ffw_theme_suggestions_taxonomy_term_alter(array &$suggestions, array $v
 /**
  * Implements hook_preprocess_html().
  */
-function ffw_theme_preprocess_html(&$variables) {
-  $node = \Drupal::routeMatch()->getParameter('node');
-  if ($node instanceof NodeInterface) {
-    // We need to add some color coding classes to the body tag.
-    // Many things depend on that class.
-    if ($node->getType() === 'product') {
-      if ($color_class) {
-        $variables['attributes']['class'][] = $color_class;
-      }
-    }
-    if ($node->getType() === 'minisites') {
-      if ($color_class) {
-        $variables['attributes']['class'][] = $color_class;
-      }
-    }
-    if ($node->getType() === 'article') {
-      $variables['#attached']['library'][] = 'ffw_theme/article';
-    }
-  }
-
-  // Adding language direction to body tag.
-  $language_direction = \Drupal::languageManager()->getCurrentLanguage()->getDirection();
-  $variables['attributes']['class'][] = $language_direction;
-}
+// function ffw_theme_preprocess_html(&$variables) {
+//   $node = \Drupal::routeMatch()->getParameter('node');
+//   if ($node instanceof NodeInterface) {
+//     // Example for adding variables
+//     if ($node->getType() === 'article') {
+//       $variables['#attached']['library'][] = 'ffw_theme/article';
+//       $variables['attributes']['class'][] = 'test';
+//     }
+//   }
+// }
 
 /**
  * Implements hook_preprocess_page().
  */
-function ffw_theme_preprocess_page(&$variables) {
-  // preprocess page
-}
+// function ffw_theme_preprocess_page(&$variables) {
+//   if ($var === 'value') {
+//     $variables['variable'] = TRUE;
+//   }
+// }
 
 /**
  * Implements hook_preprocess_media().
  */
-function ffw_theme_preprocess_media(&$variables) {
-  /** @var \Drupal\media\Entity\Media $media */
-  $media = $variables['media'];
-  $bundle = $media->bundle();
+// function ffw_theme_preprocess_media(&$variables) {
+//   /** @var \Drupal\media\Entity\Media $media */
+//   $media = $variables['media'];
+//   $bundle = $media->bundle();
 
-  // if ($bundle === 'video') {
-  //   // We just set the video url so it can be used in the twig template.
-  //   $variables['video_embed_url'] = $media->field_media_oembed_video->value;
-  // }
-
-}
+//   if ($bundle === 'video') {
+//     // We just set the video url so it can be used in the twig template.
+//     $variables['video_embed_url'] = $media->field_media_oembed_video->value;
+//   }
+// }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function ffw_theme_preprocess_paragraph(&$variables) {
+// function ffw_theme_preprocess_paragraph(&$variables) {
 
-  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
-  $paragraph = $variables['paragraph'];
-  $bundle = $paragraph->bundle();
+//   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+//   $paragraph = $variables['paragraph'];
+//   $bundle = $paragraph->bundle();
 
-  // Example:
-  // if ($bundle === 'PARAGRAPH_MACHINE_NAME') {
-  //   if ($class = AdamaContentHelper::getColorCodingFromEntity($paragraph, 'product_category')) {
-  //     $variables['attributes']['class'][] = $class;
-  //     $variables['#attached']['library'][] = 'ffw_theme/text';
-  //   }
-  // }
-}
+//   // Example:
+//   // if ($bundle === 'PARAGRAPH_MACHINE_NAME') {
+//   //   $variables['attributes']['class'][] = $class;
+//   //   $variables['#attached']['library'][] = 'ffw_theme/text';
+//   // }
+// }
 
 /**
  * Implements hook_theme_suggestions_form_alter().
  */
-function ffw_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+function ffw_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'form__' . $variables['element']['#form_id'];
 }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function ffw_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
-  if (isset($variables['element']['#type'])) {
-    $suggestions[] = 'fieldset__' . $variables['element']['#type'];
-    if (isset($variables["element"]["#name"])) {
-      $suggestions[] = 'fieldset__' . $variables['element']['#type'] . '__' . $variables["element"]["#name"];
-    }
-  }
+// function ffw_theme_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
+//   if (isset($variables['element']['#type'])) {
+//     $suggestions[] = 'fieldset__' . $variables['element']['#type'];
+//     if (isset($variables["element"]["#name"])) {
+//       $suggestions[] = 'fieldset__' . $variables['element']['#type'] . '__' . $variables["element"]["#name"];
+//     }
+//   }
 
-  if (isset($variables['element']['#context']['#view_id'])) {
-    $suggestions[] = 'fieldset__' . $variables['element']['#context']['#view_id'] . '__' . $variables['element']['#type'] . '__' . $variables['element']['#name'];
-  }
-}
+//   if (isset($variables['element']['#context']['#view_id'])) {
+//     $suggestions[] = 'fieldset__' . $variables['element']['#context']['#view_id'] . '__' . $variables['element']['#type'] . '__' . $variables['element']['#name'];
+//   }
+// }
 
 /**
  * Implements hook_theme_suggestions_field_alter().
  */
-function ffw_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+function ffw_theme_theme_suggestions_field_alter(array &$suggestions, array $variables) {
   $element = $variables['element'];
-  $suggestions[] = 'field__' . $element['#view_mode'];
-  $suggestions[] = 'field__' . $element['#view_mode'] . '__' . $element['#field_name'];
-  $suggestions[] = 'field__' . $element['#bundle'] . '__' . $element['#field_name'];
-  $suggestions[] = 'field__' . $element['#bundle'] . '__' . $element['#view_mode'] . '__' . $element['#field_name'];
-  $suggestions[] = 'field__' . $element['#entity_type'] . '__' . $element['#view_mode'] . '__' . $element['#field_name'];
   $suggestions[] = 'field__' . $element['#entity_type'] . '__' . $element['#bundle'] . '__' . $element['#view_mode'] . '__' . $element['#field_name'];
 }
 
 /**
  * Provide active language code for the language switcher.
  */
-function ffw_theme_preprocess_links__language_block(&$variables) {
-  $language_interface = \Drupal::languageManager()->getCurrentLanguage();
-  $variables['active_language'] = $language_interface->getId();
-}
+// function ffw_theme_preprocess_links__language_block(&$variables) {
+//   $language_interface = \Drupal::languageManager()->getCurrentLanguage();
+//   $variables['active_language'] = $language_interface->getId();
+// }
 
 /**
- * File Link should open in a new tab.
+ * Open file link in a new tab.
  */
-function ffw_theme_preprocess_file_link(&$variables) {
-  if ($variables['link'] && $variables['link']['#url'] instanceof Url) {
-    $options = $variables['link']['#url']->getOptions('attributes');
-    $options['attributes'] += ['target' => '_blank'];
-    $variables['link']['#url']->setOptions($options);
-  }
-}
+// function ffw_theme_preprocess_file_link(&$variables) {
+//   if ($variables['link'] && $variables['link']['#url'] instanceof Url) {
+//     $options = $variables['link']['#url']->getOptions('attributes');
+//     $options['attributes'] += ['target' => '_blank'];
+//     $variables['link']['#url']->setOptions($options);
+//   }
+// }
 
 /**
  * Implements hook_theme_suggestions_input_alter().
  */
-function ffw_theme_suggestions_input_alter(&$suggestions, array $variables) {
-  $element = $variables['element'];
-  if ($element['#type'] === 'search_api_autocomplete' && isset($element['#search_id']) && $element['#search_id'] === 'global_search_solr') {
-    $suggestions[] = 'input__textfield__global_autocomplete';
-  }
-}
+// function ffw_theme_theme_suggestions_input_alter(&$suggestions, array $variables) {
+//   $element = $variables['element'];
+//   if ($element['#type'] === 'search_api_autocomplete' && isset($element['#search_id']) && $element['#search_id'] === 'global_search_solr') {
+//     $suggestions[] = 'input__textfield__global_autocomplete';
+//   }
+// }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function ffw_theme_preprocess_node(&$variables) {
-  /** @var \Drupal\node\Entity\Node $node */
-  $node = $variables['node'];
-  if ($node->bundle() === 'homepage') {
-    $variables['#attached']['library'][] = 'ffw_theme/homepage';
-  }
-}
+// function ffw_theme_preprocess_node(&$variables) {
+//   /** @var \Drupal\node\Entity\Node $node */
+//   $node = $variables['node'];
+//   if ($node->bundle() === 'homepage') {
+//     $variables['#attached']['library'][] = 'ffw_theme/homepage';
+//   }
+// }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for node.html.twig.
  */
-function ffw_theme_suggestions_node_alter(array &$suggestions, array $variables) {
-  // Add template suggestions based on the current view mode.
-  $node = $variables['elements']['#node'];
-  $view_mode = $variables['elements']['#view_mode'];
-  $bundle = $node->bundle();
-  $suggestions[] = 'node__' . $bundle . '__teaser';
-  $suggestions[] = 'node__' . $bundle . '__teaser__' . $view_mode;
-}
+// function ffw_theme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+//   // Add template suggestions based on the current view mode.
+//   $node = $variables['elements']['#node'];
+//   $view_mode = $variables['elements']['#view_mode'];
+//   $bundle = $node->bundle();
+//   $suggestions[] = 'node__' . $bundle;
+//   $suggestions[] = 'node__' . $bundle . '__' . $view_mode;
+// }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function ffw_theme_suggestions_block_alter(array &$suggestions, array $variables) {
-  $suggestions[] = 'block__' . $variables['elements']['#plugin_id'];
-  $suggestions[] = 'block__' . $variables['elements']['#id'];
-}
+// function ffw_theme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+//   $suggestions[] = 'block__' . $variables['elements']['#plugin_id'];
+//   $suggestions[] = 'block__' . $variables['elements']['#id'];
+// }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function ffw_theme_preprocess_input(&$variables) {
-  // Make autocomplete input in header as 'search' type.
-  if (
-    $variables["element"]["#type"] === 'search_api_autocomplete' &&
-    $variables["element"]["#search_id"] === 'global_search_solr' &&
-    $variables["element"]["#additional_data"]["display"] === 'header_search_autocomplete'
-  ) {
-    $variables["attributes"]["type"] = 'search';
-    // Disable autocomplete in Safari.
-    // https://bytes.grubhub.com/disabling-safari-autofill-for-a-single-line-address-input-b83137b5b1c7
-    $variables["attributes"]["name"] = 'global_search_solr';
-  }
-}
+// function ffw_theme_preprocess_input(&$variables) {
+//   // Make autocomplete input in header as 'search' type.
+//   if (
+//     $variables["element"]["#type"] === 'search_api_autocomplete' &&
+//     $variables["element"]["#search_id"] === 'global_search_solr' &&
+//     $variables["element"]["#additional_data"]["display"] === 'header_search_autocomplete'
+//   ) {
+//     $variables["attributes"]["type"] = 'search';
+//     // Disable autocomplete in Safari.
+//     // https://bytes.grubhub.com/disabling-safari-autofill-for-a-single-line-address-input-b83137b5b1c7
+//     $variables["attributes"]["name"] = 'global_search_solr';
+//   }
+// }
 
 /**
  * Implements hook_preprocess_media_entity_download_link().
  *
  * We want to display the media name instead of the filename.
  */
-function ffw_theme_preprocess_media_entity_download_link(&$variables) {
-  /** @var \Drupal\media\Entity\Media $media */
-  $media = $variables['media_entity'];
-  $variables['title'] = $media->label();
-  $variables['link']['#title'] = $media->label();
-}
+// function ffw_theme_preprocess_media_entity_download_link(&$variables) {
+//   /** @var \Drupal\media\Entity\Media $media */
+//   $media = $variables['media_entity'];
+//   $variables['title'] = $media->label();
+//   $variables['link']['#title'] = $media->label();
+// }
 
 /**
  * Implements hook_preprocess_views_view().
  */
-function ffw_theme_preprocess_views_view(&$variables) {
-  $view = $variables['view'];
-  if ($variables['id'] === 'events_overview' && $variables['display_id'] === 'events_overview' && $view->exposed_raw_input['date_value']['min'] != '' && $view->exposed_raw_input['date_value']['max'] != '') {
-    $date_formatter = \Drupal::service('date.formatter');
-    $variables['min_date'] = $date_formatter->format(strtotime($view->exposed_raw_input['date_value']['min']), 'events_date_format');
-    $variables['max_date'] = $date_formatter->format(strtotime($view->exposed_raw_input['date_value']['max']), 'events_date_format');
-  }
-}
+// function ffw_theme_preprocess_views_view(&$variables) {
+//   $view = $variables['view'];
+//   if ($variables['id'] === 'events_overview' && $variables['display_id'] === 'events_overview') {
+//     $date_formatter = \Drupal::service('date.formatter');
+//     $variables['min_date'] = $date_formatter->format(strtotime($view->exposed_raw_input['date_value']['min']), 'events_date_format');
+//     $variables['max_date'] = $date_formatter->format(strtotime($view->exposed_raw_input['date_value']['max']), 'events_date_format');
+//   }
+// }
 
 /**
  * Implements hook_preprocess_block().
  *
  * Change logo for a specific site.
  */
-function ffw_theme_preprocess_block__system_branding_block(&$variables) {
-  // $variables["site_logo"] = '/themes/custom/ffw_theme/logo_canada.svg';
-}
+// function ffw_theme_preprocess_block__system_branding_block(&$variables) {
+//   // $variables["site_logo"] = '/themes/custom/ffw_theme/logo_canada.svg';
+// }
 
-/**
- * Prepares variables for single local action link templates.
- *
- * Default template: menu-local-action.html.twig.
- *
- * @param array $variables
- *   An associative array containing:
- *   - element: A render element containing:
- *     - #link: A menu link array with 'title', 'url', and (optionally)
- *       'localized_options' keys.
- */
-function ffw_theme_preprocess_menu_local_action(array &$variables) {
-  $link = $variables['element']['#link'];
-  $link += [
-    'localized_options' => [],
-  ];
-  // $link['localized_options']['attributes']['class'][] = 'button';
-  // $link['localized_options']['attributes']['class'][] = 'button-action';
-  $link['localized_options']['set_active_class'] = TRUE;
-
-  $variables['link'] = [
-    '#type' => 'link',
-    '#title' => $link['title'],
-    '#options' => $link['localized_options'],
-    '#url' => $link['url'],
-  ];
-}

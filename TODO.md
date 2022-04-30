@@ -9,3 +9,4 @@
    3. Icons sprite
 7. User forms
 9. Static demo page(s)
+10. Accordion component

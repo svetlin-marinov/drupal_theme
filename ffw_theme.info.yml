@@ -70,11 +70,6 @@ libraries-override:
       theme:
         assets/vendor/jquery.ui/themes/base/theme.css: dist/components/jquery.ui/theme.css
 
-  search_api_autocomplete/search_api_autocomplete:
-    css:
-      theme:
-        css/search_api_autocomplete.css: dist/components/search-bar/search_api_autocomplete.css
-
   system/base:
     css:
       component:
