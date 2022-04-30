@@ -1,19 +1,15 @@
 @use 'sass:string';
 
 // Color variables
-$black: #000;
 $ocean: #176ddd;
 $ocean-secondary: #003b88;
 $red: #ff0909;
 $white: #fff;
 $blue: #00a0df;
 $blue-secondary: #00698f;
-$purple: #9d1d96;
-$purple-secondary: #752157;
 $green: #3b0;
 $green-secondary: #7db41e;
 $orange: #f90;
-$orange-secondary: #eaa23d;
 $grey: #878787;
 $grey-light: #efefef;
 $grey-dark: #5f5f5f;
@@ -43,8 +39,8 @@ $messages-error-background: $error-color;
 $button-color: $white;
 $label-color: $grey;
 $input-color: $grey-dark;
-$input-bg: $white;
+$input-color-active: $grey-dark;
 $input-border: $grey-light;
 $input-border-hover: $grey-dark;
 $input-border-active: $grey-dark;
-$input-color-active: $grey-dark;
+$input-bg: $white;

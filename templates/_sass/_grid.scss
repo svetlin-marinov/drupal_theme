@@ -153,13 +153,9 @@
   @return $col-width;
 }
 
-%flex {
+%flex-center {
   display: flex;
-
-  &-center {
-    display: flex;
-    align-items: center;
-  }
+  align-items: center;
 }
 
 %flex-auto {
