@@ -1,24 +1,9 @@
 @use '../../_sass/init' as *;
 
-.node--type-article {
-  .article-title {
-    @include ts-article--content;
-    margin-bottom: 0;
-    color: $grey-dark;
-  }
-
+.node--article--teaser {
   .field--name-field-image {
-    position: relative;
-    margin-bottom: $spacing-2;
-    border-radius: $border-radius;
-    overflow: hidden;
-
     img {
       display: block;
     }
-  }
-
-  .field--name-body {
-    color: $body-color;
   }
 }
