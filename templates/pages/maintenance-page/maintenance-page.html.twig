@@ -8,14 +8,13 @@
  * @see template_preprocess_maintenance_page()
  */
  #}
-{{ attach_library('adama/maintenance-page') }}
+{{ attach_library('ffw_theme/maintenance-page') }}
 
 <header class="maintenance-page--header" id="header" role="banner">
-  <img src="{{ logo }}" alt="{{ 'Adama' }}" class="maintenance-page--logo" />
+  <img src="{{ logo }}" alt="{{ 'Site logo'|t }}" class="maintenance-page--logo" />
 </header>
 <main class="maintenance-page--content" role="main">
   {{ page.highlighted }}
-  <div class="maintenance-page--content--icon icon-bg--service-unavailable"></div>
   {% if title %}
     <h1 class="maintenance-page--content--title" id="page-title">{{ title }}</h1>
   {% endif %}
