@@ -3,10 +3,11 @@
 3. Compress multiple images or folders with `imagemin`.
 4. Styleguide
 5. Dropdown menu component - default style, markup, template
-6. Update README.md with information about:
+6. Add Imagemin script
+7. Update README.md with information about:
    1. Breakpoints
    2. Grid
    3. Icons sprite
-7. User forms
-9. Static demo page(s)
-10. Accordion component
+8. Static demo page(s)
+9. Accordion component
+10. Add Twig linter
