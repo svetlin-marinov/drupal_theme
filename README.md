@@ -1,5 +1,4 @@
 ## Intro
-### **Theme is still WIP and not ready for production.**
 
 Starter Drupal theme with components structure.
 
