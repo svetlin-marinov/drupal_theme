@@ -1,6 +1,6 @@
 ## Intro
 
-Starter Drupal theme with components structure.
+Starter Drupal 9 theme with components structure.
 
 Two types of components - Drupal and static.
 Drupal components are in the `templates` folder. Static components are in a separate `components` folder.
