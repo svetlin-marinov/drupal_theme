@@ -67,7 +67,7 @@
     "postcss-scss": "^4.0.7",
     "sass": "^1.53.0",
     "stylelint": "^14.16.1",
-    "stylelint-order": "^5.0.0",
+    "stylelint-order": "^6.0.4",
     "stylelint-scss": "^5.0.0",
     "svg-sprite": "^2.0.4"
   }
